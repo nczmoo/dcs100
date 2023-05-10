@@ -5,7 +5,7 @@ class Config {
     crawling = false;
     credits = 0;
     forward = true;
-    gold = 0;
+    gold = 10;
     goldInRun = 0;
 	health = 10;   
     lastDive = 10;

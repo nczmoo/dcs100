@@ -1,5 +1,6 @@
 class UI{
 	logs = [];
+	dStep = 0;
 	animatingInterval = setInterval(this.animating, 1000);
 	potionsHidden = true;
 	menuHidden = true;
@@ -12,6 +13,7 @@ class UI{
 		$("#" + this.window).removeClass('d-none');
 	}
 	refresh(){
+
 		if (!this.potionsHidden){
 			$("#potions").removeClass('d-none');
 		}
@@ -29,18 +31,18 @@ class UI{
 			$("#" + i).html(potion);
 			$("#drink-" + i).prop('disabled', potion < 1);		
 		}
-		$("#crawl").removeClass('btn-success');
-		$("#crawl").removeClass('btn-danger');
-		$("#crawl").removeClass('btn-warning');
+		$("#crawl-button").removeClass('btn-success');
+		$("#crawl-button").removeClass('btn-danger');
+		$("#crawl-button").removeClass('btn-warning');
 		if (!game.config.crawling){
-			$("#crawl").html('enter');
-			$("#crawl").addClass('btn-success');			
+			$("#crawl-button").html('enter');
+			$("#crawl-button").addClass('btn-success');			
 		} else if (game.config.crawling && game.config.forward){
-			$("#crawl").html('exit');
-			$("#crawl").addClass('btn-danger');
+			$("#crawl-button").html('exit');
+			$("#crawl-button").addClass('btn-danger');
 		} else if (game.config.crawling && !game.config.forward){
-			$("#crawl").html('exiting');
-			$("#crawl").addClass('btn-warning');
+			$("#crawl-button").html('exiting');
+			$("#crawl-button").addClass('btn-warning');
 			
 
 		}
@@ -52,6 +54,7 @@ class UI{
 		this.printLog();
 		let width = (game.config.health / game.config.maxHealth * 100) + "%"
 		$("#healthBar").css('width', width);
+
 	}
 
 	animating(){
@@ -61,10 +64,13 @@ class UI{
 	}
 
 	animatingWins(){
+
 		let win = game.config.wins[this.wins[this.winPointer]];
 		$(".reel").removeClass('win');
 		for (let reelID in win){
+			let positions = game.fetchPositions(reelID);
 			$("#reel-" + reelID + "-" + win[reelID]).addClass('win');
+			$("#reel-" + reelID + "-" + win[reelID]).html("<img src='img/reel-" + game.config.reels[reelID][positions[win[reelID]]] + "-win.png'>")
 		}
 		this.winPointer++;
 		if (this.winPointer > this.wins.length - 1 || this.winPointer > game.config.lines - 1){
@@ -83,8 +89,30 @@ class UI{
 		this.winPointer = 0;
 	}
 
+	exit(){
+		$("#game-box").attr('src', 'img/d-close.png');
+	}
+
+	
+
 	formatID(id){
 		return Number(id) + 1;
+	}
+
+	mobDies(name){
+		$("#game-box").attr('src', 'img/d-' + name + "-dead.png" )
+	}
+
+	mobHits(name){
+		$("#game-box").attr('src', 'img/d-' + name + "-hitMe.png" )
+	}
+
+	mobSpawns(){
+		$("#game-box").attr('src', 'img/d-rat.png');
+	}
+
+	playerHits(name){
+		$("#game-box").attr('src', 'img/d-' + name + "-hitThem.png" )
 	}
 
 	printLog(){
@@ -99,11 +127,15 @@ class UI{
 	printReel(reelID){		
 		let positions = game.fetchPositions(reelID);
 		return "<div id='reel-" + reelID + "-prev' class='reel'>" 
+			+ "<img src='img/reel-"
 			+ game.config.reels[reelID][positions.prev] 
-			+ "</div><div  id='reel-" + reelID + "-pos' class='reel straight'>" 
+			+ ".png'></div><div  id='reel-" + reelID + "-pos' class='reel'>" 
+			+ "<img src='img/reel-"
 			+ game.config.reels[reelID][positions.pos] 
-			+ "</div><div id='reel-" + reelID + "-next' class='reel'>" 
-			+ game.config.reels[reelID][positions.next] + "</div>"
+			+ ".png'></div><div id='reel-" + reelID + "-next' class='reel'>" 
+			+ "<img src='img/reel-"
+			+ game.config.reels[reelID][positions.next] 
+			+ ".png'></div>"
 	}
 
 	printReels(){
@@ -140,5 +172,23 @@ class UI{
 			txtClass = " " + type + " ";
 		}
 		this.logs.unshift("<div class='" + txtClass + "'>" + msg + "</div>");		
+	}
+
+	step(){
+		$("#game-box").attr('src', 'img/d-' + this.dStep + '.png');
+
+		if (game.config.forward){
+			this.dStep++;
+		} else {
+			this.dStep --;
+		}
+
+		if (this.dStep > 5){
+			this.dStep = 0;
+		}
+
+		if (this.dStep < 0){
+			this.dStep = 5;
+		}
 	}
 }

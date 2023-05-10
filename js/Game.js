@@ -24,6 +24,7 @@ class Game{
 			this.fight();
 			return;
 		}
+		ui.step();
 		if (this.config.forward){
 			this.config.steps ++;
 			this.config.stepsForward ++;
@@ -81,6 +82,7 @@ class Game{
 	}
 
 	exit(){
+		ui.exit();
 		this.config.crawling = false;
 		this.config.forward = true;
 		this.config.steps = 0;
@@ -91,6 +93,7 @@ class Game{
 		for (let i in this.config.modifiers){
 			this.config.modifiers[i] = 0;
 		}
+		
 	}
 
 	fetchPositions(reelID){
@@ -121,11 +124,13 @@ class Game{
 			}
 			
 		}
+		console.log(game.config.wins, wins);
 		this.processWins(wins);		
 		ui.animateWins(wins);
 	}
 
 	fight(){
+		ui.mobSpawns(this.config.mob.name);
 		this.config.yourTurn = !this.config.yourTurn;
 		if (this.config.yourTurn){
 			this.playerHits();
@@ -171,6 +176,7 @@ class Game{
 				loot = 2;
 			}
 		}
+		ui.mobDies(this.config.mob.name);
 		ui.status("The <span class='fw-bold'>lvl " + this.config.mob.level + " " 
 			+ this.config.mob.name + " died</span> and you looted " + loot 
 			+ " gold from it. (<span class='text-success='>+" + loot 
@@ -210,6 +216,7 @@ class Game{
 			+ " damage. (<span class='text-danger'>-" + dmg +  "</span>)";
 		let status = this.config.mob.name + " missed!";
 		if (initDmg > 0){
+			ui.mobHits(this.config.mob.name);
 			status = "The " + this.config.mob.name 
 			+ " hit you for " + initDmg 
 			+ " damage." ;
@@ -231,6 +238,7 @@ class Game{
 		this.config.mob.health -= dmg;
 		let status = "<span class='fw-bold'>You</span> missed";
 		if (dmg > 0){
+			ui.playerHits(this.config.mob.name);
 			status = "<span class='fw-bold'>You</span> hit the " 
 			+ this.config.mob.name + " for " + dmg + " damage!"
 		}
@@ -288,9 +296,11 @@ class Game{
 		if (this.config.mob != null){
 			return;
 		}
+		
 		let name = 'rat';
 		let mob = { ...this.config.mobs[name]};
 		this.config.mob = mob;
+		ui.mobSpawns(this.config.mob.name);
 		for (let i in this.config.modifiers){
 			let modifier = this.config.modifiers[i];
 			this.config.mob[i] += modifier;

@@ -2,7 +2,19 @@ $(document).on('click', '', function(e){
 
 })
 
-$(document).on('click', '#crawl', function(e){
+
+$("#game-box").hover(function(){	
+	if (!game.config.crawling && $("#game-box").attr('src') == 'img/d-close.png'){
+		
+		$("#game-box").attr('src', 'img/d-open.png');
+	}
+},  function (){
+	if ($("#game-box").attr('src') == 'img/d-open.png'){
+		$("#game-box").attr('src', 'img/d-close.png');
+	}
+});
+
+$(document).on('click', '.crawl', function(e){
 	if (!game.config.crawling){
 		game.config.crawling = true;		
 		return;
@@ -13,6 +25,7 @@ $(document).on('click', '#crawl', function(e){
 		return;
 	}
 	game.config.forward = true;
+	ui.refresh();
 });
 
 $(document).on('click', '.menu', function(e){

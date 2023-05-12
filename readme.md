@@ -20,8 +20,27 @@ TODO
     x Slots
 
     x Potions
-    create 40 x 40 icons for slot symbols on reels
-    put a hp in attack spawn msg
+    x create 40 x 40 icons for slot symbols on reels
+    x put a hp in attack spawn msg
+    x you can get poisoned    
+    x create reel spinning animation
+    x repair potion
+    x cure poison
+    x BUG: if you die, it won't show the death msg because I hid the log
+    x draw the icons that I put on the smoke on the bottle of potions
+    x draw the icons for the larger screen
+    x add an armor bar
+    x hide store button in beginning
+    x portal isn't setting the 2x position
+    x put credits and lines back in
+    x add auto drink option to heal and cure
+    slowly integrate more stuff onto slots as you progress through dungeon (this makes slots harder but more lucrative)
+    chests are the only place you can get portal potions
+    
+    make slot machine look better
+    sound
+    music
+    REFACTOR
 
 
 QUESTIONS
@@ -51,10 +70,11 @@ DESIGN
         It's an autobattle situation. Just do rats for now, which get progressively more powerful as you progress forward.
         Mobs drop random gold (0, power)
 MAYBE
-    make armor degrade so it has to be repaired
-    repair armor as part of a slot
+    x make armor degrade so it has to be repaired
     bank
-    incentivize the player to dive deeper by doubling their gold yield for going deeper than last time
-    create a min for how many steps they can go before spawning a mob
+        why would you need to bank gold?
+    x incentivize the player to dive deeper by doubling their gold yield for going deeper than last time
+    x create a min for how many steps they can go before spawning a mob
     maybe portal should only go into effect if you'r not fighting
-    
+    be able to sell potions        
+    double up on the reels to lower the chance of a portal 

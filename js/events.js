@@ -14,7 +14,13 @@ $("#game-box").hover(function(){
 	}
 });
 
+$(document).on('click', '.auto', function(e){	
+	game.changeAuto(e.target.id.split('-')[1], $("#" + e.target.id).is(':checked'));
+});
+
 $(document).on('click', '.crawl', function(e){
+	$("#death").html('');
+
 	if (!game.config.crawling){
 		game.config.crawling = true;		
 		return;
@@ -26,6 +32,7 @@ $(document).on('click', '.crawl', function(e){
 	}
 	game.config.forward = true;
 	ui.refresh();
+
 });
 
 $(document).on('click', '.menu', function(e){

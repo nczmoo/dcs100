@@ -1,21 +1,29 @@
 class Config {
     armor = 0;
-    
-    maxArmor = 0;
+    auto = {
+        heal: true,
+        repair: true,
+    };
+    chanceToPoison = 100;    
     crawling = false;
     credits = 0;
+    dungeon = [];
     forward = true;
-    gold = 10;
+    gold = 0;
     goldInRun = 0;
 	health = 10;   
     lastDive = 10;
     lines = 1; 
-    maxLines = 5;
+    maxArmor = 0;
+    maxLines = 10;
     maxHealth = 10;
     maxSteps = null;
     mob = null;
     mobs = {
-        rat: {attack: 1, health: 2, max: 2, level: 1}
+        rat: {attack: 1, health: 2, max: 2, level: 1, steps: 0, },
+        rat_king: {attack: 10, health: 40, max: 40, level: 1, steps: 200},
+        snake: {attack: 5, health: 10, max: 10, level: 1, steps: 50},
+
     }
     modifiers = {
         attack: 0,
@@ -25,32 +33,44 @@ class Config {
     }
     numOfReels = 3;
     numOfSymbolsOnReel = 5;
-    potions = {
-        heal: 0,
-        portal: 0,
-    }
+    poisonCounter = 0;
+    potionList = ['heal', 'portal', 'repair'];
+    potions = {};
     positions = [];
-    reelSymbols = ['heal', 'weapon', 'maxArmor', 'maxHealth', 'portal'];
+    pulling = false;
+    reelSymbols = ['weapon', 'maxArmor', 'maxHealth-1', 'heal'];
+    addToReels = {
+        'repair': 50,
+        'maxHealth-2': 100,
+        'maxHealth-3': 150,
+
+    }
     reels = [];
     spawnRate = 4;
     steps = 0;  
     stepsForward = 0;  
-    weapon = 1;
+    timeToRoll = 1000;
+    timeToDisplayWin = 1000;
+    weapon = 1; //1
     wins = [
         ['pos',	'pos',	'pos'],
-        ['prev',	'pos',	'next'],
-        ['next',	'pos',	'prev'],
-        ['next',	'pos',	'next'],
-        ['prev',	'pos',	'prev']
+        ['prev', 'pos',	'next'],
+        ['next', 'pos',	'prev'],
+        ['next', 'pos',	'next'],
+        ['prev', 'pos',	'prev'],
+        ['prev', 'prev', 'prev'],
+        ['next', 'next', 'next'],
+        ['pos', 'prev' , 'pos'],
+        ['pos', 'next' , 'pos'],
     ];
     yourTurn = true;
 
     constructor(){       
-        this.resetMaxSteps();
-        while (this.reels.length < this.numOfReels){
-            this.reels.push(this.reelSymbols);
-            this.positions.push(randNum(0, this.reelSymbols.length -1));
+        for (let name of this.potionList){
+            this.potions[name] = 0;
         }
+        this.resetMaxSteps();        
+        this.generateReels();
     }
 
     checkLines(){
@@ -69,6 +89,26 @@ class Config {
         }
     }
 
+    fetchRandReel(){
+        let reel = [];
+        while (reel.length < this.reelSymbols.length){
+            let rand = this.reelSymbols[randNum(0, this.reelSymbols.length - 1)];
+            if (this.howMany(reel, rand) < this.howMany(this.reelSymbols, rand)){
+                reel.push(rand)
+            }
+        }        
+        return reel;
+    }
+    generateReels(){
+        this.reels = [];
+        this.positions = [];
+        while (this.reels.length < this.numOfReels){
+            this.reels.push(this.fetchRandReel());
+            this.positions.push(randNum(0, this.reelSymbols.length -1));
+        }
+    }
+
+    /*
     generateReel(){
         let reel = [];                
         while (reel.length < this.numOfSymbolsOnReel){
@@ -79,6 +119,7 @@ class Config {
         }        
         return reel;
     }
+    */
 
     getGold(delta){        
         this.gold += delta;
@@ -88,6 +129,16 @@ class Config {
             $("#menu").removeClass('d-none');
             ui.menuHidden = false;
         }
+    }
+
+    howMany(arr, element){
+        let n = 0;
+        for (let i of arr){
+            if (element == i){
+                n ++;
+            }            
+        }
+        return n;
     }
 
     resetArmor(){

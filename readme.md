@@ -34,15 +34,23 @@ TODO
     x portal isn't setting the 2x position
     x put credits and lines back in
     x add auto drink option to heal and cure
-    slowly integrate more stuff onto slots as you progress through dungeon (this makes slots harder but more lucrative)
-    chests are the only place you can get portal potions
-    
+    x REFACTOR
+    x slowly integrate more stuff onto slots as you progress through dungeon (this makes slots harder but more lucrative)
+    x chests are the only place you can get portal potions
+    x Let the player know when a new monster is added to their spawn (exiting dungeon) and a new symbol is added to reel (store)
     make slot machine look better
     sound
     music
-    REFACTOR
-
-
+    
+    add more ui pop when changing quantities on the screen so you can tell what's being changed 
+    the number of portals given by a portal chest should be determined by how often you die
+    change potions to inventory
+    add straight to reels
+    replace enter and exit buttons with forward and backward images
+    BUG : fighting not updating with mob
+    
+    be able to stop auto-pull
+    
 QUESTIONS
     What can you get from the slots?
         Potions
@@ -78,3 +86,5 @@ MAYBE
     maybe portal should only go into effect if you'r not fighting
     be able to sell potions        
     double up on the reels to lower the chance of a portal 
+    replace menu buttons with signs
+    show when the next chest will pop up

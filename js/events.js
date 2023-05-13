@@ -19,20 +19,13 @@ $(document).on('click', '.auto', function(e){
 });
 
 $(document).on('click', '.crawl', function(e){
-	$("#death").html('');
-
-	if (!game.config.crawling){
-		game.config.crawling = true;		
-		return;
-	} 
+	game.dungeon.changeCrawling();
 	
-	if (game.config.forward){
-		game.config.forward = false;	
-		return;
-	}
-	game.config.forward = true;
 	ui.refresh();
+});
 
+$(document).on('click', '.lines', function(e){
+	game.slots.changeLines(e.target.id.split('-')[1]);
 });
 
 $(document).on('click', '.menu', function(e){
@@ -42,6 +35,10 @@ $(document).on('click', '.menu', function(e){
 	$(".menu").prop('disabled', false);
 	$("#" + e.target.id).prop('disabled', true);
 })
+
+$(document).on('click', '#pull', function(e){
+	game.slots.pull();
+});
 
 $(document).on('click', '.verb', function(e){
 	game[e.target.id]();

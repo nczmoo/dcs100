@@ -1,14 +1,24 @@
 class UI{		
 	animation = new UIAnimation();
 	animatingInterval = setInterval(this.animation.loop, 50);
+	deltaIntervals = {};
+	deltas = {};
 	logs = [];	
 	monsters = [];
+	popping = [];
 	pulledAt = null;
 	reels = [];
 	uirefresh = new UIRefresh();
 	window = 'dungeon';
 	wins = null;
 	constructor(){
+		this.deltas.gold = 0;
+		this.deltas.health = 0;
+		this.deltas.armor = 0;
+		this.deltas.weapon = 0;
+		for (let potion of game.player.potionList){
+			this.deltas[potion] = 0;
+		}
 		this.printReels(true);
 		$(".window").addClass('d-none');
 		$("#" + this.window).removeClass('d-none');
@@ -63,6 +73,11 @@ class UI{
 		this.monsters = [];
 	}
 
+	delta(id, n){
+		console.log(id, this.deltas[id]);
+		this.deltas[id] += n;		
+	}
+
 	exit(){
 		$("#game-box").attr('src', 'img/d-close.png');
 	}
@@ -86,6 +101,42 @@ class UI{
 
 	playerHits(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-hitThem.png" )
+	}
+
+	pop(id){
+		this.popping.push(id);		
+	}
+
+	popFromPopping(){
+		for (let id of this.popping){
+			//$("#" + id + "Section").addClass('fw-bold');
+			//setTimeout(function(){ $("#" + id + "Section").removeClass('fw-bold');}, 1000);
+		}
+	}
+
+	printDeltas(){
+		for (let id in this.deltas){
+			let n = this.deltas[id];
+			if (n == 0){
+				continue;
+			}
+			let txt = '(';
+		
+			if (n == 0){
+				return;
+			}
+
+			if (n < 0){
+				txt += "<span class='text-danger'>" + n + "</span>";
+			} else if (n > 0){
+				txt += "<span class='text-success'>+" + n + "</span>";
+			}
+			txt += ")";
+			$("#" + id + "Delta").html(txt);
+			console.log(id, this.deltaIntervals[id]);
+			this.deltas[id] = 0;
+			this.deltaIntervals[id] = setTimeout(function(){ $("#" + id + "Delta").html(''); }, 1000);
+		}
 	}
 	
 	printLog(){

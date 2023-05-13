@@ -47,6 +47,8 @@ class UIAnimation {
 			ui.wins = null;
 			$("#pull").prop('disabled', false);
 		}
+		ui.popFromPopping();
+		ui.printDeltas()
 	}
 
 	animateWins(wins){

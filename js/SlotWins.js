@@ -46,16 +46,22 @@ class SlotWins {
 			}
 			winsPaid ++;			
 			if (what.split('-')[0] == 'maxHealth'){
+				ui.pop(what.split('-')[0]);
 				game.player.maxHealth += Number(what.split('-')[1]) * pay;
+				ui.delta('health', Number(what.split('-')[1]) * pay)
 				game.player.resetHealth();
 				continue;
 			} else if (game.player.potionList.includes(what)){
+				ui.pop(what);
 				if (ui.potionsHidden){
 					ui.potionsHidden = false;
 				}
+				ui.delta(what, pay)
 				game.player.potions[what] += pay;
 				continue;
 			}				
+			ui.pop(what);
+			
 			game.player[what] += pay;			
 			game.player.resetArmor();
 		}

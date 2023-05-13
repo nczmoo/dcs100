@@ -47,6 +47,8 @@ class Slots {
 		}
 		ui.pulledAt = Date.now();
 		game.player.gold -= this.lines;
+		ui.delta('gold', -this.lines);
+		ui.printDeltas();
 		if (game.player.gold > 0 && game.player.gold < this.lines){
 			this.lines = game.player.gold;
 		}

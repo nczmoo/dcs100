@@ -30,7 +30,7 @@ class UIRefresh {
 			$("#auto-" + i).prop('checked', game.config.auto[i]);
 		}
 		
-		if ($("#armorSection").hasClass('d-none') && game.player.armor > 0){
+		if ($("#armorSection").hasClass('d-none') && game.player.maxArmor > 0){
 			$("#armorSection").removeClass('d-none');
 		}
         let icons = ['health', 'armor', 'gold', 'weapon', 'cure', 'heal', 'portal', 'repair', 'key'];

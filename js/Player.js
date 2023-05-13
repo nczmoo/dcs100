@@ -50,7 +50,8 @@ class Player {
     }
 
     getGold(delta){        
-        this.gold += delta;
+		ui.delta('gold', delta);
+        this.gold += delta;		
         this.goldInRun += delta;
         game.slots.checkLines();
         if (this.gold > 0 && ui.menuHidden){
@@ -70,6 +71,7 @@ class Player {
     }
 
 	getsHitInHealth(dmg){
+		ui.delta('health', -dmg);
 		this.health -= dmg;
 		if (this.health < 1){
 			return true;
@@ -78,6 +80,7 @@ class Player {
 	}
 
     getsHitInArmor(dmg){
+		
         let armorDmg = 0;
 		if (this.armor > 0){
 			this.armor -= dmg;
@@ -88,6 +91,7 @@ class Player {
 			dmg = Math.abs(this.armor);				
 			this.armor = 0;
 		} 
+		ui.delta('armor', -armorDmg);
         return armorDmg;
     }
 
@@ -134,6 +138,7 @@ class Player {
 		if (this.potions.key < 1){
 			return;
 		}
+		ui.delta('key', -1);
 		this.potions.key --;
 	}
 

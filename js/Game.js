@@ -21,6 +21,7 @@ class Game{
 		if (this.player.potions[potion] < 1){
 			return;
 		}
+		ui.delta(potion, -1);
 		this.player.potions[potion] --;
 		if (potion == 'repair'){
 			this.player.resetArmor();
@@ -38,6 +39,7 @@ class Game{
 	looping(){
 		if (game.dungeon.crawling){
 			game.dungeon.crawl();
+			ui.printDeltas();
 		} else if (game.slots.pulling){
 			game.slots.pull();
 			return;

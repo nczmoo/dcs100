@@ -1,7 +1,7 @@
 class SlotReels {
 	addToReels = {
-        'repair': 1,
-        'maxHealth-2': 1,
+        'repair': 50,
+        'maxHealth-2': 100,
         'maxHealth-3': 150,
     }
     length = null;

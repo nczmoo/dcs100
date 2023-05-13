@@ -111,8 +111,8 @@ class UIRefresh {
 
 	refreshFighting(){
 		let caption = ' no one';
-		if (game.config.mob != null){
-			let mob = game.config.mob;
+		if (game.mob.entity != null){
+			let mob = game.mob.entity;
 			let width = (mob.health / mob.max * 100).toFixed(0) + "%";			
 			let bar = "<div class='progress'><div id='healthBar' " 
 				+ "class='progress-bar bg-danger' role='progressbar' "
@@ -121,6 +121,7 @@ class UIRefresh {
 				+ mob.attack + " hp: "+ mob.health + "/" + mob.max
 				+ "</div><div>" + bar + "</div>";
 		}
+		
 		$("#fighting").html(caption);
 	}
 }

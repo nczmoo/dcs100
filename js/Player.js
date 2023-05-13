@@ -1,13 +1,13 @@
 class Player {
     armor = 0;
     chanceToPoison = 100;    
-    gold = 10;    
+    gold = 0;    
     goldInRun = 0;
 	health = 10;   
     maxArmor = 0;
     maxHealth = 10;
     poisonCounter = 0;
-    weapon = 10; //1
+    weapon = 1; //1
 	potionList = ['heal', 'portal', 'repair', 'key'];
     potions = {};
 

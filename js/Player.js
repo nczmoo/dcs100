@@ -1,7 +1,7 @@
 class Player {
     armor = 0;
     chanceToPoison = 100;    
-    gold = 10;    
+    gold = 0;    
     goldInRun = 0;
 	health = 10;   
     maxArmor = 0;

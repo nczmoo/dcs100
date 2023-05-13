@@ -6,7 +6,7 @@ class UIAnimation {
     timeToDisplayWin = 350;
     winDisplayedAt = null;
     winPointer = null;	
-
+	flashSlot = 0;
 
     loop(){
 		
@@ -19,6 +19,7 @@ class UIAnimation {
 		}
 		if (ui.pulledAt != null && Date.now() - ui.pulledAt < ui.animation.timeToRoll){
 			ui.animation.roll();
+			ui.animation.flashSlots();
 		} else if (ui.pulledAt != null && Date.now() - ui.pulledAt >= ui.animation.timeToRoll){
 			ui.pulledAt = null;
 			ui.refresh();
@@ -45,7 +46,6 @@ class UIAnimation {
 		if (this.winPointer > ui.wins.length - 1 || this.winPointer > game.slots.lines - 1){
 			this.winPointer = null;
 			ui.wins = null;
-			$("#pull").prop('disabled', false);
 		}
 		ui.popFromPopping();
 		ui.printDeltas()
@@ -55,9 +55,23 @@ class UIAnimation {
 		if(wins.length < 1){
 			return;
 		}
-		$("#pull").prop('disabled', true);
 		ui.wins = wins;
 		this.winPointer = 0;
+	}
+
+	flashSlots(){
+		this.flashSlot++;
+		let target = 4;
+		if (this.flashSlot < target || !game.slots.pulling){
+			return;
+		}
+		this.flashSlot = 0;
+		if ($("#img-autopull").attr('src') == "img/slots-autopull.png"){
+			$("#img-autopull").attr('src', "img/slots-autopull-flash.png");
+			
+		} else if ($("#img-autopull").attr('src') == "img/slots-autopull-flash.png"){
+			$("#img-autopull").attr('src', "img/slots-autopull.png");
+		}
 	}
 
     roll(){

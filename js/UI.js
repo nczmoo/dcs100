@@ -74,7 +74,6 @@ class UI{
 	}
 
 	delta(id, n){
-		console.log(id, this.deltas[id]);
 		this.deltas[id] += n;		
 	}
 
@@ -127,13 +126,12 @@ class UI{
 			}
 
 			if (n < 0){
-				txt += "<span class='text-danger'>" + n + "</span>";
+				txt += "<span class='text-danger fw-bold'>" + n + "</span>";
 			} else if (n > 0){
-				txt += "<span class='text-success'>+" + n + "</span>";
+				txt += "<span class='text-success fw-bold'>+" + n + "</span>";
 			}
 			txt += ")";
 			$("#" + id + "Delta").html(txt);
-			console.log(id, this.deltaIntervals[id]);
 			this.deltas[id] = 0;
 			this.deltaIntervals[id] = setTimeout(function(){ $("#" + id + "Delta").html(''); }, 1000);
 		}

@@ -1,7 +1,7 @@
 class UIRefresh {
     dungeonBG = '#4A4B4D';
 	opposites = { dungeon: 'store', store: 'dungeon' };
-
+	storeBG = '#766e73';
 	outsideBG = '#9b9fa6';
     potionsHidden = true;
     storeRevealed = false;
@@ -30,20 +30,22 @@ class UIRefresh {
 			$("#auto-" + i).prop('checked', game.config.auto[i]);
 		}
 		
-		if ($("#armorSection").hasClass('d-none') && game.player.maxArmor > 0){
-			$("#armorSection").removeClass('d-none');
+		if ($("#maxArmorSection").hasClass('d-none') && game.player.maxArmor > 0){
+			$("#maxArmorSection").removeClass('d-none');
 		}
         let icons = ['health', 'armor', 'gold', 'weapon', 'cure', 'heal', 'portal', 'repair', 'key'];
 		for (let icon of icons){
 			let modifier = '-outside';
 			if (game.dungeon.crawling){
 				modifier = '';
+			} else if (ui.window == 'store'){
+				modifier = '-store';
 			}
 			$("#" + icon + "Icon").attr('src', 'img/icon-' + icon + modifier + ".png" );
 		}
 
 		$(".menu").addClass('d-none');
-		if (!game.dungeon.crawling && !game.slots.pulling && ui.pulledAt == null){			
+		if (!game.dungeon.crawling ){			
 			$("#menu-" + this.opposites[ui.window]).removeClass('d-none');
 		}
 		
@@ -78,15 +80,22 @@ class UIRefresh {
 		$("#crawl-button").removeClass('btn-success');
 		$("#crawl-button").removeClass('btn-danger');
 		$("#crawl-button").removeClass('btn-warning');
-		$("body").css('background-color', this.dungeonBG);
+		
 		$("body").css('color', 'white');
-		$(".menu").css('color', 'white');
+		//$(".menu").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
+		if(ui.window == 'store'){						
+			$("body").css('background-color', this.storeBG);			
+		} else if (ui.window == 'dungeon' && game.dungeon.crawling){
+			$("body").css('background-color', this.dungeonBG);
+		} else if (ui.window == 'dungeon' && !game.dungeon.crawling){	
+			$("body").css('background-color', this.outsideBG);
+		}
 		if (!game.dungeon.crawling){
 			$(".dungeon").addClass('d-none');
-			$("body").css('background-color', this.outsideBG);
+			
 			$("body").css('color', 'black');
-			$(".menu").css('color', 'black');
+			//$(".menu").css('color', 'black');
 			$("#crawl-button").html('enter');
 			$("#crawl-button").addClass('btn-success');			
 		} else if (game.dungeon.crawling && game.dungeon.forward){
@@ -97,9 +106,15 @@ class UIRefresh {
 			$("#crawl-button").addClass('btn-warning');
 		
 		}
-		$(".pull").prop('disabled', false);
+		$("#pull").prop('disabled', false);
+		
 		if (game.player.gold < 1 || ui.wins != null || game.slots.pulling){
-			$(".pull").prop('disabled', true);
+			$("#pull").prop('disabled', true);
+		}
+		$("#autopull").prop('disabled', false);
+
+		if (game.player.gold < 1){
+			$("#autopull").prop('disabled', true);
 		}
 		this.refreshFighting();
 		ui.printLog();

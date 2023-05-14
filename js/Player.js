@@ -37,7 +37,7 @@ class Player {
 		let msg = "You <span class='fw-bold text-danger'>died</span> " 
 		+ game.dungeon.steps 
 		+ " steps from the entrance, lost all your gold (" + this.gold 
-		+ "), but, somehow, you were ressurected back at the entrance.";
+		+ "), but, somehow, you were resurrected back at the entrance.";
 		$("#death").html(msg);
 		ui.status(msg);
 		this.resetGold();

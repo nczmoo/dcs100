@@ -41,20 +41,22 @@ TODO
     x BUG : fighting not updating with mob
     x add straight to reels
     x add more ui pop when changing quantities on the screen so you can tell what's being changed 
+    x make slot machine look better
+    x be able to stop auto-pull
+    x BUG: armor is being added and then not being revealed properly
+    x red color text-danger on dungeonBG is too dim
 
-    make slot machine look better
+    checkboxes look weird
     sound
     music    
     the number of portals given by a portal chest should be determined by how often you die
     change potions to inventory   
     replace enter and exit buttons with forward and backward images    
-    be able to stop auto-pull
-    BUG: armor is being added and then not being revealed properly
+
     key icon needs to be brighter (barely visible on store)
-    checkboxes look weird
-    red color text-danger on dungeonBG is too dim
-    change death text
     no ui.delta when opening chests
+    fade to black whgen you die
+
     
 QUESTIONS
     What can you get from the slots?
@@ -93,3 +95,6 @@ MAYBE
     double up on the reels to lower the chance of a portal 
     replace menu buttons with signs
     show when the next chest will pop up
+    change background briefly to red when you get hit
+    give the player a mulligan when they die the first time and let them keep their gold (but make sure they know its only that time)
+    change death text

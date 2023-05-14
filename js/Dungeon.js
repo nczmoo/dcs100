@@ -130,9 +130,11 @@ class Dungeon {
 		game.player.useKey();
 		if (this.chest == 'gold'){
 			let loot = randNum(1, this.steps);
+			ui.delta('gold', loot);
 			game.player.gold += loot;
 			msg += loot  + " gold!";
 		} else if (this.chest == 'portal'){
+			ui.delta('portal', 1);
 			game.player.potions.portal++;
 			msg += " a portal potion!";
 		}

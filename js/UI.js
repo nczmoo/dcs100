@@ -126,9 +126,9 @@ class UI{
 			}
 
 			if (n < 0){
-				txt += "<span class='text-danger fw-bold'>" + n + "</span>";
+				txt += "<span class='deltaMin fs-5 fw-bold'>" + n + "</span>";
 			} else if (n > 0){
-				txt += "<span class='text-success fw-bold'>+" + n + "</span>";
+				txt += "<span class='deltaPlus fs-5'>+" + n + "</span>";
 			}
 			txt += ")";
 			$("#" + id + "Delta").html(txt);

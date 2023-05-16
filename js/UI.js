@@ -38,28 +38,25 @@ class UI{
 			}
 			txt += ", ";
 		}
-		let fills = ['armor', 'credits', 'gold', 'health', 'lastDive', 'lines', 'maxArmor', 'maxHealth', 'steps', 'weapon'];
-		for (let fill of fills){			
-			$("#" + fill).html(game.config[fill]);
-		}
-		for (let i in game.config.potions){
-			let potion = game.config.potions[i];			
-			$("#" + i).html(potion);
-			$("#drink-" + i).prop('disabled', potion < 1);		
-		}
-		$("#crawl").removeClass('btn-success');
-		$("#crawl").removeClass('btn-danger');
-		$("#crawl").removeClass('btn-warning');
-		if (!game.config.crawling){
-			$("#crawl").html('enter');
-			$("#crawl").addClass('btn-success');			
-		} else if (game.config.crawling && game.config.forward){
-			$("#crawl").html('exit');
-			$("#crawl").addClass('btn-danger');
-		} else if (game.config.crawling && !game.config.forward){
-			$("#crawl").html('exiting');
-			$("#crawl").addClass('btn-warning');
-			
+		txt += " in the future.";
+		$("#monsters").html(txt);
+	}
+
+	addToReels(name){
+		this.reels.push(name);
+		let txt = "You have some new stuff added to your reels: "
+		for (let i in this.reels){
+			let name = this.reels[i];
+			txt += "<span class='fw-bold'>" + game.slots.reels.captions[name] + "</span>"
+			+ " <img src='img/reel-" + name + ".png' height='24' width='24'>";
+
+			if (i == this.reels.length - 1){
+				continue;
+			} else if ( i == this.reels.length - 2 && this.reels.length > 1){
+				txt += " and ";
+				continue;
+			}
+			txt += ", ";
 		}
 		//txt += ".";
 		$("#reelsCaption").html(txt);

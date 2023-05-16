@@ -41,7 +41,7 @@ $(document).on('click', '.crawl', function(e){
 	ui.refresh();
 });
 
-$(document).on('click', '.lines', function(e){
+$(document).on('click', '.changeLines', function(e){
 	game.slots.changeLines(e.target.id.split('-')[1]);
 });
 

@@ -54,6 +54,7 @@ TODO
     x Health bar doesn't show when poisoned 
     x Can't mitigate poison
     x Game takes too long to get started - maybe start with some armor
+    x At least One of the reel symbols is missing from the slots 
 
 
     checkboxes look weird
@@ -77,7 +78,6 @@ MOTHER'S DAY PLAYTEST
     UI too cluttered on my phone
     It's too hard to watch the slots and check the area above the slots. It makes me question if you really even need all of that other stuff above it or if it can just have plain text showing the new additions
     
-    At least One of the reel symbols is missing from the slots 
     Show what the player won in plain text directly above reel
 
     Maybe put icons in the dungeon logs to more easily categorize the context of each log entry because I wanted to be able to easily see if I had just opened a chest 

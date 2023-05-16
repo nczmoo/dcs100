@@ -1,8 +1,10 @@
 class UI{		
 	animation = new UIAnimation();
 	animatingInterval = setInterval(this.animation.loop, 50);
+	comingBack = false;
 	deltaIntervals = {};
 	deltas = {};
+	dying = false;
 	logs = [];	
 	monsters = [];
 	popping = [];
@@ -71,9 +73,14 @@ class UI{
 		$("#monsters").html('');
 		this.monsters = [];
 	}
+	
 
 	delta(id, n){
 		this.deltas[id] += n;		
+	}
+	
+	die(){
+		this.dying = true;
 	}
 
 	exit(){
@@ -84,6 +91,37 @@ class UI{
 		return Number(id) + 1;
 	}
 
+
+	isDead(){
+		let bodyBG = $("body").css('background-color')
+		let intBG = parseInt(rgb2hex(bodyBG), 16);
+		let delta = 1118481;
+		let changed = intBG - delta;
+		let hexBG = (changed).toString(16)
+		if (changed < 200000){
+			hexBG = '000000';
+			this.dying = false;
+			this.comingBack = true;
+		}
+		$("body").css('background-color', '#' + hexBG);
+		
+
+	}
+
+	isComingBack(){
+		let bodyBG = $("body").css('background-color')
+		let intBG = parseInt(rgb2hex(bodyBG), 16);
+		let delta = 1118481;
+		let changed = intBG + delta;
+		let hexBG = (changed).toString(16)
+		if (changed > 10198950){
+			hexBG = this.uirefresh.outsideBG;
+			this.comingBack = false;
+			this.refresh();
+		}
+		$("body").css('background-color', '#' + hexBG);
+		
+	}
 
 	mobDies(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-dead.png" )

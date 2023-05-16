@@ -28,7 +28,11 @@ class UIAnimation {
 			ui.animation.animatingWins();
 			return;
 		}
-	
+		if (ui.dying){
+			ui.isDead();
+		} else if (ui.comingBack){
+			ui.isComingBack();
+		}
 		ui.happening = false;
 	}
 

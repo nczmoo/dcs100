@@ -39,6 +39,7 @@ class Player {
 		+ " steps from the entrance, lost all your gold (" + this.gold 
 		+ "), but, somehow, you were resurrected back at the entrance.";
 		$("#death").html(msg);
+		ui.die();
 		ui.status(msg);
 		this.resetGold();
 		game.dungeon.exit();

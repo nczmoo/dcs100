@@ -48,18 +48,19 @@ TODO
     x BUG: armor is being added and then not being revealed properly
     x red color text-danger on dungeonBG is too dim
     x no ui.delta when opening chests
+    x create captions for add to reels because someone thouht mxHealth-2 was minusing health
+    x does drinking work? yes
+    x fade to black whgen you die
 
     checkboxes look weird
     sound
     music    
-    the number of portals given by a portal chest should be determined by how often you die
-    change potions to inventory   
     replace enter and exit buttons with forward and backward images    
+    
 
-    key icon needs to be brighter (barely visible on store)
-    fade to black whgen you die
-    create captions for add to reels because someone thouht mxHealth-2 was minusing health
-    does drinking work?
+    ART
+        key icon needs to be brighter (barely visible on store)
+    
 
 
 MOTHER'S DAY PLAYTEST
@@ -130,3 +131,5 @@ MAYBE
     change background briefly to red when you get hit
     give the player a mulligan when they die the first time and let them keep their gold (but make sure they know its only that time)
     change death text
+    the number of portals given by a portal chest should be determined by how often you die
+    change potions to inventory   

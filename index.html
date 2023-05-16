@@ -37,23 +37,31 @@
 			cursor: pointer;
 		}
 
-		#healthBar{
+		#healthBar:not(.poisoned){
 			background-color: #93121f;
+		}
+
+		.menu:disabled, .secondary {
+			color: #c4c4c4;
+		}
+
+		.menu {
+			color: white;
 		}
 
 		.mob {
 			background-color: #554728;
 			color: grey;
 		}
-		.menu:disabled, .secondary {
-			color: #c4c4c4;
-		}
-		.menu {
-			color: white;
-		}
+
 		.player{
 			color: white;
 		}
+
+		.poisoned {
+			background-color: #9ace47;
+		}
+
 		.reel{
 			background-color: #d6c0af;
 			border: 1px #343434 solid;
@@ -91,7 +99,7 @@
 		<img id='healthIcon' src="img/icon-health.png" class="ps-1">
 		</div><div>
 			<div class="progress">
-				<div id='healthBar' class="progress-bar" role="progressbar" 
+				<div id='healthBar' class="progress-bar poisoned" role="progressbar" 
 					style="width: 100%"></div>
 			  </div>
 		</div>

@@ -122,6 +122,10 @@ class UIRefresh {
 		$("#healthBar").css('width', width);
         width = (game.player.armor / game.player.maxArmor * 100) + "%"
 		$("#armorBar").css('width', width);
+		$("#healthBar").removeClass('poisoned');
+		if (game.player.poisonCounter > 0){
+			$("#healthBar").addClass('poisoned');
+		}
 	}
 
 	refreshFighting(){

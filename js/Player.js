@@ -1,10 +1,10 @@
 class Player {
-    armor = 0;
+    armor = 5;
     chanceToPoison = 100;    
     gold = 0;    
     goldInRun = 0;
 	health = 10;   
-    maxArmor = 0;
+    maxArmor = 5;
     maxHealth = 10;
     poisonCounter = 0;
     weapon = 1; //1
@@ -105,6 +105,7 @@ class Player {
 		if (this.health < 1){
 			this.die();
 		}
+
 	}
 
     hits(){		

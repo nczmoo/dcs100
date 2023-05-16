@@ -55,24 +55,25 @@ TODO
     checkboxes look weird
     sound
     music    
-    replace enter and exit buttons with forward and backward images    
+    Health bar doesn't show when poisoned 
+    Can't mitigate poison
     
 
     ART
+        replace enter and exit buttons with forward and backward images   
         key icon needs to be brighter (barely visible on store)
-    
+    flash health bar when you're hit
+
 
 
 MOTHER'S DAY PLAYTEST
-    What if dying with gold increased your stats?
+    Increased percent chance to hit potion
     Invincibility potion
     Only show auto option for chests after you seen them
-    Increased percent chance to hit potion
+    
     UI too cluttered on my phone
     It's too hard to watch the slots and check the area above the slots. It makes me question if you really even need all of that other stuff above it or if it can just have plain text showing the new additions
-
-    Health bar doesn't show when poisoned 
-    Can't mitigate poison
+    
     Game takes too long to get started - maybe start with some armor
     At least One of the reel symbols is missing from the slots 
     Show what the player won in plain text directly above reel
@@ -133,3 +134,5 @@ MAYBE
     change death text
     the number of portals given by a portal chest should be determined by how often you die
     change potions to inventory   
+    What if dying with gold increased your stats?
+    change heart icon to green when you're poisoned

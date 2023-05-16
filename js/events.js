@@ -48,8 +48,6 @@ $(document).on('click', '.lines', function(e){
 $(document).on('click', '.menu', function(e){
 	ui.window = e.target.id.split('-')[1];
 	$(".window").addClass('d-none');
-	$(".menu").removeClass('d-none');	
-	$("#menu-" + e.target.id.split('-')[1]).addClass('d-none');
 	$("#" + e.target.id.split('-')[1]).removeClass('d-none');
 	ui.refresh();
 })

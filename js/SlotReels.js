@@ -1,8 +1,8 @@
 class SlotReels {
 	addToReels = {
-        'repair': 50,
-        'maxHealth-2': 100,
-        'maxHealth-3': 150,
+        'repair': 1, //50,
+        'maxHealth-2': 1, //100,
+        'maxHealth-3': 1, //150,
     }
     captions = {
         repair: 'repair potion',
@@ -31,13 +31,17 @@ class SlotReels {
 
 			if (game.dungeon.steps >= stepReq && !this.symbols.includes(name)){
 				this.symbols.push(name);
+                this.length = this.symbols.length;
 				this.generate();
                 ui.status("Because you reached step #" + game.dungeon.steps + ", " + this.captions[name] + " was added to your reel: " 
                     + "<img src='img/reel-" + name + ".png' height='24' width='24'>")
                 ui.addToReels(name);
 			}
 		}
-        this.length = this.symbols.length;
+        
+
+        ui.animation.positions = this.positions.slice();
+
 	}
 
     fetch (reelID, pos){

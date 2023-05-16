@@ -45,7 +45,7 @@ class SlotWins {
 				return;
 			}
 			winsPaid ++;			
-			if (what.split('-')[0] == 'maxHealth'){
+			if (what.substring(0, 'maxHealth'.length) == 'maxHealth'){
 				ui.pop(what.split('-')[0]);
 				game.player.maxHealth += Number(what.split('-')[1]) * pay;
 				ui.delta('health', Number(what.split('-')[1]) * pay)

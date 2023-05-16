@@ -5,8 +5,8 @@ class MobTypes {
         snake: {attack: 5, health: 10, max: 10, level: 1, steps: 50},
     }
 
-    fetch(name){
-        return this.list[name];
+    fetch(name){        
+        return JSON.parse(JSON.stringify(this.list[name]));
     }
 
     fetchSpawnName(){

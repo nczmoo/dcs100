@@ -190,6 +190,11 @@ class UI{
 			straightClass = 'straight';
 			straightFile = '-straight';
 		}
+		/* keep this for debugging
+		console.log(reelID, positions, game.slots.reels.values, game.slots.reels.fetch(reelID, positions.prev), 
+			game.slots.reels.fetch(reelID, positions.pos), 
+			game.slots.reels.fetch(reelID, positions.next))
+			*/
 		return "<div id='reel-" + reelID + "-prev' class='reel'>" 
 			+ "<img src='img/reel-"
 			+ game.slots.reels.fetch(reelID, positions.prev)

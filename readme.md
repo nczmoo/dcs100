@@ -51,12 +51,15 @@ TODO
     x create captions for add to reels because someone thouht mxHealth-2 was minusing health
     x does drinking work? yes
     x fade to black whgen you die
+    x Health bar doesn't show when poisoned 
+    x Can't mitigate poison
+    x Game takes too long to get started - maybe start with some armor
+
 
     checkboxes look weird
     sound
     music    
-    Health bar doesn't show when poisoned 
-    Can't mitigate poison
+
     
 
     ART
@@ -74,7 +77,6 @@ MOTHER'S DAY PLAYTEST
     UI too cluttered on my phone
     It's too hard to watch the slots and check the area above the slots. It makes me question if you really even need all of that other stuff above it or if it can just have plain text showing the new additions
     
-    Game takes too long to get started - maybe start with some armor
     At least One of the reel symbols is missing from the slots 
     Show what the player won in plain text directly above reel
 

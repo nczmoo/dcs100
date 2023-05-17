@@ -1,8 +1,8 @@
 class SlotReels {
 	addToReels = {
-        'repair': 1, //50,
-        'maxHealth-2': 1, //100,
-        'maxHealth-3': 1, //150,
+        'repair': 50,
+        'maxHealth-2': 100,
+        'maxHealth-3': 150,
     }
     captions = {
         repair: 'repair potion',

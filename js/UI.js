@@ -9,6 +9,7 @@ class UI{
 	monsters = [];
 	popping = [];
 	pulledAt = null;
+	reelCaptions = '';
 	reels = [];
 	storeLogs = [];
 	uirefresh = new UIRefresh();
@@ -64,6 +65,11 @@ class UI{
 		//txt += ".";
 		console.log('add');
 		$("#reelsCaption").html(txt);
+	}
+
+	addToStoreLog(msg){
+		this.storeLogs.push('<div>' + msg + "</div>");
+		this.reelCaptions += msg;
 	}
 
 	chestFound(){
@@ -216,6 +222,18 @@ class UI{
 		} 
 	}
 
+	printStoreLog(){
+		let txt = '';
+		for (let i = this.storeLogs.length - 1; i >= 0; i --){
+			let log = this.storeLogs[i];
+			txt += log;
+		}
+		$("#storeLog").html(txt);
+		$("#reelsCaption").html(this.reelCaptions);
+		this.reelCaptions = '';
+	}
+	
+
 	refresh(){
 		this.uirefresh.go();
 	}
@@ -228,14 +246,7 @@ class UI{
 		this.logs.unshift("<div class='" + txtClass + "'>" + msg + "</div>");		
 	}
 
-	storeLog(msg){
-		this.storeLogs.push('<div>' + msg + "</div>");
-		let txt = '';
-		for (let i = this.storeLogs.length - 1; i >= 0; i --){
-			let log = this.storeLogs[i];
-			txt += log;
-		}
-		$("#storeLog").html(txt);
-	}
+
+
 
 }

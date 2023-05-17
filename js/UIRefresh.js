@@ -63,11 +63,7 @@ class UIRefresh {
 		}
 
 		for (let i in game.player.potions){
-			let potion = game.player.potions[i];	
-			if (this.potionsHidden && potion > 0)		{
-				$(".potions").removeClass('d-none');	
-				this.potionsHidden = false;
-			}
+			let potion = game.player.potions[i];				
 			if ($("#" + i + "Section").hasClass('d-none') && potion > 0){
 				$("#" + i + "Section").removeClass('d-none')
 			}
@@ -84,6 +80,8 @@ class UIRefresh {
 		$("body").css('color', 'white');
 		//$(".menu").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
+		$(".hideInStore").removeClass('d-none');
+
 		if(ui.window == 'store'){		
 			$(".hideInStore").addClass('d-none');
 			$("body").css('background-color', this.storeBG);			

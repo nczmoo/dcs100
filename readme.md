@@ -56,7 +56,11 @@ TODO
     x Game takes too long to get started - maybe start with some armor
     x At least One of the reel symbols is missing from the slots 
     x Increase line not working
-
+    
+    x It's too hard to watch the slots and check the area above the slots. 
+        It makes me question if you really even need all of that other stuff 
+        above it or if it can just have plain text showing the new additions    
+    x Show what the player won in plain text directly above reel
 
     checkboxes look weird
     sound
@@ -68,18 +72,20 @@ TODO
         replace enter and exit buttons with forward and backward images   
         key icon needs to be brighter (barely visible on store)
     flash health bar when you're hit
-
-
+    x ui.store log is populating before win is populating ui
+    reels caption not poulating with wins
+    be able to unlock more lines
+    repair armor not automatically being drunk when armor is at 0
+    implement all drawn monsters
+    theres not enough contrast between armor bar bg and when its empty
+    
 
 MOTHER'S DAY PLAYTEST
     Increased percent chance to hit potion
     Invincibility potion
     Only show auto option for chests after you seen them
-    
     UI too cluttered on my phone
-    It's too hard to watch the slots and check the area above the slots. It makes me question if you really even need all of that other stuff above it or if it can just have plain text showing the new additions
-    
-    Show what the player won in plain text directly above reel
+
 
     Maybe put icons in the dungeon logs to more easily categorize the context of each log entry because I wanted to be able to easily see if I had just opened a chest 
     Make it a little bit easier to get portal potions because that's the only viable way to deep dive safely 
@@ -87,7 +93,7 @@ MOTHER'S DAY PLAYTEST
     Maybe snakes are too powerful. They're hitting me for like four damage every single time at a minimum
 
     Snakes level 10 status is resetting after exiting
-    Does anything else get reset?
+    Does anything else get reset? I think this was because it was passing the object by reference and getting downgraded to level 1. Hopefully, pass by value resolves this.
 
     I reached about twenty on all my stats and the game seems pointless 
 
@@ -120,6 +126,11 @@ DESIGN
     Dungeon
         It's an autobattle situation. Just do rats for now, which get progressively more powerful as you progress forward.
         Mobs drop random gold (0, power)
+
+
+    When you don't have portals, it kinda sucks. (I had 10 heals at the time, and I dind't realize you -can- hypothetically take a risk with enough health to just dive in and hope you find a blue chest.)
+    Game feels trivial when you have a bunch of money and stats.
+
 MAYBE
     x make armor degrade so it has to be repaired
     bank

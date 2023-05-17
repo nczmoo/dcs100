@@ -45,7 +45,6 @@ class SlotWins {
 			return;
 		}					
 		let positions = game.slots.reels.fetchPositions(0, true);
-		let reelCaption = "";
 		for (let winID of wins){			
 			let what = game.slots.reels.fetch(0, positions[this.list[winID][0]]);		
 			let msg = 'Pull #' + game.slots.pullNum ;
@@ -61,8 +60,7 @@ class SlotWins {
 				game.player.maxHealth += delta
 				ui.delta('health', delta);
 				msg += "<img class='ms-2'  src='img/icon-health-store.png'> Your max health was increased by " + delta + ". (It is now at " + game.player.maxHealth + ")";
-				ui.storeLog(msg);
-				reelCaption += msg;
+				ui.addToStoreLog(msg);
 				game.player.resetHealth();
 				continue;
 			} else if (game.player.potionList.includes(what)){
@@ -78,8 +76,7 @@ class SlotWins {
 				} else {
 					msg += "<img class='ms-2'  src='img/icon-" + what + "-store.png'> You received " + pay + " " + what + " " + this.pluralize('potion', pay) + ". (You now have " + game.player.potions[what] + ".)" ;
 				}
-				reelCaption += msg;
-				ui.storeLog(msg);
+				ui.addToStoreLog(msg);
 				
 				continue;
 			}				
@@ -96,13 +93,10 @@ class SlotWins {
 				imgSrc = 'armor'
 			}
 			msg += "<img class='ms-2' src='img/icon-" + imgSrc + "-store.png'> You received +" + pay + " to your " +  this.pluralize(caption, pay) + ". (It is now at " + game.player[what] + ".)";
-			reelCaption += msg;
-			ui.storeLog(msg);
+			ui.addToStoreLog(msg);
 
 			
 		}
-		if (reelCaption != ""){
-			$("#reelsCaption").html(reelCaption);
-		}
+
 	}
 }

@@ -1,7 +1,7 @@
 class MobTypes {
     list = {
         rat: {attack: 1, health: 2, max: 2, level: 1, steps: 0, },
-        rat_king: {attack: 10, health: 40, max: 40, level: 1, steps: 200},
+        rat_king: {attack: 10, health: 40, max: 40, level: 1, steps: 100},
         snake: {attack: 5, health: 10, max: 10, level: 1, steps: 50},
     }
 

@@ -1,7 +1,7 @@
 class Player {
     armor = 5;
-    chanceToPoison = 100;    
-    gold = 10;    
+    chanceToPoison = 10;    
+    gold = 0;    
     goldInRun = 0;
 	health = 10;   
     maxArmor = 5;
@@ -64,7 +64,7 @@ class Player {
     getPoisoned(dmg, name){
         let poisonMsg = "";
 		if (dmg > 0 && name == 'snake' && randNum(1, this.chanceToPoison) == 1){
-			poisonMsg = " <span class='fw-bold'>You were poisoned by a " 
+			poisonMsg = " <span class='fw-bold poisoned'>You were poisoned by a " 
                 + name + "! </span>";
 			this.poisonCounter = randNum(1, this.health)
 		}

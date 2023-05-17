@@ -25,6 +25,7 @@ class UIAnimation {
 			ui.refresh();
 			ui.printReels(true);
 		} else if (ui.wins != null){
+			ui.printStoreLog();
 			ui.animation.animatingWins();
 			return;
 		}

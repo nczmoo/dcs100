@@ -1,13 +1,17 @@
 class UI{		
 	animation = new UIAnimation();
 	animatingInterval = setInterval(this.animation.loop, 50);
+	comingBack = false;
 	deltaIntervals = {};
 	deltas = {};
+	dying = false;
 	logs = [];	
 	monsters = [];
 	popping = [];
 	pulledAt = null;
+	reelCaptions = '';
 	reels = [];
+	storeLogs = [];
 	uirefresh = new UIRefresh();
 	window = 'dungeon';
 	wins = null;
@@ -38,31 +42,34 @@ class UI{
 			}
 			txt += ", ";
 		}
-		let fills = ['armor', 'credits', 'gold', 'health', 'lastDive', 'lines', 'maxArmor', 'maxHealth', 'steps', 'weapon'];
-		for (let fill of fills){			
-			$("#" + fill).html(game.config[fill]);
-		}
-		for (let i in game.config.potions){
-			let potion = game.config.potions[i];			
-			$("#" + i).html(potion);
-			$("#drink-" + i).prop('disabled', potion < 1);		
-		}
-		$("#crawl").removeClass('btn-success');
-		$("#crawl").removeClass('btn-danger');
-		$("#crawl").removeClass('btn-warning');
-		if (!game.config.crawling){
-			$("#crawl").html('enter');
-			$("#crawl").addClass('btn-success');			
-		} else if (game.config.crawling && game.config.forward){
-			$("#crawl").html('exit');
-			$("#crawl").addClass('btn-danger');
-		} else if (game.config.crawling && !game.config.forward){
-			$("#crawl").html('exiting');
-			$("#crawl").addClass('btn-warning');
-			
+		txt += " in the future.";
+		$("#monsters").html(txt);
+	}
+
+	addToReels(name){
+		this.reels.push(name);
+		let txt = "You have some new stuff added to your reels: "
+		for (let i in this.reels){
+			let name = this.reels[i];
+			txt += "<span class='fw-bold'>" + game.slots.reels.captions[name] + "</span>"
+			+ " <img src='img/reel-" + name + ".png' height='24' width='24'>";
+
+			if (i == this.reels.length - 1){
+				continue;
+			} else if ( i == this.reels.length - 2 && this.reels.length > 1){
+				txt += " and ";
+				continue;
+			}
+			txt += ", ";
 		}
 		//txt += ".";
+		console.log('add');
 		$("#reelsCaption").html(txt);
+	}
+
+	addToStoreLog(msg){
+		this.storeLogs.push('<div>' + msg + "</div>");
+		this.reelCaptions += msg;
 	}
 
 	chestFound(){
@@ -74,9 +81,14 @@ class UI{
 		$("#monsters").html('');
 		this.monsters = [];
 	}
+	
 
 	delta(id, n){
 		this.deltas[id] += n;		
+	}
+	
+	die(){
+		this.dying = true;
 	}
 
 	exit(){
@@ -87,21 +99,76 @@ class UI{
 		return Number(id) + 1;
 	}
 
+	hit(id){
+		$("#" + id).css('animation-name', 'shake');
+		$("#" + id).css('animation-duration', '.5s');
+		setTimeout(function(){
+			$("#" + id).css('animation-name', '');
+			$("#" + id).css('animation-duration', '');
+		}, 1000);
+	}
+
+	isDead(){
+		let bodyBG = $("body").css('background-color')
+		let intBG = parseInt(rgb2hex(bodyBG), 16);
+		let delta = 1118481;
+		let changed = intBG - delta;
+		let hexBG = (changed).toString(16)
+		if (changed < 200000){
+			hexBG = '000000';
+			this.dying = false;
+			this.comingBack = true;
+		}
+		$("body").css('background-color', '#' + hexBG);
+		
+
+	}
+
+	isComingBack(){
+		let bodyBG = $("body").css('background-color')
+		let intBG = parseInt(rgb2hex(bodyBG), 16);
+		let delta = 1118481;
+		let changed = intBG + delta;
+		let hexBG = (changed).toString(16)
+		if (changed > 10198950){
+			hexBG = this.uirefresh.outsideBG;
+			this.comingBack = false;
+			this.refresh();
+		}
+		$("body").css('background-color', '#' + hexBG);
+		
+	}
 
 	mobDies(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-dead.png" )
+		$("#fighting").html(' no one');
 	}
 
 	mobHits(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-hitMe.png" )
+		
 	}
 
 	mobSpawns(name){
 		$("#game-box").attr('src', 'img/d-' + name + '.png');
+		let mob = game.mob.entity;
+		let width = (mob.health / mob.max * 100).toFixed(0) + "%";			
+		let bar = "<div id='mobHealthProgress' class='progress'><div id='mobHealthBar' " 
+				+ "class='progress-bar bg-danger' role='progressbar' "
+				+ "style='width: " + width + "'></div></div>";		
+		$("#fighting").html("<div> lvl " + mob.level + " " + mob.name + " a: " 
+		+ mob.attack + " hp: <span id='mobHealth'>"+ mob.health + "</span>/" + mob.max
+		+ "</div><div>" + bar + "</div>");
 	}
 
 	playerHits(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-hitThem.png" )
+		let mob = game.mob.entity;
+
+		let width = (mob.health / mob.max * 100).toFixed(0) + "%";			
+		$("#mobHealth").html(mob.health);
+		$("#mobHealthBar").css('width', width);
+		ui.hit('mobHealthProgress');
 	}
 
 	pop(id){
@@ -155,6 +222,11 @@ class UI{
 			straightClass = 'straight';
 			straightFile = '-straight';
 		}
+		/* keep this for debugging
+		console.log(reelID, positions, game.slots.reels.values, game.slots.reels.fetch(reelID, positions.prev), 
+			game.slots.reels.fetch(reelID, positions.pos), 
+			game.slots.reels.fetch(reelID, positions.next))
+			*/
 		return "<div id='reel-" + reelID + "-prev' class='reel'>" 
 			+ "<img src='img/reel-"
 			+ game.slots.reels.fetch(reelID, positions.prev)
@@ -174,6 +246,18 @@ class UI{
 		} 
 	}
 
+	printStoreLog(){
+		let txt = '';
+		for (let i = this.storeLogs.length - 1; i >= 0; i --){
+			let log = this.storeLogs[i];
+			txt += log;
+		}
+		$("#storeLog").html(txt);
+		$("#reelsCaption").html(this.reelCaptions);
+		this.reelCaptions = '';
+	}
+	
+
 	refresh(){
 		this.uirefresh.go();
 	}
@@ -185,5 +269,8 @@ class UI{
 		}
 		this.logs.unshift("<div class='" + txtClass + "'>" + msg + "</div>");		
 	}
+
+
+
 
 }

@@ -25,10 +25,15 @@ class UIAnimation {
 			ui.refresh();
 			ui.printReels(true);
 		} else if (ui.wins != null){
+			ui.printStoreLog();
 			ui.animation.animatingWins();
 			return;
 		}
-	
+		if (ui.dying){
+			ui.isDead();
+		} else if (ui.comingBack){
+			ui.isComingBack();
+		}
 		ui.happening = false;
 	}
 

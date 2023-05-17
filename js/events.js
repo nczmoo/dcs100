@@ -37,23 +37,29 @@ $(document).on('click', '.auto', function(e){
 
 $(document).on('click', '.crawl', function(e){
 	game.dungeon.changeCrawling();
-	
+
 	ui.refresh();
 });
 
-$(document).on('click', '.lines', function(e){
-	game.slots.changeLines(e.target.id.split('-')[1]);
+$(document).on('click', '.changeLines', function(e){
+	game.slots.changeLines(e.target.id.split('-')[1], Number(e.target.id.split('-')[2]));
 });
 
 $(document).on('click', '.menu', function(e){
 	ui.window = e.target.id.split('-')[1];
 	$(".window").addClass('d-none');
+	$(".menu").removeClass('d-none');	
+	$("#menu-" + e.target.id.split('-')[1]).addClass('d-none');
 	$("#" + e.target.id.split('-')[1]).removeClass('d-none');
 	ui.refresh();
 })
 
 $(document).on('click', '#pull', function(e){
 	game.slots.pull();
+});
+
+$(document).on('click', '#upgrade', function(e){
+	game.slots.upgrade();
 });
 
 $(document).on('click', '.verb', function(e){

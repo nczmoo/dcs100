@@ -3,11 +3,17 @@ class UIRefresh {
 	opposites = { dungeon: 'store', store: 'dungeon' };
 	storeBG = '#766e73';
 	outsideBG = '#9b9fa6';
+	playerHitBG = '#5F322C';
+	playerHitChangeBGDelay = 50;
     potionsHidden = true;
     storeRevealed = false;
+	
 
     go (){
-		
+		$("#upgrade").prop('disabled', false);
+		if (game.player.gold < game.slots.maxLines){
+			$("#upgrade").prop('disabled', true);
+		}
 		let stepCent = Math.round(game.dungeon.steps / game.dungeon.lastDive * 100);
 		$("#monsters").addClass('d-none');
 		if (!game.dungeon.crawling){
@@ -63,11 +69,7 @@ class UIRefresh {
 		}
 
 		for (let i in game.player.potions){
-			let potion = game.player.potions[i];	
-			if (this.potionsHidden && potion > 0)		{
-				$(".potions").removeClass('d-none');	
-				this.potionsHidden = false;
-			}
+			let potion = game.player.potions[i];				
 			if ($("#" + i + "Section").hasClass('d-none') && potion > 0){
 				$("#" + i + "Section").removeClass('d-none')
 			}
@@ -77,14 +79,15 @@ class UIRefresh {
 				$("#drink-portal").prop('disabled', true);
 			}
 		}
-		$("#crawl-button").removeClass('btn-success');
-		$("#crawl-button").removeClass('btn-danger');
-		$("#crawl-button").removeClass('btn-warning');
-		
+
 		$("body").css('color', 'white');
-		//$(".menu").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
-		if(ui.window == 'store'){						
+		$(".hideInStore").removeClass('d-none');
+		
+		if (ui.playerHitAt != null) {
+
+		} else if (ui.window == 'store'){		
+			$(".hideInStore").addClass('d-none');
 			$("body").css('background-color', this.storeBG);			
 		} else if (ui.window == 'dungeon' && game.dungeon.crawling){
 			$("body").css('background-color', this.dungeonBG);
@@ -92,51 +95,36 @@ class UIRefresh {
 			$("body").css('background-color', this.outsideBG);
 		}
 		if (!game.dungeon.crawling){
+			$("#crawl-button").attr('src', 'img/crawl-enter.png');
 			$(".dungeon").addClass('d-none');
-			
 			$("body").css('color', 'black');
-			//$(".menu").css('color', 'black');
-			$("#crawl-button").html('enter');
-			$("#crawl-button").addClass('btn-success');			
 		} else if (game.dungeon.crawling && game.dungeon.forward){
-			$("#crawl-button").html('exit');
-			$("#crawl-button").addClass('btn-danger');
+			$("#crawl-button").attr('src', 'img/crawl-exit.png');
 		} else if (game.dungeon.crawling && !game.dungeon.forward){
-			$("#crawl-button").html('exiting');
-			$("#crawl-button").addClass('btn-warning');
-		
+			$("#crawl-button").attr('src', "img/crawl-exiting-" + ui.exiting + ".png");
+			ui.animation.exit();
 		}
-		$("#pull").prop('disabled', false);
-		
+
+		$("#pull").prop('disabled', false);		
 		if (game.player.gold < 1 || ui.wins != null || game.slots.pulling){
 			$("#pull").prop('disabled', true);
 		}
-		$("#autopull").prop('disabled', false);
 
+		$("#autopull").prop('disabled', false);
 		if (game.player.gold < 1){
 			$("#autopull").prop('disabled', true);
 		}
-		this.refreshFighting();
+		
 		ui.printLog();
 		let width = (game.player.health / game.player.maxHealth * 100) + "%"
 		$("#healthBar").css('width', width);
         width = (game.player.armor / game.player.maxArmor * 100) + "%"
 		$("#armorBar").css('width', width);
+		$("#healthBar").removeClass('poisoned');
+		if (game.player.poisonCounter > 0){
+			$("#healthBar").addClass('poisoned');
+		}
 	}
 
-	refreshFighting(){
-		let caption = ' no one';
-		if (game.mob.entity != null){
-			let mob = game.mob.entity;
-			let width = (mob.health / mob.max * 100).toFixed(0) + "%";			
-			let bar = "<div class='progress'><div id='healthBar' " 
-				+ "class='progress-bar bg-danger' role='progressbar' "
-				+ "style='width: " + width + "'></div></div>";
-			caption = "<div> lvl " + mob.level + " " + mob.name + " a: " 
-				+ mob.attack + " hp: "+ mob.health + "/" + mob.max
-				+ "</div><div>" + bar + "</div>";
-		}
-		
-		$("#fighting").html(caption);
-	}
+
 }

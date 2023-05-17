@@ -5,7 +5,7 @@ class Mob {
     types = new MobTypes();
 
     dies(){
-		let loot = randNum(this.entity.attack, this.entity.level);
+		let loot = randNum(1, this.entity.attack);
 		if (game.dungeon.steps > game.dungeon.lastDive ){
 			loot *= 2;
 			if (loot < 1){

@@ -61,6 +61,9 @@ TODO
         It makes me question if you really even need all of that other stuff 
         above it or if it can just have plain text showing the new additions    
     x Show what the player won in plain text directly above reel
+    x ui.store log is populating before win is populating ui
+    x reels caption not poulating with wins
+    x repair armor not automatically being drunk when armor is at 0
 
     checkboxes look weird
     sound
@@ -71,11 +74,8 @@ TODO
     ART
         replace enter and exit buttons with forward and backward images   
         key icon needs to be brighter (barely visible on store)
-    flash health bar when you're hit
-    x ui.store log is populating before win is populating ui
-    reels caption not poulating with wins
-    be able to unlock more lines
-    repair armor not automatically being drunk when armor is at 0
+    flash health bar when you're hit    
+    be able to unlock more lines    
     implement all drawn monsters
     theres not enough contrast between armor bar bg and when its empty
     

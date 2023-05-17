@@ -92,6 +92,9 @@ class Player {
 			dmg = Math.abs(this.armor);				
 			this.armor = 0;
 		} 
+		if (this.armor < 1 && game.config.auto.repair && this.potions.repair > 0){
+			game.drink('repair');
+		}
 		ui.delta('armor', -armorDmg);
         return armorDmg;
     }

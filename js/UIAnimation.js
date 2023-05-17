@@ -1,6 +1,8 @@
 class UIAnimation {
     dStep = 0;
     happening = false;
+
+	hitBG = [null,  '#5B3733', '#573C39', '#534140', '#4E4646', '#4A4B4D'];
     positions = game.slots.reels.positions.slice();
     timeToRoll = 1000;
     timeToDisplayWin = 350;
@@ -9,7 +11,14 @@ class UIAnimation {
 	flashSlot = 0;
 
     loop(){
-		
+		if (ui.playerHitAt != null ){
+			$("body").css('background-color', ui.animation.hitBG[ui.playerHitAt]);
+			ui.playerHitAt ++;
+		}
+		if (ui.playerHitAt != null && ui.playerHitAt >= ui.animation.hitBG.length ){
+			ui.playerHitAt = null;
+		}
+
 		if (ui.animation.winDisplayedAt != null && Date.now() - ui.animation.winDisplayedAt < ui.animation.timeToDisplayWin){
 			return;
 

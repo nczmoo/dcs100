@@ -3,6 +3,8 @@ class UIRefresh {
 	opposites = { dungeon: 'store', store: 'dungeon' };
 	storeBG = '#766e73';
 	outsideBG = '#9b9fa6';
+	playerHitBG = '#5F322C';
+	playerHitChangeBGDelay = 50;
     potionsHidden = true;
     storeRevealed = false;
 	
@@ -83,11 +85,12 @@ class UIRefresh {
 		$("#crawl-button").removeClass('btn-warning');
 		*/
 		$("body").css('color', 'white');
-		//$(".menu").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
 		$(".hideInStore").removeClass('d-none');
+		
+		if (ui.playerHitAt != null) {
 
-		if(ui.window == 'store'){		
+		} else if (ui.window == 'store'){		
 			$(".hideInStore").addClass('d-none');
 			$("body").css('background-color', this.storeBG);			
 		} else if (ui.window == 'dungeon' && game.dungeon.crawling){
@@ -125,7 +128,6 @@ class UIRefresh {
 		if (game.player.gold < 1){
 			$("#autopull").prop('disabled', true);
 		}
-		this.refreshFighting();
 		ui.printLog();
 		let width = (game.player.health / game.player.maxHealth * 100) + "%"
 		$("#healthBar").css('width', width);
@@ -137,21 +139,5 @@ class UIRefresh {
 		}
 	}
 
-	refreshFighting(){
-		/*
-		let caption = ' no one';
-		if (game.mob.entity != null){
-			let mob = game.mob.entity;
-			let width = (mob.health / mob.max * 100).toFixed(0) + "%";			
-			let bar = "<div id='mobHealthProgress' class='progress'><div id='mobHealthBar' " 
-				+ "class='progress-bar bg-danger' role='progressbar' "
-				+ "style='width: " + width + "'></div></div>";
-			caption = "<div> lvl " + mob.level + " " + mob.name + " a: " 
-				+ mob.attack + " hp: "+ mob.health + "/" + mob.max
-				+ "</div><div>" + bar + "</div>";
-		}
-		
-		$("#fighting").html(caption);
-		*/
-	}
+
 }

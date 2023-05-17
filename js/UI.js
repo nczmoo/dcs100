@@ -9,6 +9,8 @@ class UI{
 	logs = [];	
 	monsters = [];
 	popping = [];
+	
+	playerHitAt = null;
 	pulledAt = null;
 	reelCaptions = '';
 	reels = [];
@@ -147,6 +149,9 @@ class UI{
 
 	mobHits(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-hitMe.png" )
+		//this is more distracting than engaging
+		//this.playerHitAt = 1;
+		//$("body").css('background-color', ui.uirefresh.playerHitBG);
 		
 	}
 

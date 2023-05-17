@@ -67,6 +67,10 @@ TODO
     x theres not enough contrast between armor bar bg and when its empty
     x grace if you die (50% gold instead of 100% gold)
     x flash health bar when you're hit  (did shake instead)
+    x replace enter and exit buttons with forward and backward images   
+    x key icon needs to be brighter (barely visible on store)
+    x be able to unlock more lines    
+    x give the player a mulligan when they die the first time and let them keep their gold (but make sure they know its only that time)
 
     checkboxes look weird
     sound
@@ -74,10 +78,7 @@ TODO
 
 
     ART
-        replace enter and exit buttons with forward and backward images   
-        key icon needs to be brighter (barely visible on store)
-    be able to unlock more lines    
-    implement all drawn monsters
+        implement all drawn monsters
     
 
 MOTHER'S DAY PLAYTEST
@@ -113,15 +114,17 @@ QUESTIONS
         (maybe put the rest blank cause I can't think of anything else)
 
     What should happen when you die in the dungeon?
+        For now, they just go back to the etnrance and mostly lose their gold
 
     Should the player be able to craft their own reels?
+        Someone gave an idea to pick a particular type of reel. Like, one oriented towards melee combat. Another oriented towards alchemy or ranged.
 
     Should pay lines be exponential? I had 4 pay lines active but only 1 line won. Kinda invalidates having more than one pay line.
-
-
+        No. It's fine as is.
 
 DESIGN
     Reels spin for six seconds but can be skipped.
+        Six second would have been WAY too long. A second is fine for now.
 
     Dungeon
         It's an autobattle situation. Just do rats for now, which get progressively more powerful as you progress forward.
@@ -133,21 +136,22 @@ DESIGN
 
 MAYBE
     x make armor degrade so it has to be repaired
-    bank
-        why would you need to bank gold?
+    
     x incentivize the player to dive deeper by doubling their gold yield for going deeper than last time
     x create a min for how many steps they can go before spawning a mob
-    maybe portal should only go into effect if you'r not fighting
+    x replace menu buttons with signs
+    bank
+        why would you need to bank gold?
     be able to sell potions        
-    double up on the reels to lower the chance of a portal 
-    replace menu buttons with signs
+    double up on the reels to lower the chance of a portal     
     show when the next chest will pop up
-    change background briefly to red when you get hit
-    give the player a mulligan when they die the first time and let them keep their gold (but make sure they know its only that time)
+    ! change background briefly to red when you get hit  (this wasn't very good)
     change death text
     the number of portals given by a portal chest should be determined by how often you die
     change potions to inventory   
-    What if dying with gold increased your stats?
+    What if dying with gold increased your stats? (it seems like im not dying like i used to so not really an issue)
     change heart icon to green when you're poisoned
     what if the slot machine was a tavern and you could recruit people to come with you?
+
+    maybe portal should only go into effect if you'r not fighting
     

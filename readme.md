@@ -55,13 +55,14 @@ TODO
     x Can't mitigate poison
     x Game takes too long to get started - maybe start with some armor
     x At least One of the reel symbols is missing from the slots 
+    x Increase line not working
 
 
     checkboxes look weird
     sound
     music    
 
-    
+    grace if you die (50% gold instead of 100% gold)
 
     ART
         replace enter and exit buttons with forward and backward images   
@@ -85,7 +86,6 @@ MOTHER'S DAY PLAYTEST
     I've played for a little over 20 minutes and I reached a impasse I guess. Without a portal potion I don't feel that safe to keep going deeper so I'm not going deeper than about 50. So there might be some structural issues I should work out. 
     Maybe snakes are too powerful. They're hitting me for like four damage every single time at a minimum
 
-    Increase line not working
     Snakes level 10 status is resetting after exiting
     Does anything else get reset?
 

@@ -31,6 +31,13 @@ class SlotWins {
 		ui.animation.animateWins(wins);
 	}
 
+	pluralize(what, quantity){
+		if (quantity > 1){
+			return what + "s";
+		}
+		return what;
+	}
+
     process(wins){
 		let winsPaid = 0;
 		game.slots.checkLines();
@@ -38,17 +45,24 @@ class SlotWins {
 			return;
 		}					
 		let positions = game.slots.reels.fetchPositions(0, true);
+		let reelCaption = "";
 		for (let winID of wins){			
 			let what = game.slots.reels.fetch(0, positions[this.list[winID][0]]);		
+			let msg = 'Pull #' + game.slots.pullNum ;
 			let pay = game.slots.lines;			
 			if (winsPaid >= game.slots.lines){
 				return;
 			}
-			winsPaid ++;			
+			winsPaid ++;		
+			
 			if (what.substring(0, 'maxHealth'.length) == 'maxHealth'){
 				ui.pop(what.split('-')[0]);
-				game.player.maxHealth += Number(what.split('-')[1]) * pay;
-				ui.delta('health', Number(what.split('-')[1]) * pay)
+				let delta = Number(what.split('-')[1]) * pay;
+				game.player.maxHealth += delta
+				ui.delta('health', delta);
+				msg += "<img class='ms-2'  src='img/icon-health-store.png'> Your max health was increased by " + delta + ". (It is now at " + game.player.maxHealth + ")";
+				ui.storeLog(msg);
+				reelCaption += msg;
 				game.player.resetHealth();
 				continue;
 			} else if (game.player.potionList.includes(what)){
@@ -58,12 +72,37 @@ class SlotWins {
 				}
 				ui.delta(what, pay)
 				game.player.potions[what] += pay;
+				
+				if (what == 'key'){
+					msg += "<img class='ms-2'  src='img/icon-" + what + "-store.png'> You received " + pay + " " + this.pluralize('key', pay) + ". (You now have " + game.player.potions[what] + ".)" ;
+				} else {
+					msg += "<img class='ms-2'  src='img/icon-" + what + "-store.png'> You received " + pay + " " + what + " " + this.pluralize('potion', pay) + ". (You now have " + game.player.potions[what] + ".)" ;
+				}
+				reelCaption += msg;
+				ui.storeLog(msg);
+				
 				continue;
 			}				
-			ui.pop(what);
-			
 			game.player[what] += pay;			
 			game.player.resetArmor();
+			ui.pop(what);
+			console.log(what);
+			let caption = what;
+			if (Object.keys(game.slots.reels.captions).includes(what)){
+				caption = game.slots.reels.captions[what];
+			}
+			let imgSrc = what;
+			if (what == 'maxArmor'){
+				imgSrc = 'armor'
+			}
+			msg += "<img class='ms-2' src='img/icon-" + imgSrc + "-store.png'> You received +" + pay + " to your " +  this.pluralize(caption, pay) + ". (It is now at " + game.player[what] + ".)";
+			reelCaption += msg;
+			ui.storeLog(msg);
+
+			
+		}
+		if (reelCaption != ""){
+			$("#reelsCaption").html(reelCaption);
 		}
 	}
 }

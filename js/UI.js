@@ -10,6 +10,7 @@ class UI{
 	popping = [];
 	pulledAt = null;
 	reels = [];
+	storeLogs = [];
 	uirefresh = new UIRefresh();
 	window = 'dungeon';
 	wins = null;
@@ -61,6 +62,7 @@ class UI{
 			txt += ", ";
 		}
 		//txt += ".";
+		console.log('add');
 		$("#reelsCaption").html(txt);
 	}
 
@@ -224,6 +226,16 @@ class UI{
 			txtClass = " " + type + " ";
 		}
 		this.logs.unshift("<div class='" + txtClass + "'>" + msg + "</div>");		
+	}
+
+	storeLog(msg){
+		this.storeLogs.push('<div>' + msg + "</div>");
+		let txt = '';
+		for (let i = this.storeLogs.length - 1; i >= 0; i --){
+			let log = this.storeLogs[i];
+			txt += log;
+		}
+		$("#storeLog").html(txt);
 	}
 
 }

@@ -6,6 +6,7 @@ class SlotReels {
     }
     captions = {
         repair: 'repair potion',
+        maxArmor: " max armor ",
         'maxHealth-2':  '+2 to max health',
         'maxHealth-3':  '+3 to max health',
     }

@@ -1,6 +1,7 @@
 class Slots {
 	lines = 1; 
 	maxLines = 10;
+	pullNum = 1;
 	pulling = false;
 	reels = new SlotReels();
 	wins = new SlotWins();
@@ -69,6 +70,7 @@ class Slots {
 			this.reels.positions[reelID] = rand;
 		}
 		this.wins.fetch();
-		$("#reelsCaption").html('');
+		this.pullNum++;
+
 	}
 }

@@ -84,7 +84,8 @@ class UIRefresh {
 		$("body").css('color', 'white');
 		//$(".menu").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
-		if(ui.window == 'store'){						
+		if(ui.window == 'store'){		
+			$(".hideInStore").addClass('d-none');
 			$("body").css('background-color', this.storeBG);			
 		} else if (ui.window == 'dungeon' && game.dungeon.crawling){
 			$("body").css('background-color', this.dungeonBG);

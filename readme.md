@@ -149,3 +149,5 @@ MAYBE
     change potions to inventory   
     What if dying with gold increased your stats?
     change heart icon to green when you're poisoned
+    what if the slot machine was a tavern and you could recruit people to come with you?
+    

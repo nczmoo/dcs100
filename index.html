@@ -21,6 +21,10 @@
 			color: black;
 		}
 
+		.changeLines{
+			
+		}
+
 		#crawl-button {
 			width: 320px;
 		}
@@ -33,7 +37,7 @@
 			color: #9ace47;
 		}
 
-		#game-box:hover, .menu:hover{
+		#game-box:hover, .menu:hover, .changeLines, #upgrade{
 			cursor: pointer;
 		}
 
@@ -225,9 +229,23 @@
 				</div>
 
 			</div><div class="text-center mt-3 mb-3">
-				<button id="changeLines-less" class="btn btn-link changeLines">[ - ]</button>
-				Paying Lines: <span id="lines"></span>/<span id="maxLines"></span>
-				<button id="changeLines-more" class="btn btn-link changeLines">[ + ]</button>
+				<div class="row">
+					<div class="col-m">
+						<!--<button id="changeLines-less" class="btn btn-link changeLines">[ - ]</button>-->
+						<img id='changeLines-less-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-less-1.png">
+						<img id='changeLines-less-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-less-10.png">
+						<img id='changeLines-less-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-less-100.png">
+					</div><div class="col-m">
+						Paying Lines: <span id="lines"></span>/<span id="maxLines"></span>
+					</div><div class="col-m">
+						<img id='changeLines-more-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-more-1.png">
+						<img id='changeLines-more-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-more-10.png">
+						<img id='changeLines-more-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-more-100.png">
+						<!--<button id="changeLines-more" class="btn btn-link changeLines">[ + ]</button>-->
+					</div>
+				</div><div class="text-center pt-3">
+					<img id='upgrade' class='' src="img/slots-upgrade-10.png">
+				</div>
 			</div>
 			<div class="row d-none">
 				<div class="col text-center">

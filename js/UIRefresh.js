@@ -7,7 +7,10 @@ class UIRefresh {
     storeRevealed = false;
 
     go (){
-		
+		$("#upgrade").prop('disabled', false);
+		if (game.player.gold < game.slots.maxLines){
+			$("#upgrade").prop('disabled', true);
+		}
 		let stepCent = Math.round(game.dungeon.steps / game.dungeon.lastDive * 100);
 		$("#monsters").addClass('d-none');
 		if (!game.dungeon.crawling){

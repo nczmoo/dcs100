@@ -42,7 +42,7 @@ $(document).on('click', '.crawl', function(e){
 });
 
 $(document).on('click', '.changeLines', function(e){
-	game.slots.changeLines(e.target.id.split('-')[1]);
+	game.slots.changeLines(e.target.id.split('-')[1], Number(e.target.id.split('-')[2]));
 });
 
 $(document).on('click', '.menu', function(e){
@@ -56,6 +56,10 @@ $(document).on('click', '.menu', function(e){
 
 $(document).on('click', '#pull', function(e){
 	game.slots.pull();
+});
+
+$(document).on('click', '#upgrade', function(e){
+	game.slots.upgrade();
 });
 
 $(document).on('click', '.verb', function(e){

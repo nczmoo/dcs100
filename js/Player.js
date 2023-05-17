@@ -1,6 +1,7 @@
 class Player {
     armor = 5;
-    chanceToPoison = 10;    
+    chanceToPoison = 10;
+	died = 0;
     gold = 0;    
     goldInRun = 0;
 	health = 10;   
@@ -34,15 +35,27 @@ class Player {
 			game.drink('heal');
 			return;
 		}
+		this.died ++;
 		let msg = "You <span class='fw-bold text-danger'>died</span> " 
 		+ game.dungeon.steps 
 		+ " steps from the entrance, lost all your gold (" + this.gold 
 		+ "), but, somehow, you were resurrected back at the entrance.";
+		if (this.died == 1){
+			msg = "You <span class='fw-bold text-danger'>died</span> " 
+				+ game.dungeon.steps 
+				+ " steps from the entrance, but, somehow, you were resurrected back"
+				+ " at the entrance. (Normally, you lose ALL of your gold, but you "
+				+ "only lost 1/2 this time.)";
+		}
 		$("#death").html(msg);
 		ui.die();
-		ui.status(msg);
-		this.resetGold();
+		ui.status(msg);		
 		game.dungeon.exit();
+		if (this.died == 1){
+			this.gold = Math.round(this.gold * .5);
+			return;
+		}
+		this.resetGold();
 	}
 
     exitsDungeon(){

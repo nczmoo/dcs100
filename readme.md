@@ -64,7 +64,8 @@ TODO
     x ui.store log is populating before win is populating ui
     x reels caption not poulating with wins
     x repair armor not automatically being drunk when armor is at 0
-
+    x theres not enough contrast between armor bar bg and when its empty
+    
     checkboxes look weird
     sound
     music    
@@ -77,7 +78,6 @@ TODO
     flash health bar when you're hit    
     be able to unlock more lines    
     implement all drawn monsters
-    theres not enough contrast between armor bar bg and when its empty
     
 
 MOTHER'S DAY PLAYTEST

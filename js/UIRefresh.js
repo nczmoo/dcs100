@@ -8,7 +8,6 @@ class UIRefresh {
 	
 
     go (){
-		ui.animation.exit();
 		$("#upgrade").prop('disabled', false);
 		if (game.player.gold < game.slots.maxLines){
 			$("#upgrade").prop('disabled', true);
@@ -87,7 +86,6 @@ class UIRefresh {
 		//$(".menu").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
 		$(".hideInStore").removeClass('d-none');
-		
 
 		if(ui.window == 'store'){		
 			$(".hideInStore").addClass('d-none');

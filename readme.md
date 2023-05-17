@@ -67,8 +67,7 @@ TODO
     x theres not enough contrast between armor bar bg and when its empty
     x grace if you die (50% gold instead of 100% gold)
     x flash health bar when you're hit  (did shake instead)
-    x be able to unlock more lines 
-    x key icon needs to be brighter (barely visible on store)   
+
     checkboxes look weird
     sound
     music    
@@ -76,7 +75,9 @@ TODO
 
     ART
         replace enter and exit buttons with forward and backward images   
-        implement all drawn monsters
+        key icon needs to be brighter (barely visible on store)
+    be able to unlock more lines    
+    implement all drawn monsters
     
 
 MOTHER'S DAY PLAYTEST

@@ -25,10 +25,15 @@ class UIAnimation {
 			ui.refresh();
 			ui.printReels(true);
 		} else if (ui.wins != null){
+			ui.printStoreLog();
 			ui.animation.animatingWins();
 			return;
 		}
-	
+		if (ui.dying){
+			ui.isDead();
+		} else if (ui.comingBack){
+			ui.isComingBack();
+		}
 		ui.happening = false;
 	}
 
@@ -59,6 +64,21 @@ class UIAnimation {
 		this.winPointer = 0;
 	}
 
+	exit(){
+		if (game.dungeon.forward && ui.exiting != 0){
+			ui.exiting = 0;
+			
+		} 
+		if (game.dungeon.forward){
+			return;
+		}
+		ui.exiting ++;
+
+		if (ui.exiting > 3){
+			ui.exiting = 0;
+		}
+	}
+
 	flashSlots(){
 		this.flashSlot++;
 		let target = 4;
@@ -85,12 +105,17 @@ class UIAnimation {
 	}
 
     step(){
+
+
 		$("#game-box").attr('src', 'img/d-' + this.dStep + '.png');
+
 		if (game.dungeon.forward){
 			this.dStep++;
+			
 		} else {
 			this.dStep --;
 		}
+
 		if (this.dStep > 5){
 			this.dStep = 0;
 		}

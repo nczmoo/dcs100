@@ -99,6 +99,14 @@ class UI{
 		return Number(id) + 1;
 	}
 
+	hit(id){
+		$("#" + id).css('animation-name', 'shake');
+		$("#" + id).css('animation-duration', '.5s');
+		setTimeout(function(){
+			$("#" + id).css('animation-name', '');
+			$("#" + id).css('animation-duration', '');
+		}, 1000);
+	}
 
 	isDead(){
 		let bodyBG = $("body").css('background-color')
@@ -133,18 +141,34 @@ class UI{
 
 	mobDies(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-dead.png" )
+		$("#fighting").html(' no one');
 	}
 
 	mobHits(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-hitMe.png" )
+		
 	}
 
 	mobSpawns(name){
 		$("#game-box").attr('src', 'img/d-' + name + '.png');
+		let mob = game.mob.entity;
+		let width = (mob.health / mob.max * 100).toFixed(0) + "%";			
+		let bar = "<div id='mobHealthProgress' class='progress'><div id='mobHealthBar' " 
+				+ "class='progress-bar bg-danger' role='progressbar' "
+				+ "style='width: " + width + "'></div></div>";		
+		$("#fighting").html("<div> lvl " + mob.level + " " + mob.name + " a: " 
+		+ mob.attack + " hp: <span id='mobHealth'>"+ mob.health + "</span>/" + mob.max
+		+ "</div><div>" + bar + "</div>");
 	}
 
 	playerHits(name){
 		$("#game-box").attr('src', 'img/d-' + name + "-hitThem.png" )
+		let mob = game.mob.entity;
+
+		let width = (mob.health / mob.max * 100).toFixed(0) + "%";			
+		$("#mobHealth").html(mob.health);
+		$("#mobHealthBar").css('width', width);
+		ui.hit('mobHealthProgress');
 	}
 
 	pop(id){

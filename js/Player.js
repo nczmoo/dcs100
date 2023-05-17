@@ -86,6 +86,9 @@ class Player {
 
 	getsHitInHealth(dmg){
 		ui.delta('health', -dmg);
+		if (dmg > 0){
+			ui.hit('healthProgressBar');
+		}
 		this.health -= dmg;
 		if (this.health < 1){
 			return true;
@@ -94,7 +97,9 @@ class Player {
 	}
 
     getsHitInArmor(dmg){
-		
+		if (dmg > 0){
+			ui.hit('armorProgressBar');
+		}
         let armorDmg = 0;
 		if (this.armor > 0){
 			this.armor -= dmg;
@@ -130,6 +135,7 @@ class Player {
 		let status = "<span class='fw-bold'>You</span> missed";
 		if (dmg > 0){
 			ui.playerHits(game.mob.entity.name);
+			
 			status = "<span class='fw-bold'>You</span> hit the " 
 			+ game.mob.entity.name + " for " + dmg + " damage!"
 		}

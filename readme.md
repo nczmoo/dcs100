@@ -65,17 +65,17 @@ TODO
     x reels caption not poulating with wins
     x repair armor not automatically being drunk when armor is at 0
     x theres not enough contrast between armor bar bg and when its empty
-    
+    x grace if you die (50% gold instead of 100% gold)
+    x flash health bar when you're hit  (did shake instead)
+
     checkboxes look weird
     sound
     music    
 
-    grace if you die (50% gold instead of 100% gold)
 
     ART
         replace enter and exit buttons with forward and backward images   
         key icon needs to be brighter (barely visible on store)
-    flash health bar when you're hit    
     be able to unlock more lines    
     implement all drawn monsters
     

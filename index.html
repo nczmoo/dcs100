@@ -82,6 +82,20 @@
 		.win{
 			background-color: #fc9fa4;
 		}
+
+		@keyframes shake {
+			0% { transform: translate(1px, 1px) rotate(0deg); }
+			10% { transform: translate(-1px, -2px) rotate(-1deg); }
+			20% { transform: translate(-3px, 0px) rotate(1deg); }
+			30% { transform: translate(3px, 2px) rotate(0deg); }
+			40% { transform: translate(1px, -1px) rotate(1deg); }
+			50% { transform: translate(-1px, 2px) rotate(-1deg); }
+			60% { transform: translate(-3px, 1px) rotate(0deg); }
+			70% { transform: translate(3px, 1px) rotate(-1deg); }
+			80% { transform: translate(-1px, -1px) rotate(1deg); }
+			90% { transform: translate(1px, 2px) rotate(0deg); }
+			100% { transform: translate(1px, -2px) rotate(-1deg); }
+		}
 	</style>
 </head>
 <body id="body" class="p-3">
@@ -103,8 +117,8 @@
 		<span id="healthDelta" class="delta"></span>			
 		<img id='healthIcon' src="img/icon-health.png" class="ps-1">
 		</div><div>
-			<div class="progress">
-				<div id='healthBar' class="progress-bar poisoned" role="progressbar" 
+			<div id='healthProgressBar' class="progress">
+				<div id='healthBar' class="progress-bar" role="progressbar" 
 					style="width: 100%"></div>
 			  </div>
 		</div>
@@ -116,7 +130,7 @@
 	
 			<img id='armorIcon' src="img/icon-armor.png" class="ps-1">
 		</div><div class="mt-1">
-			<div class="progress">
+			<div id='armorProgressBar' class="progress">
 				<div id='armorBar' class="progress-bar" role="progressbar" 
 					style="width: 100%"></div>
 			  </div>

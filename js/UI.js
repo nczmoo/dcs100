@@ -70,12 +70,6 @@ class UI{
 		console.log('add');
 		
 		$("#reelsCaption").html(txt);
-
-	}
-
-	addToStoreLog(msg){
-		this.storeLogs.push('<div>' + msg + "</div>");
-		this.reelCaptions += msg;
 	}
 
 	chestFound(){

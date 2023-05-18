@@ -146,7 +146,7 @@ class UI{
 		let bar = "<div id='mobHealthProgress' class='progress'><div id='mobHealthBar' " 
 				+ "class='progress-bar bg-danger' role='progressbar' "
 				+ "style='width: " + width + "'></div></div>";		
-		$("#fighting").html("<div> lvl " + mob.level + " " + mob.name + " a: " 
+		$("#fighting").html("<div>" + mob.name + " a: " 
 		+ mob.attack + " hp: <span id='mobHealth'>"+ mob.health + "</span>/" + mob.max
 		+ "</div><div>" + bar + "</div>");
 	}

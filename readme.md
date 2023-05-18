@@ -79,12 +79,12 @@ TODO
     x background color for .mob in log  is weird
     x ui.reels isn't getting wiped when ui.addToReels prints to screen
     x only show auto option for chests after you seen them
+    x make modifiers more specific to mobs
 
     checkboxes look weird
     sound
     music    
 
-    make modifiers more specific to mobs
     REFACTOR
 
     

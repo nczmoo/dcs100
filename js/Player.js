@@ -1,13 +1,14 @@
 class Player {
-    armor = 0;
-    chanceToPoison = 100;    
+    armor = 10;
+    chanceToPoison = 10;
+	died = 0;
     gold = 0;    
     goldInRun = 0;
 	health = 10;   
-    maxArmor = 0;
+    maxArmor = 10;
     maxHealth = 10;
     poisonCounter = 0;
-    weapon = 1; //1
+    weapon = 5; //1
 	potionList = ['heal', 'portal', 'repair', 'key'];
     potions = {};
 
@@ -34,14 +35,27 @@ class Player {
 			game.drink('heal');
 			return;
 		}
+		this.died ++;
 		let msg = "You <span class='fw-bold text-danger'>died</span> " 
 		+ game.dungeon.steps 
 		+ " steps from the entrance, lost all your gold (" + this.gold 
 		+ "), but, somehow, you were resurrected back at the entrance.";
+		if (this.died == 1){
+			msg = "You <span class='fw-bold text-danger'>died</span> " 
+				+ game.dungeon.steps 
+				+ " steps from the entrance, but, somehow, you were resurrected back"
+				+ " at the entrance. (Normally, you lose ALL of your gold, but you "
+				+ "only lost 1/2 this time.)";
+		}
 		$("#death").html(msg);
-		ui.status(msg);
-		this.resetGold();
+		ui.die();
+		ui.status(msg);		
 		game.dungeon.exit();
+		if (this.died == 1){
+			this.gold = Math.round(this.gold * .5);
+			return;
+		}
+		this.resetGold();
 	}
 
     exitsDungeon(){
@@ -62,8 +76,9 @@ class Player {
 
     getPoisoned(dmg, name){
         let poisonMsg = "";
-		if (dmg > 0 && name == 'snake' && randNum(1, this.chanceToPoison) == 1){
-			poisonMsg = " <span class='fw-bold'>You were poisoned by a " 
+		let poisoningMobs = ['snake', 'spider', 'snake_queen'];
+		if (dmg > 0 && poisoningMobs.includes(name) && randNum(1, this.chanceToPoison) == 1){
+			poisonMsg = " <span class='fw-bold poisoned'>You were poisoned by a " 
                 + name + "! </span>";
 			this.poisonCounter = randNum(1, this.health)
 		}
@@ -72,6 +87,9 @@ class Player {
 
 	getsHitInHealth(dmg){
 		ui.delta('health', -dmg);
+		if (dmg > 0){
+			ui.hit('healthProgressBar');
+		}
 		this.health -= dmg;
 		if (this.health < 1){
 			return true;
@@ -80,7 +98,9 @@ class Player {
 	}
 
     getsHitInArmor(dmg){
-		
+		if (dmg > 0){
+			ui.hit('armorProgressBar');
+		}
         let armorDmg = 0;
 		if (this.armor > 0){
 			this.armor -= dmg;
@@ -91,6 +111,9 @@ class Player {
 			dmg = Math.abs(this.armor);				
 			this.armor = 0;
 		} 
+		if (this.armor < 1 && game.config.auto.repair && this.potions.repair > 0){
+			game.drink('repair');
+		}
 		ui.delta('armor', -armorDmg);
         return armorDmg;
     }
@@ -104,6 +127,7 @@ class Player {
 		if (this.health < 1){
 			this.die();
 		}
+
 	}
 
     hits(){		
@@ -112,6 +136,7 @@ class Player {
 		let status = "<span class='fw-bold'>You</span> missed";
 		if (dmg > 0){
 			ui.playerHits(game.mob.entity.name);
+			
 			status = "<span class='fw-bold'>You</span> hit the " 
 			+ game.mob.entity.name + " for " + dmg + " damage!"
 		}

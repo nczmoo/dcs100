@@ -1,6 +1,8 @@
 class UIAnimation {
     dStep = 0;
     happening = false;
+
+	hitBG = [null,  '#5B3733', '#573C39', '#534140', '#4E4646', '#4A4B4D'];
     positions = game.slots.reels.positions.slice();
     timeToRoll = 1000;
     timeToDisplayWin = 350;
@@ -9,7 +11,14 @@ class UIAnimation {
 	flashSlot = 0;
 
     loop(){
-		
+		if (ui.playerHitAt != null ){
+			$("body").css('background-color', ui.animation.hitBG[ui.playerHitAt]);
+			ui.playerHitAt ++;
+		}
+		if (ui.playerHitAt != null && ui.playerHitAt >= ui.animation.hitBG.length ){
+			ui.playerHitAt = null;
+		}
+
 		if (ui.animation.winDisplayedAt != null && Date.now() - ui.animation.winDisplayedAt < ui.animation.timeToDisplayWin){
 			return;
 
@@ -25,10 +34,15 @@ class UIAnimation {
 			ui.refresh();
 			ui.printReels(true);
 		} else if (ui.wins != null){
+			ui.printStoreLog();
 			ui.animation.animatingWins();
 			return;
 		}
-	
+		if (ui.dying){
+			ui.isDead();
+		} else if (ui.comingBack){
+			ui.isComingBack();
+		}
 		ui.happening = false;
 	}
 
@@ -59,6 +73,20 @@ class UIAnimation {
 		this.winPointer = 0;
 	}
 
+	exit(){
+		if (game.dungeon.forward && ui.exiting != 0){
+			ui.exiting = 0;			
+		} 
+		if (game.dungeon.forward){
+			return;
+		}
+		ui.exiting ++;
+
+		if (ui.exiting > 3){
+			ui.exiting = 0;
+		}
+	}
+
 	flashSlots(){
 		this.flashSlot++;
 		let target = 4;
@@ -85,12 +113,17 @@ class UIAnimation {
 	}
 
     step(){
+
+
 		$("#game-box").attr('src', 'img/d-' + this.dStep + '.png');
+
 		if (game.dungeon.forward){
 			this.dStep++;
+			
 		} else {
 			this.dStep --;
 		}
+
 		if (this.dStep > 5){
 			this.dStep = 0;
 		}

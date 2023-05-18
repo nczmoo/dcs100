@@ -21,6 +21,10 @@
 			color: black;
 		}
 
+		.changeLines{
+			
+		}
+
 		#crawl-button {
 			width: 320px;
 		}
@@ -33,27 +37,42 @@
 			color: #9ace47;
 		}
 
-		#game-box:hover, .menu:hover{
+		#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade{
 			cursor: pointer;
 		}
 
-		#healthBar{
+		#healthBar:not(.poisoned){
 			background-color: #93121f;
 		}
 
-		.mob {
-			background-color: #554728;
-			color: grey;
-		}
 		.menu:disabled, .secondary {
 			color: #c4c4c4;
 		}
+
 		.menu {
 			color: white;
 		}
+
+		.mob {
+			background-color: #50493B;
+			border-radius: 100px;
+			color: #bdbdbd;
+			margin: 5px;
+		}
+
 		.player{
 			color: white;
+		}		
+
+		.poisoned {
+			background-color: #9ace47;
 		}
+
+		.progress{
+			background-color: #4A4B4D;
+			border: 1px grey solid;
+		}
+
 		.reel{
 			background-color: #d6c0af;
 			border: 1px #343434 solid;
@@ -69,6 +88,20 @@
 		.win{
 			background-color: #fc9fa4;
 		}
+
+		@keyframes shake {
+			0% { transform: translate(1px, 1px) rotate(0deg); }
+			10% { transform: translate(-1px, -2px) rotate(-1deg); }
+			20% { transform: translate(-3px, 0px) rotate(1deg); }
+			30% { transform: translate(3px, 2px) rotate(0deg); }
+			40% { transform: translate(1px, -1px) rotate(1deg); }
+			50% { transform: translate(-1px, 2px) rotate(-1deg); }
+			60% { transform: translate(-3px, 1px) rotate(0deg); }
+			70% { transform: translate(3px, 1px) rotate(-1deg); }
+			80% { transform: translate(-1px, -1px) rotate(1deg); }
+			90% { transform: translate(1px, 2px) rotate(0deg); }
+			100% { transform: translate(1px, -2px) rotate(-1deg); }
+		}
 	</style>
 </head>
 <body id="body" class="p-3">
@@ -78,43 +111,49 @@
 			Gold: <span id="gold"></span>
 			<span id="goldDelta" class="delta"></span>			
 		</div>
-		<div id='weaponSection' class="col text-center fs-4">
+		<div id='weaponSection' class="col text-center fs-4 hideInStore">
 			<img  id='weaponIcon' src="img/icon-weapon.png" class="pe-1">
 			Weapon: <span id="weapon"></span>
 			<span id="weaponDelta" class="delta"></span>			
 		</div>
 	</div>
-	<div id='maxHealthSection' class="">
+	<div id='maxHealthSection' class=" hideInStore">
 		<div>
-		Health: <span id='health'></span>/<span id='maxHealth'></span>
-		<span id="healthDelta" class="delta"></span>			
-		<img id='healthIcon' src="img/icon-health.png" class="ps-1">
+		Health: <span id='health'></span>/<span id='maxHealth'></span>					
+		<img id='healthIcon' src="img/icon-health.png" class="ps-1 pe-2">
+		<span id="healthDelta" class="delta"></span>
 		</div><div>
-			<div class="progress">
+			<div id='healthProgressBar' class="progress">
 				<div id='healthBar' class="progress-bar" role="progressbar" 
 					style="width: 100%"></div>
 			  </div>
 		</div>
 	</div>
-	<div id='maxArmorSection' class="mt-3 mb-3 d-none">
+	<div id='maxArmorSection' class="mt-3 mb-3 d-none hideInStore">
 		<div class="">			
-			Armor: <span id="armor"></span>/<span id="maxArmor"></span>	
-			<span id="armorDelta" class="delta"></span>			
-	
-			<img id='armorIcon' src="img/icon-armor.png" class="ps-1">
+			Armor: <span id="armor"></span>/<span id="maxArmor"></span>							
+			<img id='armorIcon' src="img/icon-armor.png" class="ps-1 pe-2">
+			<span id="armorDelta" class="delta"></span>
 		</div><div class="mt-1">
-			<div class="progress">
+			<div id='armorProgressBar' class="progress">
 				<div id='armorBar' class="progress-bar" role="progressbar" 
 					style="width: 100%"></div>
 			  </div>
 		</div>
 
 	</div>
-	<div id="potions" class="row d-none">
-		<div class="col text-center">
-			Healing Potion: <span id="heal"></span>
-			<button id="drink-heal" class="drink verb1 btn btn-link">[ drink ]</button>
-		</div><div class="col text-center">
+	<div id="" class="potions row  hideInStore">
+		<div id='healSection' class="col text-center d-none">
+			<div>				
+				<img id='healIcon' src="img/icon-heal.png" class="pe-1">
+				Healing Potion: <span id="heal"></span>	
+				<span id="healDelta" class="delta"></span>					
+				<button id="drink-heal" class="drink verb1 btn btn-link">[ drink ]</button>
+			</div><div>
+				<input type="checkbox" id="auto-heal" class="auto"> Automatically drink when about to die?
+			</div>
+		</div><div id='portalSection' class="col text-center d-none ">
+			<img id='portalIcon' src="img/icon-portal.png" class="pe-1">
 			Portal Potion: <span id="portal"></span>
 			<span id="portalDelta" class="delta"></span>					
 			<button id="drink-portal" class="drink verb1 btn btn-link">[ drink ]</button>
@@ -135,18 +174,23 @@
 			<button id="drink-cure" class="drink verb1 btn btn-link">[ drink ]</button>
 		</div>
 		-->
-	</div><div class="row potions d-none">
+	</div><div class="row potions d-none hideInStore">
 		<div id='keySection' class="col text-center d-none">
 			<div>
 			<img id='keyIcon' src="img/icon-key.png" class="pe-1">
 				Keys: <span id="key"></span>
-				<span id="keyDelta" class="delta"></span>			
+				<span id="keyDelta" class="delta"></span>
+				<span id="nextChestAt"></span>
 			</div><div>
-				<input type="checkbox" id="auto-key_portal" class="auto"> Open blue chests?
-				<input type="checkbox" id="auto-key_gold" class="auto"> Open gold chests?
+				<span id="portalChest" class="d-none">
+					<input type="checkbox" id="auto-key_portal" class="auto"> Open blue chests?
+				</span><span id="goldChest" class="d-none">
+					<input type="checkbox" id="auto-key_gold" class="auto"> Open gold chests?
+				</span>
 			</div>
 		</div>
 	</div>
+	
 	<div id="menu" class="text-center mb-3 mt-3 d-none ">
 		<!--
 			<button id='menu-dungeon' class="menu btn btn-info d-none p-3 ps-5 pe-5"></button> 
@@ -161,7 +205,8 @@
 		<div class="text-center">
 			<img id='game-box' src="img/d-close.png" class="crawl">
 		</div><div class="text-center">
-			<button id='crawl-button' class="btn crawl btn-success">enter</button>
+			<img id='crawl-button' class='crawl' src="img/crawl.png">
+			<!--<button id='crawl-button' class="btn crawl btn-success">enter</button>-->
 			<div id="death"></div>
 			<div id="monsters"></div>
 		</div><div class="col text-center dungeon fs-5">
@@ -177,34 +222,54 @@
 		Log
 		</div><div id="log" class="text-center dungeon"></div>
 
-	</div><div id="store" class="window d-none slotBG p-5">
-		<div class="row">
-			<div id='reel-0' class='col text-center'>
+	</div><div id="store" class="window d-none">
+		<div class="slotBG p-5">
+			<div id="reelsCaption" class="text-center mb-3"></div>
+			<div id="pullNum" class="text-center mb-3"></div>
+			<div class="row">
+				<div id='reel-0' class='col text-center'>
 
-			</div><div id='reel-1' class='col  text-center'>
+				</div><div id='reel-1' class='col  text-center'>
 
-			</div><div id='reel-2' class='col text-center'>
+				</div><div id='reel-2' class='col text-center'>
 
+				</div>
+
+			</div><div class="text-center mt-3 mb-3">
+				<div class="row">
+					<div class="col-m">
+						<!--<button id="changeLines-less" class="btn btn-link changeLines">[ - ]</button>-->
+						<img id='changeLines-less-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-less-1.png">
+						<img id='changeLines-less-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-less-10.png">
+						<img id='changeLines-less-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-less-100.png">
+					</div><div class="col-m">
+						Paying Lines: <span id="lines"></span>/<span id="maxLines"></span>
+					</div><div class="col-m">
+						<img id='changeLines-more-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-more-1.png">
+						<img id='changeLines-more-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-more-10.png">
+						<img id='changeLines-more-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-more-100.png">
+						<!--<button id="changeLines-more" class="btn btn-link changeLines">[ + ]</button>-->
+					</div>
+				</div><div class="text-center pt-3">
+					<img id='upgrade' class='' src="img/slots-upgrade-10.png">
+				</div>
 			</div>
+			<div class="row d-none">
+				<div class="col text-center">
+					<button id="insert-1" class="insert btn btn-warning btn-lg form-control verb1">insert 1 gold</button>
+				</div><div class="col text-center">
+					<button id="insert-5" class="insert btn btn-warning btn-lg form-control verb1">insert 5 gold</button>
+				</div>
+			</div><div class="mt-3 text-center">
+				<button id="autopull" class="pull btn me-3"><img id="img-autopull"  class='slot-buttons' src='img/slots-autopull.png'></button>
 
-		</div>
-		<div class="text-center mt-3 mb-3">
-			<button id="changeLines-less" class="btn btn-link changeLines">[ - ]</button>
-			Paying Lines: <span id="lines"></span>/<span id="maxLines"></span>
-			<button id="changeLines-more" class="btn btn-link changeLines">[ + ]</button>
-		</div>
-		<div class="row d-none">
-			<div class="col text-center">
-				<button id="insert-1" class="insert btn btn-warning btn-lg form-control verb1">insert 1 gold</button>
-			</div><div class="col text-center">
-				<button id="insert-5" class="insert btn btn-warning btn-lg form-control verb1">insert 5 gold</button>
+				<button id="pull" class="pull btn"><img id='img-pull'  class='slot-buttons' src='img/slots-pull.png'></button>
 			</div>
-		</div><div class="mt-3 text-center">
-			<button id="autopull" class="pull btn me-3"><img id="img-autopull"  class='slot-buttons' src='img/slots-autopull.png'></button>
-
-			<button id="pull" class="pull btn"><img id='img-pull'  class='slot-buttons' src='img/slots-pull.png'></button>
-		</div><div id="reelsCaption" class="text-center">
-
+		</div>
+		<div class="fw-bold text-center mt-3">
+			Log
+		</div><div id="storeLog">
+			
 		</div>
 	</div>
 

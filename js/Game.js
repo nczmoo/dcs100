@@ -28,7 +28,12 @@ class Game{
 			ui.status("You repair your armor back to full!");
 		} else if (potion == 'heal'){
 			this.player.resetHealth();
-			ui.status("You heal yourself back to full!")
+			let msg = "You heal yourself back to full!";
+			if (game.player.poisonCounter > 0){
+				game.player.poisonCounter = 0;
+				msg += " (You cureed your poison too!)"
+			}
+			ui.status(msg);
 		} else if (potion == 'portal'){
 			this.dungeon.checkLastDive();
 			this.dungeon.exit();

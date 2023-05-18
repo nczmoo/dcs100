@@ -16,7 +16,7 @@ class Mob {
 		ui.status("The <span class='fw-bold'>lvl " + this.entity.level + " " 
 			+ this.entity.name + " died</span> and you looted " + loot 
 			+ " gold from it. (<span class='text-success='>+" + loot 
-			+ " 	gold</span>) ", 'mob');		
+			+ " 	<img src='img/icon-gold.png'></span>) ", 'mob');		
 		game.player.getGold(loot);		
 		if (!this.spawning.includes(this.entity.name)){
 			ui.addToMonsters(this.entity.name);

@@ -75,40 +75,17 @@ TODO
     x implement all drawn monsters
     x show when the next chest will pop up
     x open every chast by default and THEN give the option to not open it
-    
+    x move healthdelta and amror delta
+    x background color for .mob in log  is weird
+    x ui.reels isn't getting wiped when ui.addToReels prints to screen
+    x only show auto option for chests after you seen them
+
     checkboxes look weird
     sound
     music    
 
-    
-    move healthdelta and amror delta
-    background color for .mob in log  is weird
-    
-    ui.reels isn't getting wiped when ui.addToReels prints to screen
-
-    
-        
-        
-
-
-MOTHER'S DAY PLAYTEST
-    Increased percent chance to hit potion
-    Invincibility potion
-    Only show auto option for chests after you seen them
-    UI too cluttered on my phone
-
-
-    Maybe put icons in the dungeon logs to more easily categorize the context of each log entry because I wanted to be able to easily see if I had just opened a chest 
-    Make it a little bit easier to get portal potions because that's the only viable way to deep dive safely 
-    I've played for a little over 20 minutes and I reached a impasse I guess. Without a portal potion I don't feel that safe to keep going deeper so I'm not going deeper than about 50. So there might be some structural issues I should work out. 
-    Maybe snakes are too powerful. They're hitting me for like four damage every single time at a minimum
-
-    Snakes level 10 status is resetting after exiting
-    Does anything else get reset? I think this was because it was passing the object by reference and getting downgraded to level 1. Hopefully, pass by value resolves this.
-
-    I reached about twenty on all my stats and the game seems pointless 
-
-
+    make modifiers more specific to mobs
+    REFACTOR
 
     
 QUESTIONS
@@ -164,4 +141,18 @@ MAYBE
     what if the slot machine was a tavern and you could recruit people to come with you?
 
     maybe portal should only go into effect if you'r not fighting
-    
+    maybe put icons in the dungeon logs to more easily categorize the context 
+        of each log entry because I wanted to be able to easily see if I 
+        had just opened a chest 
+    Increased percent chance to hit potion
+    Invincibility potion
+
+
+MOTHER'S DAY PLAYTEST    
+    UI too cluttered on my phone    
+    ! Make it a little bit easier to get portal potions because that's the only viable way to deep dive safely 
+    I've played for a little over 20 minutes and I reached a impasse I guess. Without a portal potion I don't feel that safe to keep going deeper so I'm no going deeper than about 50. So there might be some structural issues I should work out. 
+    x Maybe snakes are too powerful. They're hitting me for like four damage every single time at a minimum
+    x Snakes level 10 status is resetting after exiting
+    x Does anything else get reset? I think this was because it was passing the object by reference and getting downgraded to level 1. Hopefully, pass by value resolves this.
+    x I reached about twenty on all my stats and the game seems pointless 

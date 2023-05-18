@@ -56,24 +56,7 @@ class UI{
 	addToReels(name){
 		this.reels.push(name);
 		
-		let txt = "You have some new stuff added to your reels: "
-		for (let i in this.reels){
-			let name = this.reels[i];
-			txt += "<span class='fw-bold'>" + game.slots.reels.captions[name] + "</span>"
-			+ " <img src='img/reel-" + name + ".png' height='24' width='24'>";
-
-			if (i == this.reels.length - 1){
-				continue;
-			} else if ( i == this.reels.length - 2 && this.reels.length > 1){
-				txt += " and ";
-				continue;
-			}
-			txt += ", ";
-		}
-		//txt += ".";
-		console.log('add');
 		
-		$("#reelsCaption").html(txt);
 	}
 
 	chestFound(){
@@ -187,6 +170,26 @@ class UI{
 			//$("#" + id + "Section").addClass('fw-bold');
 			//setTimeout(function(){ $("#" + id + "Section").removeClass('fw-bold');}, 1000);
 		}
+	}
+
+	printAddToReels(){
+		let txt = "You have some new stuff added to your reels: "
+		for (let i in this.reels){
+			let name = this.reels[i];
+			txt += "<span class='fw-bold'>" + game.slots.reels.captions[name] + "</span>"
+			+ " <img src='img/reel-" + name + ".png' height='24' width='24'>";
+
+			if (i == this.reels.length - 1){
+				continue;
+			} else if ( i == this.reels.length - 2 && this.reels.length > 1){
+				txt += " and ";
+				continue;
+			}
+			txt += ", ";
+		}		
+		
+		$("#reelsCaption").html(txt);
+		this.reels = [];
 	}
 
 	printDeltas(){

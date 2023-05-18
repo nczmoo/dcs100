@@ -54,6 +54,10 @@ $(document).on('click', '.menu', function(e){
 	ui.refresh();
 })
 
+$(document).on('click', '#menu-store', function(e){
+	ui.printAddToReels();
+});
+
 $(document).on('click', '#pull', function(e){
 	game.slots.pull();
 });

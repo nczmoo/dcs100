@@ -5,9 +5,13 @@ class UI{
 	deltaIntervals = {};
 	deltas = {};
 	dying = false;
-	exiting = 0;
+	exiting = 0;	
 	logs = [];	
 	monsters = [];
+	opened = {
+		gold: false,
+		portal: false,
+	}
 	popping = [];
 	
 	playerHitAt = null;

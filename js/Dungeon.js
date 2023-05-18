@@ -128,7 +128,10 @@ class Dungeon {
 		let chests = { gold: 'gold', portal: 'blue' };
 		let msg = "<span class='fw-bold'>You used a key on this " + chests[this.chest] + " chest and found ";
 		game.player.useKey();
-		if (this.chest == 'gold'){
+		if (ui.opened[this.chest] == false ){
+			ui.opened[this.chest] = true;
+		}
+		if (this.chest == 'gold'){			
 			let minLoot = 10;
 			let loot = randNum(1, this.steps);
 			if (loot < minLoot){

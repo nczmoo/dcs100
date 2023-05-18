@@ -72,6 +72,9 @@ TODO
     x be able to unlock more lines    
     x give the player a mulligan when they die the first time and let them keep their gold (but make sure they know its only that time)
     x exiting not animating
+    x implement all drawn monsters
+    x show when the next chest will pop up
+    x open every chast by default and THEN give the option to not open it
     
     checkboxes look weird
     sound
@@ -80,14 +83,12 @@ TODO
     
     move healthdelta and amror delta
     background color for .mob in log  is weird
-    open every chast by default and THEN give the option to not open it
+    
     ui.reels isn't getting wiped when ui.addToReels prints to screen
 
-    ART
-        implement all drawn monsters
-        show when the next chest will pop up
     
-    
+        
+        
 
 
 MOTHER'S DAY PLAYTEST

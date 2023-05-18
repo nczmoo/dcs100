@@ -178,10 +178,14 @@
 			<div>
 			<img id='keyIcon' src="img/icon-key.png" class="pe-1">
 				Keys: <span id="key"></span>
-				<span id="keyDelta" class="delta"></span>			
+				<span id="keyDelta" class="delta"></span>
+				<span id="nextChestAt"></span>
 			</div><div>
-				<input type="checkbox" id="auto-key_portal" class="auto"> Open blue chests?
-				<input type="checkbox" id="auto-key_gold" class="auto"> Open gold chests?
+				<span id="portalChest" class="d-none">
+					<input type="checkbox" id="auto-key_portal" class="auto"> Open blue chests?
+				</span><span id="goldChest" class="d-none">
+					<input type="checkbox" id="auto-key_gold" class="auto"> Open gold chests?
+				</span>
 			</div>
 		</div>
 	</div>

@@ -10,6 +10,9 @@ class UIRefresh {
 	
 
     go (){
+		if (game.dungeon.steps > 0 && game.dungeon.crawling){
+			$("#nextChestAt").html("(" + (game.dungeon.steps / game.dungeon.chestFoundAt * 100).toFixed(1) + "%)");
+		}
 		$("#upgrade").prop('disabled', false);
 		if (game.player.gold < game.slots.maxLines){
 			$("#upgrade").prop('disabled', true);
@@ -50,11 +53,17 @@ class UIRefresh {
 			$("#" + icon + "Icon").attr('src', 'img/icon-' + icon + modifier + ".png" );
 		}
 
+		
 		$(".menu").addClass('d-none');
 		if (!game.dungeon.crawling ){			
 			$("#menu-" + this.opposites[ui.window]).removeClass('d-none');
 		}
-		
+		for (let opening in ui.opened){
+			if (ui.opened[opening] && $("#" + opening + "Chest").hasClass('d-none')){
+				$("#" + opening + "Chest").removeClass('d-none')
+			}
+
+		}
 		let fills = ['armor', 'gold', 'health',  'maxArmor', 'maxHealth', 'weapon'];
 		for (let fill of fills){			
 			$("#" + fill).html(game.player[fill]);

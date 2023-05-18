@@ -18,12 +18,10 @@ class SlotReels {
 
     constructor(){
         this.length = this.symbols.length;
-
 		this.generate();
 	}
 
     add(){
-
 		if (game.dungeon.steps < game.dungeon.lastDive ){
 			return;
 		}
@@ -34,19 +32,15 @@ class SlotReels {
 				this.symbols.push(name);
                 this.length = this.symbols.length;
 				this.generate();
-                ui.status("Because you reached step #" + game.dungeon.steps + ", " + this.captions[name] + " was added to your reel: " 
+                ui.addToLogs("Because you reached step #" + game.dungeon.steps + ", " + this.captions[name] + " was added to your reel: " 
                     + "<img src='img/reel-" + name + ".png' height='24' width='24'>")
                 ui.addToReels(name);
 			}
 		}
-        
-
         ui.animation.positions = this.positions.slice();
-
 	}
 
     fetch (reelID, pos){
-        //console.log(reelID, pos);
         return this.values[reelID][pos];
     }
 
@@ -79,6 +73,7 @@ class SlotReels {
         }        
         return reel;		
     }
+    
     generate(){
         this.values = [];
         this.positions = [];

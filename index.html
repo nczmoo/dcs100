@@ -21,9 +21,6 @@
 			color: black;
 		}
 
-		.changeLines{
-			
-		}
 
 		#crawl-button {
 			width: 320px;
@@ -201,7 +198,6 @@
 			
 	</div>
 	<div id="dungeon" class="window mt-3">		
-		
 		<div class="text-center">
 			<img id='game-box' src="img/d-close.png" class="crawl">
 		</div><div class="text-center">
@@ -243,7 +239,7 @@
 						<img id='changeLines-less-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-less-10.png">
 						<img id='changeLines-less-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-less-100.png">
 					</div><div class="col-m">
-						Paying Lines: <span id="lines"></span>/<span id="maxLines"></span>
+						Paying Lines: <span id="lines-value"></span>/<span id="lines-max"></span>
 					</div><div class="col-m">
 						<img id='changeLines-more-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-more-1.png">
 						<img id='changeLines-more-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-more-10.png">
@@ -278,17 +274,28 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
 	<script src='js/Dungeon.js'></script> 
+	<script src='js/DungeonChest.js'></script> 
+	<script src='js/DungeonCrawl.js'></script> 
 	<script src='js/Mob.js'></script> 
 	<script src='js/MobModifiers.js'></script> 
 	<script src='js/MobTypes.js'></script> 
 	<script src='js/Player.js'></script> 
+	<script src='js/PlayerStats.js'></script> 
+	<script src='js/PlayerInventory.js'></script> 
+	<script src='js/PlayerCombat.js'></script> 
 	<script src='js/SlotReels.js'></script> 
+	<script src='js/SlotLines.js'></script> 
 	<script src='js/Slots.js'></script> 
 	<script src='js/SlotWins.js'></script> 
 	<script src='js/UIAnimation.js'></script> 
+	<script src='js/UIAnimationLoop.js'></script> 
+	<script src='js/UIAnimationDead.js'></script> 
+
 	<script src='js/UIRefresh.js'></script> 
 
 	<script src='js/UI.js'></script>
+	<script src='js/UIEvent.js'></script>
+	<script src='js/UIPrint.js'></script>
 	<script src='js/Config.js '></script> 
 	<script src='js/Game.js'></script>
 	<!--

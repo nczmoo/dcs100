@@ -8,7 +8,6 @@ class Mob {
 		for (let name in this.types.list){
 			this.modifiers.values[name] = JSON.parse(JSON.stringify(this.modifiers.template));			
 		}
-		console.log(this.modifiers);
 	}
 
     dies(){
@@ -19,12 +18,12 @@ class Mob {
 				loot = 2;
 			}
 		}
-		ui.mobDies(this.entity.name);
-		ui.status("The <span class='fw-bold'> " 
+		ui.event.mobDies(this.entity.name);
+		ui.addToLogs("The <span class='fw-bold'> " 
 			+ this.entity.name + " died</span> and you looted " + loot 
 			+ " gold from it. (<span class='text-success='>+" + loot 
 			+ " 	<img src='img/icon-gold.png'></span>) ", 'mob');		
-		game.player.getGold(loot);		
+		game.player.inventory.getGold(loot);		
 		if (!this.spawning.includes(this.entity.name)){
 			ui.addToMonsters(this.entity.name);
 			this.spawning.push(this.entity.name);
@@ -50,9 +49,9 @@ class Mob {
 		if (dmg < 0){
 			dmg = 0;
 		}
-        let armorDmg = game.player.getsHitInArmor(dmg);
+        let armorDmg = game.player.combat.getsHitInArmor(dmg);
 		dmg -= armorDmg;
-		let playerDied = game.player.getsHitInHealth(dmg);		
+		let playerDied = game.player.combat.getsHitInHealth(dmg);		
 
 		let armorCaption = " Your armor was hit for " + armorDmg 
 			+ " damage. (<span class='text-danger'>-" + armorDmg + "</span>)";
@@ -60,12 +59,12 @@ class Mob {
 			+ " damage. (<span class='text-danger'>-" + dmg +  "</span>)";
 		let status = this.entity.name + " missed!";
 		if (initDmg > 0){
-			ui.mobHits(this.entity.name);
+			ui.event.mobHits(this.entity.name);
 			status = "The " + this.entity.name 
 			+ " hit you for " + initDmg 
 			+ " damage." ;
 		}
-        let poisonMsg = game.player.getPoisoned(dmg, this.entity.name);
+        let poisonMsg = game.player.combat.getPoisoned(dmg, this.entity.name);
 		if (armorDmg > 0){
 			status += armorCaption;
 		}
@@ -73,9 +72,9 @@ class Mob {
 			status += healthCaption;
 		}
         status += poisonMsg;
-		ui.status(status, 'mob');
+		ui.addToLogs(status, 'mob');
 		if (playerDied){
-			game.player.die();
+			game.player.combat.die();
 		}
 	}
 
@@ -92,8 +91,8 @@ class Mob {
 		}
 		this.entity.health = this.entity.max;
 		this.entity.name = name;
-		ui.mobSpawns(this.entity.name);
-		ui.status("<span class='fw-bold'>A " + this.entity.name 
+		ui.event.mobSpawns(this.entity.name);
+		ui.addToLogs("<span class='fw-bold'>A " + this.entity.name 
 			+ "(a:" + this.entity.attack + " / hp: " + this.entity.max 
 			+ ") spawned</span> in front of you.", 'mob')
 	}

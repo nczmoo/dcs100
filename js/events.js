@@ -36,13 +36,13 @@ $(document).on('click', '.auto', function(e){
 });
 
 $(document).on('click', '.crawl', function(e){
-	game.dungeon.changeCrawling();
+	game.dungeon.crawl.change();
 
 	ui.refresh();
 });
 
 $(document).on('click', '.changeLines', function(e){
-	game.slots.changeLines(e.target.id.split('-')[1], Number(e.target.id.split('-')[2]));
+	game.slots.lines.change(e.target.id.split('-')[1], Number(e.target.id.split('-')[2]));
 });
 
 $(document).on('click', '.menu', function(e){
@@ -55,7 +55,7 @@ $(document).on('click', '.menu', function(e){
 })
 
 $(document).on('click', '#menu-store', function(e){
-	ui.printAddToReels();
+	ui.print.addToReels();
 });
 
 $(document).on('click', '#pull', function(e){
@@ -63,7 +63,7 @@ $(document).on('click', '#pull', function(e){
 });
 
 $(document).on('click', '#upgrade', function(e){
-	game.slots.upgrade();
+	game.slots.lines.upgrade();
 });
 
 $(document).on('click', '.verb', function(e){

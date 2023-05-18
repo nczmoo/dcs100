@@ -1,50 +1,14 @@
 class UIAnimation {
-    dStep = 0;
+	dead = new UIAnimationDead();
     happening = false;
-
 	hitBG = [null,  '#5B3733', '#573C39', '#534140', '#4E4646', '#4A4B4D'];
+	loop = new UIAnimationLoop();
     positions = game.slots.reels.positions.slice();
     timeToRoll = 1000;
     timeToDisplayWin = 350;
     winDisplayedAt = null;
     winPointer = null;	
 	flashSlot = 0;
-
-    loop(){
-		if (ui.playerHitAt != null ){
-			$("body").css('background-color', ui.animation.hitBG[ui.playerHitAt]);
-			ui.playerHitAt ++;
-		}
-		if (ui.playerHitAt != null && ui.playerHitAt >= ui.animation.hitBG.length ){
-			ui.playerHitAt = null;
-		}
-
-		if (ui.animation.winDisplayedAt != null && Date.now() - ui.animation.winDisplayedAt < ui.animation.timeToDisplayWin){
-			return;
-
-		} else if (ui.animation.winDisplayedAt != null && Date.now() - ui.animation.winDisplayedAt > ui.animation.timeToDisplayWin){
-			ui.animation.winDisplayedAt = null;
-			ui.animation.happening = false;
-		}
-		if (ui.pulledAt != null && Date.now() - ui.pulledAt < ui.animation.timeToRoll){
-			ui.animation.roll();
-			ui.animation.flashSlots();
-		} else if (ui.pulledAt != null && Date.now() - ui.pulledAt >= ui.animation.timeToRoll){
-			ui.pulledAt = null;
-			ui.refresh();
-			ui.printReels(true);
-		} else if (ui.wins != null){
-			ui.printStoreLog();
-			ui.animation.animatingWins();
-			return;
-		}
-		if (ui.dying){
-			ui.isDead();
-		} else if (ui.comingBack){
-			ui.isComingBack();
-		}
-		ui.happening = false;
-	}
 
 	animatingWins(){
 		this.winDisplayedAt = Date.now();
@@ -57,12 +21,12 @@ class UIAnimation {
 			$("#reel-" + reelID + "-" + win[reelID]).html("<img src='img/reel-" + game.slots.reels.fetch(reelID, positions[win[reelID]]) + "-win.png'>")
 		}
 		this.winPointer++;
-		if (this.winPointer > ui.wins.length - 1 || this.winPointer > game.slots.lines - 1){
+		if (this.winPointer > ui.wins.length - 1 || this.winPointer > game.slots.lines.value - 1){
 			this.winPointer = null;
 			ui.wins = null;
 		}
 		ui.popFromPopping();
-		ui.printDeltas()
+		ui.print.deltas()
 	}
 
 	animateWins(wins){
@@ -81,7 +45,6 @@ class UIAnimation {
 			return;
 		}
 		ui.exiting ++;
-
 		if (ui.exiting > 3){
 			ui.exiting = 0;
 		}
@@ -102,6 +65,15 @@ class UIAnimation {
 		}
 	}
 
+	hit(id){
+		$("#" + id).css('animation-name', 'shake');
+		$("#" + id).css('animation-duration', '.5s');
+		setTimeout(function(){
+			$("#" + id).css('animation-name', '');
+			$("#" + id).css('animation-duration', '');
+		}, 1000);
+	}
+
     roll(){
 		for (let reelID = 0; reelID < game.slots.reels.length; reelID ++){
 			this.positions[reelID]++;
@@ -109,26 +81,8 @@ class UIAnimation {
 				this.positions[reelID] = 0;
 			}			
 		}		
-		ui.printReels(false);
+		ui.print.reels(false);
 	}
 
-    step(){
 
-
-		$("#game-box").attr('src', 'img/d-' + this.dStep + '.png');
-
-		if (game.dungeon.forward){
-			this.dStep++;
-			
-		} else {
-			this.dStep --;
-		}
-
-		if (this.dStep > 5){
-			this.dStep = 0;
-		}
-		if (this.dStep < 0){
-			this.dStep = 5;
-		}
-	}
 }

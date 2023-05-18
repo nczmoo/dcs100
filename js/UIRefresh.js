@@ -7,14 +7,16 @@ class UIRefresh {
 	playerHitChangeBGDelay = 50;
     potionsHidden = true;
     storeRevealed = false;
-	
-
-    go (){
+    go (){ //05/18/23 not refactoring this....just don't feel like it
+		if (game.player.inventory.gold > 0 && ui.menuHidden){
+            $("#menu").removeClass('d-none'); 
+            ui.menuHidden = false;
+        }
 		if (game.dungeon.steps > 0 && game.dungeon.crawling){
-			$("#nextChestAt").html("(" + (game.dungeon.steps / game.dungeon.chestFoundAt * 100).toFixed(1) + "%)");
+			$("#nextChestAt").html("(" + (game.dungeon.steps / game.dungeon.chest.valueFoundAt * 100).toFixed(1) + "%)");
 		}
 		$("#upgrade").prop('disabled', false);
-		if (game.player.gold < game.slots.maxLines){
+		if (game.player.inventory.gold < game.slots.lines.max){
 			$("#upgrade").prop('disabled', true);
 		}
 		let stepCent = Math.round(game.dungeon.steps / game.dungeon.lastDive * 100);
@@ -31,7 +33,7 @@ class UIRefresh {
 		if (!game.dungeon.forward){
 			$("#stepCaption").addClass('d-none');
 		}
-		if (game.player.gold > 0 && !this.storeRevealed){
+		if (game.player.inventory.gold > 0 && !this.storeRevealed){
 			this.storeRevealed = true;
 			$("#menu").removeClass('d-none');
 		}
@@ -39,7 +41,7 @@ class UIRefresh {
 			$("#auto-" + i).prop('checked', game.config.auto[i]);
 		}
 		
-		if ($("#maxArmorSection").hasClass('d-none') && game.player.maxArmor > 0){
+		if ($("#maxArmorSection").hasClass('d-none') && game.player.stats.maxArmor > 0){
 			$("#maxArmorSection").removeClass('d-none');
 		}
         let icons = ['health', 'armor', 'gold', 'weapon', 'cure', 'heal', 'portal', 'repair', 'key'];
@@ -51,9 +53,7 @@ class UIRefresh {
 				modifier = '-store';
 			}
 			$("#" + icon + "Icon").attr('src', 'img/icon-' + icon + modifier + ".png" );
-		}
-
-		
+		}		
 		$(".menu").addClass('d-none');
 		if (!game.dungeon.crawling ){			
 			$("#menu-" + this.opposites[ui.window]).removeClass('d-none');
@@ -64,21 +64,21 @@ class UIRefresh {
 			}
 
 		}
-		let fills = ['armor', 'gold', 'health',  'maxArmor', 'maxHealth', 'weapon'];
+		$("#gold").html(game.player.inventory.gold);
+		let fills = ['armor', 'health',  'maxArmor', 'maxHealth', 'weapon'];
 		for (let fill of fills){			
-			$("#" + fill).html(game.player[fill]);
+			$("#" + fill).html(game.player.stats[fill]);
 		}
 		fills = ['lastDive', 'steps'];
 		for (let fill of fills){			
 			$("#" + fill).html(game.dungeon[fill]);
 		}
-		fills = ['lines','maxLines'];
+		fills = ['value','max'];
 		for (let fill of fills){			
-			$("#" + fill).html(game.slots[fill]);
+			$("#lines-" + fill).html(game.slots.lines[fill]);
 		}
-
-		for (let i in game.player.potions){
-			let potion = game.player.potions[i];				
+		for (let i in game.player.inventory.potions){
+			let potion = game.player.inventory.potions[i];				
 			if ($("#" + i + "Section").hasClass('d-none') && potion > 0){
 				$("#" + i + "Section").removeClass('d-none')
 			}
@@ -88,13 +88,10 @@ class UIRefresh {
 				$("#drink-portal").prop('disabled', true);
 			}
 		}
-
 		$("body").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
 		$(".hideInStore").removeClass('d-none');
-		
 		if (ui.playerHitAt != null) {
-
 		} else if (ui.window == 'store'){		
 			$(".hideInStore").addClass('d-none');
 			$("body").css('background-color', this.storeBG);			
@@ -113,27 +110,22 @@ class UIRefresh {
 			$("#crawl-button").attr('src', "img/crawl-exiting-" + ui.exiting + ".png");
 			ui.animation.exit();
 		}
-
 		$("#pull").prop('disabled', false);		
-		if (game.player.gold < 1 || ui.wins != null || game.slots.pulling){
+		if (game.player.inventory.gold < 1 || ui.wins != null || game.slots.pulling){
 			$("#pull").prop('disabled', true);
 		}
-
 		$("#autopull").prop('disabled', false);
-		if (game.player.gold < 1){
+		if (game.player.inventory.gold < 1){
 			$("#autopull").prop('disabled', true);
-		}
-		
-		ui.printLog();
-		let width = (game.player.health / game.player.maxHealth * 100) + "%"
+		}		
+		ui.print.log();
+		let width = (game.player.stats.health / game.player.stats.maxHealth * 100) + "%"
 		$("#healthBar").css('width', width);
-        width = (game.player.armor / game.player.maxArmor * 100) + "%"
+        width = (game.player.stats.armor / game.player.stats.maxArmor * 100) + "%"
 		$("#armorBar").css('width', width);
 		$("#healthBar").removeClass('poisoned');
-		if (game.player.poisonCounter > 0){
+		if (game.player.stats.poisonCounter > 0){
 			$("#healthBar").addClass('poisoned');
 		}
 	}
-
-
 }

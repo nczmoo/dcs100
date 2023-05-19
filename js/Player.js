@@ -6,6 +6,7 @@ class Player {
     exitsDungeon(){
         this.stats.resetArmor();
 		this.stats.resetHealth();
+		this.stats.poisonCounter = 0;
     }
 
     isPoisoned(){

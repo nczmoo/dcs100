@@ -10,7 +10,7 @@ class Dungeon {
     stepsForward = 0;
 
     constructor(){
-		this.chest.generate();
+		this.chest.generate(this.steps);
         this.resetMaxSteps();        
     }
 
@@ -37,7 +37,7 @@ class Dungeon {
 		this.crawling = false;
 		this.forward = true;
 		this.steps = 0;
-		this.chest.generate();
+		this.chest.generate(this.steps);
 
         game.player.exitsDungeon();
 		game.mob.exitsDungeon();	

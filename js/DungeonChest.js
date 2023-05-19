@@ -3,8 +3,8 @@ class DungeonChest {
 	chestEveryMin = 10;
 	value = null;
 	foundAt = null;
-    generate(){
-		this.foundAt = this.steps + randNum(this.chestEveryMin, this.chestEveryMax);
+    generate(steps){
+		this.foundAt = steps + randNum(this.chestEveryMin, this.chestEveryMax);
 		let rand  = randNum(1, 4);
 		if (rand == 1){
 			this.value = 'portal';
@@ -16,7 +16,7 @@ class DungeonChest {
 	open(steps){
 		if (this.value == 'open' || !game.player.inventory.canUseKey()){
 			this.value = null;
-			this.generate();
+			this.generate(steps);
 			return;
 		}
 

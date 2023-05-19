@@ -18,11 +18,11 @@ class Game{
 	}
 
 	drink(potion){ // might need to reorient this as inventory not potions
-		if (this.player.potions[potion] < 1){
+		if (this.player.inventory.potions[potion] < 1){
 			return;
 		}
 		ui.delta(potion, -1);
-		this.player.potions[potion] --;
+		this.player.inventory.potions[potion] --;
 		if (potion == 'repair'){
 			this.player.stats.resetArmor();
 			ui.addToLogs("You repair your armor back to full!");

@@ -37,8 +37,7 @@ class UIPrint {
 				continue;
 			}
 			txt += ", ";
-		}		
-		
+		}				
 		$("#reelsCaption").html(txt);
 		this.reelsArr = [];
 	}

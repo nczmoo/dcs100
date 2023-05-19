@@ -83,17 +83,24 @@ TODO
     x REFACTOR (05/18/23)
     x hide dungeon and store log when its empty
     x create a contrast between the label on the main page (Armor:) and the quantity that the label is describing.
-    
+    x inventory
+
     checkboxes look weird
     sound
     music    
     
-    inventory
-        
+    gold intake is markedly slower and progress is stagnant partly because of that. (add a gold modifier to individual change the amount of gold each type gives out)
+    only see auto settings before you enter the dungeon
+
+    on my phone, there's a slight misalignment between autopull and pull
+    on my phone, the auto label for healing is too close to keys section in comparison to how far it is to healing
+
+
     ART 
         add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
         favicon
         crawl button needs to be better
+        change store to slots
     
 QUESTIONS
     What can you get from the slots?
@@ -115,6 +122,8 @@ QUESTIONS
 
     Should pay lines be exponential? I had 4 pay lines active but only 1 line won. Kinda invalidates having more than one pay line.
         No. It's fine as is.
+
+
 
 DESIGN
     Reels spin for six seconds but can be skipped.
@@ -146,14 +155,13 @@ MAYBE
     What if dying with gold increased your stats? (it seems like im not dying like i used to so not really an issue)
     change heart icon to green when you're poisoned
     what if the slot machine was a tavern and you could recruit people to come with you?
-
     maybe portal should only go into effect if you'r not fighting
     maybe put icons in the dungeon logs to more easily categorize the context 
         of each log entry because I wanted to be able to easily see if I 
         had just opened a chest 
     Increased percent chance to hit potion
     Invincibility potion
-
+    maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
 
 MOTHER'S DAY PLAYTEST    
     UI too cluttered on my phone    

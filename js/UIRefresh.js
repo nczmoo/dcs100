@@ -13,7 +13,7 @@ class UIRefresh {
             ui.menuHidden = false;
         }
 		if (game.dungeon.steps > 0 && game.dungeon.crawling){
-			$("#nextChestAt").html("(" + (game.dungeon.steps / game.dungeon.chest.valueFoundAt * 100).toFixed(1) + "%)");
+			$("#nextChestAt").html("(" + (game.dungeon.steps / game.dungeon.chest.foundAt * 100).toFixed(1) + "%)");
 		}
 		$("#upgrade").prop('disabled', false);
 		if (game.player.inventory.gold < game.slots.lines.max){
@@ -62,7 +62,6 @@ class UIRefresh {
 			if (ui.opened[opening] && $("#" + opening + "Chest").hasClass('d-none')){
 				$("#" + opening + "Chest").removeClass('d-none')
 			}
-
 		}
 		$("#gold").html(game.player.inventory.gold);
 		$("#key").html(game.player.inventory.keys);
@@ -111,6 +110,7 @@ class UIRefresh {
 			$("body").css('background-color', this.dungeonBG);
 		} else if (ui.window == 'dungeon' && !game.dungeon.crawling){	
 			$("body").css('background-color', this.outsideBG);
+			$("#dungeonLogTitle").addClass('d-none');
 		}
 		if (!game.dungeon.crawling){
 			$("#crawl-button").attr('src', 'img/crawl-enter.png');

@@ -68,6 +68,10 @@ class UIPrint {
 	}
 	
 	log(){
+		console.log(this.logs.length > 0, $("#dungeonLogTitle").hasClass('d-none'))
+		if (this.logs.length > 0 && $("#dungeonLogTitle").hasClass('d-none')){
+			$("#dungeonLogTitle").removeClass('d-none')
+		}
 		let txt = '';
 		for (let i in this.logs){
 			let log = this.logs[i];
@@ -106,6 +110,10 @@ class UIPrint {
 	}
 
 	storeLog(){
+		console.log(this.storeLogs.length > 0, $("#storeLogTitle").hasClass('d-none'))
+		if (this.storeLogs.length > 0 && $("#storeLogTitle").hasClass('d-none')){
+			$("#storeLogTitle").removeClass('d-none')
+		}
 		let txt = '';
 		for (let i = this.storeLogs.length - 1; i >= 0; i --){
 			let log = this.storeLogs[i];

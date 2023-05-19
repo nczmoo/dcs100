@@ -1,0 +1,103 @@
+#armorBar {
+    background-color: #dedede;
+}
+#auto-heal{
+    background-color:white;
+    border:10px red solid;
+    margin:10px;
+}
+#body{
+    background-color: #aba3ad; /* #9b9fa6; */
+    color: black;
+}
+
+
+#crawl-button {
+    width: 320px;
+}
+
+.deltaMin{
+    color: #d7172a;
+}
+
+.deltaPlus{
+    color: #9ace47;
+}
+
+#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade{
+    cursor: pointer;
+}
+
+#healthBar:not(.poisoned){
+    background-color: #93121f;
+}
+
+.menu:disabled, [class=secondary]{
+    color: #c4c4c4;
+}
+
+.menu {
+    color: white;
+}
+
+.mob {
+    background-color: #50493B;
+    border-radius: 100px;
+    color: #bdbdbd;
+    margin: 5px;
+}
+
+.player{
+    color: white;
+}		
+
+.poisoned {
+    background-color: #9ace47;
+}
+
+.progress{
+    background-color: #4A4B4D;
+    border: 1px grey solid;
+}
+
+.reel{
+    background-color: #d6c0af;
+    border: 1px #343434 solid;
+}
+
+.secondary.dungeon{
+    color: #c1c1c1;
+}
+
+.secondary.outside, .secondary.store{
+    color: #414141;
+}
+
+.secondary.slots{
+    color: #616161;
+}
+
+.slotBG{
+    border-radius: 30px;
+    background-color: #d9d7d5;
+}
+.straight{
+    background-color: #c8b2a2; /* edd7c7; */
+}
+.win{
+    background-color: #fc9fa4;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

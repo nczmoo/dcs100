@@ -91,8 +91,16 @@ class UIRefresh {
 		$("body").css('color', 'white');
 		$(".dungeon").removeClass('d-none');
 		$(".hideInStore").removeClass('d-none');
+		$(".secondary").removeClass('outside');
+		$(".secondary").removeClass('store');
+
+		if (ui.window == 'dungeon' && !game.dungeon.crawling){
+			$(".secondary").addClass('outside');
+		}
+
 		if (ui.playerHitAt != null) {
-		} else if (ui.window == 'store'){		
+		} else if (ui.window == 'store'){
+			$("#gold").addClass('store');
 			$(".hideInStore").addClass('d-none');
 			$("body").css('background-color', this.storeBG);			
 		} else if (ui.window == 'dungeon' && game.dungeon.crawling){

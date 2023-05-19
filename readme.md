@@ -81,16 +81,19 @@ TODO
     x only show auto option for chests after you seen them
     x make modifiers more specific to mobs
     x REFACTOR (05/18/23)
-
+    x hide dungeon and store log when its empty
+    x create a contrast between the label on the main page (Armor:) and the quantity that the label is describing.
+    
     checkboxes look weird
     sound
     music    
     
     inventory
-    create a contrast between the label on the main page (Armor:) and the quantity that the label is describing.
-    hide dungeon and store log when its empty
-    add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
-
+    
+    
+    ART 
+        add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
+        favicon
     
 QUESTIONS
     What can you get from the slots?

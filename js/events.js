@@ -17,7 +17,7 @@ $(".slot-buttons:not([disabled])").click(function(e){
 });
 
 $("#game-box").hover(function(e){	
-	if (!game.config.crawling && $("#game-box").attr('src') == 'img/d-close.png'){
+	if (!game.dungeon.crawling && $("#game-box").attr('src') == 'img/d-close.png'){
 		
 		$("#game-box").attr('src', 'img/d-open.png');
 	}

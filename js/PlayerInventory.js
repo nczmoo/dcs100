@@ -1,6 +1,7 @@
 class PlayerInventory {
     gold = 0;    
-	potionList = ['heal', 'portal', 'repair', 'key'];
+	keys = 0;
+	potionList = ['heal', 'portal', 'repair'];
     potions = {};
 
     constructor(){
@@ -10,7 +11,7 @@ class PlayerInventory {
 	}
 
     canUseKey(){
-		if (game.dungeon.chest.value == null || this.potions.key < 1){
+		if (game.dungeon.chest.value == null || this.keys < 1){
 			return false;
 		}
 		return (game.dungeon.chest.value == 'portal' && game.config.auto.key_portal) 
@@ -28,13 +29,11 @@ class PlayerInventory {
         game.slots.lines.check();
     }
 
-
-
 	useKey(){
-		if (this.potions.key < 1){
+		if (this.keys < 1){
 			return;
 		}
 		ui.delta('key', -1);
-		this.potions.key --;
+		this.keys --;
 	}
 }

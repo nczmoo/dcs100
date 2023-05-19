@@ -89,11 +89,11 @@ TODO
     music    
     
     inventory
-    
-    
+        
     ART 
         add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
         favicon
+        crawl button needs to be better
     
 QUESTIONS
     What can you get from the slots?

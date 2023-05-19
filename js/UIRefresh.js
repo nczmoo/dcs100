@@ -65,6 +65,10 @@ class UIRefresh {
 
 		}
 		$("#gold").html(game.player.inventory.gold);
+		$("#key").html(game.player.inventory.keys);
+		if (game.player.inventory.keys > 0 && $("#keySection").hasClass('d-none')){
+			$("#keySection").removeClass('d-none')
+		}
 		let fills = ['armor', 'health',  'maxArmor', 'maxHealth', 'weapon'];
 		for (let fill of fills){			
 			$("#" + fill).html(game.player.stats[fill]);

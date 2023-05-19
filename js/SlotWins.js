@@ -52,8 +52,18 @@ class SlotWins {
 			if (winsPaid >= game.slots.lines.value){
 				return;
 			}
-			winsPaid ++;					
-			if (what.substring(0, 'maxHealth'.length) == 'maxHealth'){
+			winsPaid ++;
+			if (what == 'key'){
+				game.player.inventory.keys += pay;
+				msg += "<img class='ms-2'  src='img/icon-" + what 
+						+ "-store.png'> You received " + pay + " " 
+						+ this.pluralize('key', pay) + ". (You now have "				
+						+ game.player.inventory.keys + ".)" ;
+				ui.pop(what);
+				ui.delta(what, pay);
+				ui.addToStoreLog(msg);
+				continue;
+			} else if (what.substring(0, 'maxHealth'.length) == 'maxHealth'){
 				ui.pop(what.split('-')[0]);
 				let delta = Number(what.split('-')[1]) * pay;
 				game.player.stats.maxHealth += delta
@@ -69,19 +79,11 @@ class SlotWins {
 				}
 				ui.delta(what, pay)
 				game.player.inventory.potions[what] += pay;
-				
-				if (what == 'key'){
-					msg += "<img class='ms-2'  src='img/icon-" + what 
-						+ "-store.png'> You received " + pay + " " 
-						+ this.pluralize('key', pay) + ". (You now have " 
-						+ game.player.inventory.potions[what] + ".)" ;
-				} else {
-					msg += "<img class='ms-2'  src='img/icon-" + what 
-						+ "-store.png'> You received " + pay + " " + what 
-						+ " " + this.pluralize('potion', pay) 
-						+ ". (You now have " 
-						+ game.player.inventory.potions[what] + ".)" ;
-				}
+				msg += "<img class='ms-2'  src='img/icon-" + what 
+					+ "-store.png'> You received " + pay + " " + what 
+					+ " " + this.pluralize('potion', pay) 
+					+ ". (You now have " 
+					+ game.player.inventory.potions[what] + ".)" ;
 				ui.addToStoreLog(msg);
 				
 				continue;

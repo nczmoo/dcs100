@@ -5,6 +5,7 @@ class Config {
         key_portal: true,
         repair: true,
     };
+    sound = true;
     
     constructor(){       
 

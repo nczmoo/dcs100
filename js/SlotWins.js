@@ -31,39 +31,79 @@ class SlotWins {
 		ui.animation.animateWins(wins);
 	}
 
+	pluralize(what, quantity){
+		if (quantity > 1){
+			return what + "s";
+		}
+		return what;
+	}
+
     process(wins){
 		let winsPaid = 0;
-		game.slots.checkLines();
+		game.slots.lines.check();
 		if(wins.length < 1){
 			return;
 		}					
 		let positions = game.slots.reels.fetchPositions(0, true);
 		for (let winID of wins){			
 			let what = game.slots.reels.fetch(0, positions[this.list[winID][0]]);		
-			let pay = game.slots.lines;			
-			if (winsPaid >= game.slots.lines){
+			let msg = 'Pull #' + game.slots.pullNum ;
+			let pay = game.slots.lines.value;			
+			if (winsPaid >= game.slots.lines.value){
 				return;
 			}
-			winsPaid ++;			
-			if (what.split('-')[0] == 'maxHealth'){
-				ui.pop(what.split('-')[0]);
-				game.player.maxHealth += Number(what.split('-')[1]) * pay;
-				ui.delta('health', Number(what.split('-')[1]) * pay)
-				game.player.resetHealth();
+			winsPaid ++;
+			if (what == 'key'){
+				game.player.inventory.keys += pay;
+				msg += "<img class='ms-2'  src='img/icon-" + what 
+						+ "-store.png'> You received " + pay + " " 
+						+ this.pluralize('key', pay) + ". (You now have "				
+						+ game.player.inventory.keys + ".)" ;
+				ui.pop(what);
+				ui.delta(what, pay);
+				ui.addToStoreLog(msg);
 				continue;
-			} else if (game.player.potionList.includes(what)){
+			} else if (what.substring(0, 'maxHealth'.length) == 'maxHealth'){
+				ui.pop(what.split('-')[0]);
+				let delta = Number(what.split('-')[1]) * pay;
+				game.player.stats.maxHealth += delta
+				ui.delta('health', delta);
+				msg += "<img class='ms-2'  src='img/icon-health-store.png'> Your max health was increased by " + delta + ". (It is now at " + game.player.stats.maxHealth + ")";
+				ui.addToStoreLog(msg);
+				game.player.stats.resetHealth();
+				continue;
+			} else if (game.player.inventory.potionList.includes(what)){
 				ui.pop(what);
 				if (ui.potionsHidden){
 					ui.potionsHidden = false;
 				}
 				ui.delta(what, pay)
-				game.player.potions[what] += pay;
+				game.player.inventory.potions[what] += pay;
+				msg += "<img class='ms-2'  src='img/icon-" + what 
+					+ "-store.png'> You received " + pay + " " + what 
+					+ " " + this.pluralize('potion', pay) 
+					+ ". (You now have " 
+					+ game.player.inventory.potions[what] + ".)" ;
+				ui.addToStoreLog(msg);
+				
 				continue;
-			}				
+			}			
+			game.player.stats[what] += pay;			
+			game.player.stats.resetArmor();
 			ui.pop(what);
-			
-			game.player[what] += pay;			
-			game.player.resetArmor();
+			let caption = what;
+			if (Object.keys(game.slots.reels.captions).includes(what)){
+				caption = game.slots.reels.captions[what];
+			}
+			let imgSrc = what;
+			if (what == 'maxArmor'){
+				imgSrc = 'armor'
+			}
+			msg += "<img class='ms-2' src='img/icon-" + imgSrc 
+				+ "-store.png'> You received +" + pay + " to your " 
+				+  this.pluralize(caption, pay) + ". (It is now at " 
+				+ game.player.stats[what] + ".)";
+			ui.addToStoreLog(msg);			
 		}
 	}
 }

@@ -17,7 +17,7 @@ $(".slot-buttons:not([disabled])").click(function(e){
 });
 
 $("#game-box").hover(function(e){	
-	if (!game.config.crawling && $("#game-box").attr('src') == 'img/d-close.png'){
+	if (!game.dungeon.crawling && $("#game-box").attr('src') == 'img/d-close.png'){
 		
 		$("#game-box").attr('src', 'img/d-open.png');
 	}
@@ -36,24 +36,34 @@ $(document).on('click', '.auto', function(e){
 });
 
 $(document).on('click', '.crawl', function(e){
-	game.dungeon.changeCrawling();
-	
+	game.dungeon.crawl.change();
+
 	ui.refresh();
 });
 
-$(document).on('click', '.lines', function(e){
-	game.slots.changeLines(e.target.id.split('-')[1]);
+$(document).on('click', '.changeLines', function(e){
+	game.slots.lines.change(e.target.id.split('-')[1], Number(e.target.id.split('-')[2]));
 });
 
 $(document).on('click', '.menu', function(e){
 	ui.window = e.target.id.split('-')[1];
 	$(".window").addClass('d-none');
+	$(".menu").removeClass('d-none');	
+	$("#menu-" + e.target.id.split('-')[1]).addClass('d-none');
 	$("#" + e.target.id.split('-')[1]).removeClass('d-none');
 	ui.refresh();
 })
 
+$(document).on('click', '#menu-store', function(e){
+	ui.print.addToReels();
+});
+
 $(document).on('click', '#pull', function(e){
 	game.slots.pull();
+});
+
+$(document).on('click', '#upgrade', function(e){
+	game.slots.lines.upgrade();
 });
 
 $(document).on('click', '.verb', function(e){

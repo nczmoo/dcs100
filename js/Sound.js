@@ -23,6 +23,7 @@ class Sound {
         let filename = this.mp3Root + eventName + ".mp3";
         console.log(filename);
         let audio = new Audio(filename);
+        audio.volume = game.config.soundVolume;
         audio.play();
     }
 
@@ -32,6 +33,7 @@ class Sound {
         let filename = this.mp3Root + eventName + "-" + rand + ".mp3";
         console.log(filename)
         let audio = new Audio(filename);
+        audio.volume = game.config.soundVolume;
         audio.play();
     }
 

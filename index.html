@@ -56,25 +56,37 @@
 	<div id="" class="potions row  hideInStore">
 		<div id='healSection' class="col text-center d-none">
 			<div>				
-				<img id='healIcon' src="img/icon-heal.png" class="pe-1">
-				Healing Potion: <span id="heal"></span>	
-				<span id="healDelta" class="delta"></span>					
-				<button id="drink-heal" class="drink verb1 btn btn-link">[ drink ]</button>
-			</div><div>
+				<div>
+					<img id='healIcon' src="img/icon-heal.png" class="pe-1">
+				</div><div>
+					Healing: <span id="heal"></span>	
+					<span id="healDelta" class="delta"></span>
+				</div><div>
+					<button id="drink-heal" class="drink verb1 btn btn-link">[ drink ]</button>
+				</div>
+			</div><div class="autoSettings">
 				<input type="checkbox" id="auto-heal" class="auto"> Automatically drink when about to die?
 			</div>
 		</div><div id='portalSection' class="col text-center d-none ">
-			<img id='portalIcon' src="img/icon-portal.png" class="pe-1">
-			Portal Potion: <span id="portal"></span>
-			<span id="portalDelta" class="delta"></span>					
-			<button id="drink-portal" class="drink verb1 btn btn-link">[ drink ]</button>
+			<div>
+				<img id='portalIcon' src="img/icon-portal.png" class="pe-1">
+			</div><div>
+				Portal: <span id="portal"></span>
+				<span id="portalDelta" class="delta"></span>
+			</div><div>					
+				<button id="drink-portal" class="drink verb1 btn btn-link">[ drink ]</button>
+			</div>
 		</div><div id='repairSection' class="col text-center d-none">
 			<div>
-				<img id='repairIcon' src="img/icon-repair.png" class="pe-1">
-				Repair Armor Potion: <span id="repair"></span>
-				<span id="repairDelta" class="delta"></span>	
-				<button id="drink-repair" class="drink verb1 btn btn-link">[ drink ]</button>
-			</div><div>
+				<div>
+					<img id='repairIcon' src="img/icon-repair.png" class="pe-1">
+				</div><div>
+					Repair Armor: <span id="repair"></span>
+					<span id="repairDelta" class="delta"></span>	
+				</div><div>
+					<button id="drink-repair" class="drink verb1 btn btn-link">[ drink ]</button>
+				</div>
+			</div><div class="autoSettings">
 				<input type="checkbox" id="auto-repair" class="auto"> Automatically drink when armor is depleted?
 			</div>
 		</div><!--
@@ -91,7 +103,7 @@
 				Keys: <span id="key"></span>
 				<span id="keyDelta" class="delta"></span>
 				<span id="nextChestAt"></span>
-			</div><div>
+			</div><div class="autoSettings">
 				<span id="portalChest" class="d-none">
 					<input type="checkbox" id="auto-key_portal" class="auto"> Open blue chests?
 				</span><span id="goldChest" class="d-none">
@@ -139,15 +151,15 @@
 
 				</div>
 
-			</div><div class="text-center mt-3 mb-3">
+			</div><div class="text-center mt-3">
 				<div class="row">
-					<div class="col-m">
+					<div class="col">
 						<img id='changeLines-less-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-less-1.png">
 						<img id='changeLines-less-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-less-10.png">
 						<img id='changeLines-less-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-less-100.png">
 					</div><div class="col-m">
 						Paying Lines: <span id="lines-value" class="secondary slots"></span>/<span id="lines-max" class="secondary slots"></span>
-					</div><div class="col-m">
+					</div><div class="col">
 						<img id='changeLines-more-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-more-1.png">
 						<img id='changeLines-more-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-more-10.png">
 						<img id='changeLines-more-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-more-100.png">
@@ -155,9 +167,12 @@
 				</div><div class="text-center pt-3">
 					<img id='upgrade' class='' src="img/slots-upgrade-10.png">
 				</div>
-			</div><div class="mt-3 text-center">
-				<button id="autopull" class="pull btn me-3"><img id="img-autopull"  class='slot-buttons' src='img/slots-autopull.png'></button>
-				<button id="pull" class="pull btn"><img id='img-pull'  class='slot-buttons' src='img/slots-pull.png'></button>
+			</div><div class="mt-3 row">
+				<div class="col-md">					
+					<button id="autopull" class="pull btn float-md-end"><img id="img-autopull"  class='slot-buttons' src='img/slots-autopull.png'></button>
+				</div><div class="col-md text-md-left">
+					<button id="pull" class="pull btn"><img id='img-pull'  class='slot-buttons' src='img/slots-pull.png'></button>
+				</div>
 			</div>
 		</div>
 		<div id='storeLogTitle' class="fw-bold text-center mt-3 d-none">

@@ -89,8 +89,10 @@ TODO
     x reels whirring
     x ding ding ding
     x  beep
-
-
+    x only see auto settings before you enter the dungeon
+    x on my phone, the auto label for healing is too close to keys section in comparison to how far it is to healing
+    x on my phone, there's a slight misalignment between autopull and pull
+    
     checkboxes look weird
     SOUND
         all other monsters
@@ -99,10 +101,10 @@ TODO
         die
     
     gold intake is markedly slower and progress is stagnant partly because of that. (add a gold modifier to individual change the amount of gold each type gives out)
-    only see auto settings before you enter the dungeon
+    
 
-    on my phone, there's a slight misalignment between autopull and pull
-    on my phone, the auto label for healing is too close to keys section in comparison to how far it is to healing
+    
+    
 
     SOUND       
 

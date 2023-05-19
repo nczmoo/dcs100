@@ -13,6 +13,8 @@ class UIRefresh {
 		} else if (!game.config.sound && $("#soundConfig").attr('src', 'img/sound-on.png')){
 			$("#soundConfig").attr('src', 'img/sound-off.png');
 		}
+		
+
 		if (game.player.inventory.gold > 0 && ui.menuHidden){
             $("#menu").removeClass('d-none'); 
             ui.menuHidden = false;
@@ -26,8 +28,10 @@ class UIRefresh {
 		}
 		let stepCent = Math.round(game.dungeon.steps / game.dungeon.lastDive * 100);
 		$("#monsters").addClass('d-none');
+		$(".autoSettings").addClass('d-none');
 		if (!game.dungeon.crawling){
 			$("#monsters").removeClass('d-none');
+			$(".autoSettings").removeClass('d-none');
 		}
 		$("#stepCent").html(stepCent)
 		$("#stepCaption").removeClass('text-decoration-underline');

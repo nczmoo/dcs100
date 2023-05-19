@@ -6,7 +6,7 @@ class Config {
         repair: true,
     };
     sound = true;
-    
+    soundVolume = .35;
     constructor(){       
 
     }

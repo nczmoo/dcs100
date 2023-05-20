@@ -1,5 +1,5 @@
 class PlayerCombat {
-    chanceToPoison = 2; //10
+    chanceToPoison = 5; //10
     died = 0;
     hitting = true; //hitting doesn't seem to reset at the end of a fight 
 

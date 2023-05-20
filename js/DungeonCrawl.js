@@ -2,7 +2,6 @@ class DungeonCrawl {
     change(){
 		if (!game.dungeon.crawling){
 			ui.clearUIBeforeCrawl();
-			console.log("enter");
 			game.sound.play('dungeon-enter');
 			game.dungeon.crawling = true;		
 			return;

@@ -92,24 +92,24 @@ TODO
     x only see auto settings before you enter the dungeon
     x on my phone, the auto label for healing is too close to keys section in comparison to how far it is to healing
     x on my phone, there's a slight misalignment between autopull and pull
-    
+    x     BUG: log title for dungeon is still visible
+    x BUG: poison caption for log is unreadable
+    x the buzz buzz fail is annoying
+    x     BUGL modifiers are not working at all
+    x gold intake is markedly slower and progress is stagnant partly 
+        because of that. (add a gold modifier to individual change the 
+        amount of gold each type gives out)
+
     checkboxes look weird
+    
     SOUND
         all other monsters
 
     MUSIC
-        die
-    
-    gold intake is markedly slower and progress is stagnant partly because of that. (add a gold modifier to individual change the amount of gold each type gives out)
-    
-
-    
-    
+        die    
 
     SOUND       
-
-        maybe voices when I go in and out (going dungeon crawling!)
-        
+        maybe voices when I go in and out (going dungeon crawling!)        
 
     ART 
         add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
@@ -179,6 +179,7 @@ MAYBE
     maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
     what if the tunnel was dark when you're heading in and light when you're headded out?
     create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+    hits aren't ENTIRELY absorbed by armor (maybe some still bleeds through);
 
 MOTHER'S DAY PLAYTEST    
     UI too cluttered on my phone    

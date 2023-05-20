@@ -67,7 +67,7 @@ class UIPrint {
 	}
 	
 	log(){
-		if (this.logs.length > 0 && $("#dungeonLogTitle").hasClass('d-none')){
+		if (this.logs.length > 0 && $("#dungeonLogTitle").hasClass('d-none') && game.dungeon.crawling){
 			$("#dungeonLogTitle").removeClass('d-none')
 		}
 		let txt = '';

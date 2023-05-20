@@ -12,7 +12,7 @@ class Mob {
 
     dies(){
 		game.sound.play(this.entity.name + "-die");
-		let loot = randNum(1, this.entity.attack);
+		let loot = randNum(1, this.entity.attack * this.entity.gold);
 		if (game.dungeon.steps > game.dungeon.lastDive ){
 			loot *= 2;
 			if (loot < 1){
@@ -90,9 +90,9 @@ class Mob {
 		let name = this.types.fetchSpawnName();
 		game.sound.play(name + "-spawn");
 		let mob =  JSON.parse(JSON.stringify(this.types.fetch(name)));
-		this.entity = mob;	
-		for (let attr in this.modifiers.values[this.entity.name]){
-			let modifier = this.modifiers.values[this.entity.name][attr];
+		this.entity = mob;			
+		for (let attr in this.modifiers.values[name]){
+			let modifier = this.modifiers.values[name][attr];
 			this.entity[attr] += modifier;
 		}
 		this.entity.health = this.entity.max;

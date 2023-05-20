@@ -28,7 +28,7 @@ class MobModifiers {
 		}
     }
 
-    upgrade(name){		
+    upgrade(name){
 		let rand = randNum(1, 3);				
 		if (rand == 1){
 			this.values[name].attack++;

@@ -46,7 +46,7 @@ class DungeonCrawl {
 		}
 		let spawn = randNum(1, game.dungeon.spawnRate * modifier) == 1 
 			|| (game.dungeon.forward && game.dungeon.stepsForward >= game.dungeon.maxSteps);
-		if (spawn){
+		if (game.dungeon.steps > 4 && spawn){
 			game.dungeon.maxSteps++; //remember that steps forward is reset to 0 after game.dungeon
 			game.dungeon.stepsForward = 0;
 			game.mob.spawn();			

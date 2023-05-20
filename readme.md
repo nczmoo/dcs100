@@ -99,23 +99,23 @@ TODO
     x gold intake is markedly slower and progress is stagnant partly 
         because of that. (add a gold modifier to individual change the 
         amount of gold each type gives out)
+    x change store to slots
+    x add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
+
+    x crawl button needs to be better
 
     checkboxes look weird
     
     SOUND
         all other monsters
-
+        maybe voices when I go in and out (going dungeon crawling!)        
+    
     MUSIC
         die    
-
-    SOUND       
-        maybe voices when I go in and out (going dungeon crawling!)        
-
+    
     ART 
-        add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
         favicon
-        crawl button needs to be better
-        change store to slots
+        
     
 QUESTIONS
     What can you get from the slots?

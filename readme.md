@@ -105,12 +105,14 @@ TODO
     x favicon
     x dont spawn monsters when entering until step 4
     x move pullNum above reelcaption and make the font size bigger
+    x all other monsters
     
     checkboxes look weird
-    
+
 
     SOUND
-        all other monsters
+        test all new sound
+        
         maybe voices when I go in and out (going dungeon crawling!)        
     
     MUSIC

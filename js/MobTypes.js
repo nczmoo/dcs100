@@ -5,12 +5,12 @@ class MobTypes {
         rat_king: {attack: 5,  max: 10,  steps: 50, gold: 2},  //CHECK      
         spider: {attack: 10,  max: 20,  steps: 75, gold: 1}, //CHECK   
         snake_queen: {attack: 15,  max: 40,  steps: 100, gold: 1}, //CHECK   
-        ghost: {attack: 20,  max: 50,  steps: 125, gold: 1},
-        skeleton: {attack: 30,  max: 70,  steps: 150, gold: 1},
-        orc: {attack: 50,  max: 100,  steps: 175, gold: 1},
-        orc_lord: {attack: 100,  max: 200,  steps: 200, gold: 1},            
-        lich: {attack: 250,  max: 500, steps: 225, gold: 1},
-        demon: {attack: 500,  max: 1000, steps: 250, gold: 1},
+        ghost: {attack: 20,  max: 50,  steps: 125, gold: 1}, // sound
+        skeleton: {attack: 30,  max: 70,  steps: 150, gold: 1}, // sound
+        orc: {attack: 50,  max: 100,  steps: 175, gold: 1}, // sound
+        orc_lord: {attack: 100,  max: 200,  steps: 200, gold: 1},   // sound         
+        lich: {attack: 250,  max: 500, steps: 225, gold: 1}, // sound
+        demon: {attack: 500,  max: 1000, steps: 250, gold: 1}, //sound
         //{attack: , health: , max: , level: , steps: },
     }
 

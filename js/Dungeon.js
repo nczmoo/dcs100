@@ -50,7 +50,6 @@ class Dungeon {
 	}
 
 	fight(){
-		ui.event.mobSpawns(game.mob.entity.name);
 		game.player.combat.hitting = !game.player.combat.hitting ;
 		if (game.player.combat.hitting ){
 			game.player.combat.hits();

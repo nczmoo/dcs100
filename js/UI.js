@@ -70,6 +70,10 @@ class UI{
 		return Number(id) + 1;
 	}
 
+	formatName(name){
+		return name.split('-').join(' ');
+	}
+
 	pop(id){
 		this.popping.push(id);		
 	}

@@ -3,7 +3,7 @@ class Music {
         die: 2,
         dungeon: 5,
         outside: 1, 
-        store: 3
+        store: 2
     }
     mp3Root = 'mp3/music/';
     muted = false;

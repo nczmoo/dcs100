@@ -108,10 +108,11 @@ TODO
     x all other monsters
     x die    
     x test all new sound
+    x remove _ from mob names in captions
 
     checkboxes look weird
-
-
+    BUG? sound inconsistently playing on mobile?
+ 
     SOUND            
         maybe voices when I go in and out (going dungeon crawling!)        
     

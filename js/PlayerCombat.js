@@ -91,7 +91,10 @@ class PlayerCombat {
 			ui.event.playerHits(game.mob.entity.name);
 			
 			status = "<span class='fw-bold'>You</span> hit the " 
-			+ game.mob.entity.name + " for " + dmg + " damage!"
+			+ ui.formatName(game.mob.entity.name) + " for " + dmg + " damage!"
+		} else { 
+			ui.event.mobSpawns(game.mob.entity.name);
+
 		}
 		ui.addToLogs(status);
 		if (game.mob.entity.health < 1){

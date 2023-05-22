@@ -106,17 +106,17 @@ TODO
     x dont spawn monsters when entering until step 4
     x move pullNum above reelcaption and make the font size bigger
     x all other monsters
-    
+    x die    
+    x test all new sound
+
     checkboxes look weird
 
 
-    SOUND
-        test all new sound
-        
+    SOUND            
         maybe voices when I go in and out (going dungeon crawling!)        
     
     MUSIC
-        die    
+       
 
     ART 
         

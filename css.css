@@ -24,7 +24,7 @@
     color: #9ace47;
 }
 
-#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade, #soundConfig{
+#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade, #soundConfig, #musicConfig{
     cursor: pointer;
 }
 

@@ -9,6 +9,7 @@ class PlayerCombat {
 			game.drink('heal');
 			return;
 		}
+		game.music.play('die');
 		game.sound.play('player-die');
 		this.died ++;
 		let msg = "You <span class='fw-bold text-danger'>died</span> " 

@@ -2,6 +2,7 @@ class Dungeon {
 	chest = new DungeonChest();
 	crawl = new DungeonCrawl();
     crawling = false;
+	firstTime = true;
     forward = true;
     lastDive = 10;
     maxSteps = null;    
@@ -24,7 +25,7 @@ class Dungeon {
 		if (this.steps < 1){
 			this.exit();
 			game.sound.play('dungeon-exit');
-
+			game.music.play('outside');
 			return true;
 		}		
 	}
@@ -38,10 +39,10 @@ class Dungeon {
     exit(){
 		ui.event.exit();
 		this.crawling = false;
-		this.forward = true;
+		this.forward = true;		
 		this.steps = 0;
 		this.chest.generate(this.steps);
-
+		this.firstTime = false;
         game.player.exitsDungeon();
 		game.mob.exitsDungeon();	
         this.resetMaxSteps();
@@ -49,7 +50,6 @@ class Dungeon {
 	}
 
 	fight(){
-		ui.event.mobSpawns(game.mob.entity.name);
 		game.player.combat.hitting = !game.player.combat.hitting ;
 		if (game.player.combat.hitting ){
 			game.player.combat.hits();

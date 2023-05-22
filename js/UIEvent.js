@@ -25,6 +25,9 @@ class UIEvent {
 		//$("body").css('background-color', ui.uirefresh.playerHitBG);
 		
 	}
+	mobMiss(name){
+		$("#game-box").attr('src', 'img/d-' + name + "-miss.png" )
+	}
 
 	mobSpawns(name){
 		$("#game-box").attr('src', 'img/d-' + name + '.png');

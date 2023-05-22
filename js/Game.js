@@ -4,10 +4,12 @@ class Game{
 	dungeon = new Dungeon();
     player = new Player();
     mob = new Mob();
+	music = new Music(this.config.musicVolume);
     slots = new Slots();
 	sound = new Sound();
 	
 	constructor(){
+		//this.music.play('outside');
 	}
 
 	autopull(){
@@ -39,6 +41,7 @@ class Game{
 		} else if (potion == 'portal'){
 			this.dungeon.checkLastDive();
 			this.dungeon.exit();
+			game.music.play('outside');
 			ui.addToLogs('You open a portal and exit the dungeon.');
 		}
 	}
@@ -54,7 +57,13 @@ class Game{
 		ui.refresh();
 	}
 
+	musicConfig(){
+		this.music.onOrOff();
+		ui.refresh();
+	}
+
 	soundConfig(){
+		console.log('hello?');
 		this.config.sound = !this.config.sound;
 		ui.refresh();
 	}

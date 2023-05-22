@@ -99,23 +99,39 @@ TODO
     x gold intake is markedly slower and progress is stagnant partly 
         because of that. (add a gold modifier to individual change the 
         amount of gold each type gives out)
-
+    x change store to slots
+    x add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
+    x crawl button needs to be better
+    x favicon
+    x dont spawn monsters when entering until step 4
+    x move pullNum above reelcaption and make the font size bigger
+    x all other monsters
+    x die    
+    x test all new sound
+    x remove _ from mob names in captions
+    x Sound config doesn't work on mobile 
+    x Slot buttons off center 
+    x change chestCent to steps fom last chest and only show if a player has a key
+    x paying <x>x instead of lines
     checkboxes look weird
+    BUG? sound inconsistently playing on mobile?
+    pop up when entering dungeon and sltos fro the first time
+    change the add reel to pullNum instead
     
-    SOUND
-        all other monsters
+    
+    
+    
 
-    MUSIC
-        die    
 
-    SOUND       
+    SOUND            
         maybe voices when I go in and out (going dungeon crawling!)        
+    
+    MUSIC
+       
 
     ART 
-        add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
-        favicon
-        crawl button needs to be better
-        change store to slots
+        in sound off icon make it grey like the way music off is
+
     
 QUESTIONS
     What can you get from the slots?
@@ -137,7 +153,7 @@ QUESTIONS
 
     Should pay lines be exponential? I had 4 pay lines active but only 1 line won. Kinda invalidates having more than one pay line.
         No. It's fine as is.
-
+    Why do players have to click "To Slots" instead of just going straight to slots when they've exited?
 
 
 DESIGN
@@ -180,6 +196,8 @@ MAYBE
     what if the tunnel was dark when you're heading in and light when you're headded out?
     create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
     hits aren't ENTIRELY absorbed by armor (maybe some still bleeds through);
+    add a zombie at the point where you died that has the gold that you dropped
+
 
 MOTHER'S DAY PLAYTEST    
     UI too cluttered on my phone    

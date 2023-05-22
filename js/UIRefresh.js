@@ -8,6 +8,12 @@ class UIRefresh {
     potionsHidden = true;
     storeRevealed = false;
     go (){ //05/18/23 not refactoring this....just don't feel like it
+		if (!game.music.muted && $("#musicConfig").attr('src', 'img/music-off.png')){
+			$("#musicConfig").attr('src', 'img/music-on.png');
+		} else if (game.music.muted && $("#musicConfig").attr('src', 'img/music-on.png')){
+			$("#musicConfig").attr('src', 'img/music-off.png');
+		}
+
 		if (game.config.sound && $("#soundConfig").attr('src', 'img/sound-off.png')){
 			$("#soundConfig").attr('src', 'img/sound-on.png');
 		} else if (!game.config.sound && $("#soundConfig").attr('src', 'img/sound-on.png')){
@@ -19,9 +25,15 @@ class UIRefresh {
             $("#menu").removeClass('d-none'); 
             ui.menuHidden = false;
         }
-		if (game.dungeon.steps > 0 && game.dungeon.crawling){
-			$("#nextChestAt").html("(" + (game.dungeon.steps / game.dungeon.chest.foundAt * 100).toFixed(1) + "%)");
+		$("#nextChestAt").addClass('d-none');
+		
+		if (game.player.inventory.keys > 0){
+			$("#nextChestAt").removeClass('d-none');
 		}
+		if (game.player.inventory.keys > 0 && game.dungeon.steps > 0 && game.dungeon.crawling){
+			$("#nextChestAt").html("(" + ((game.dungeon.steps - game.dungeon.chest.last) / game.dungeon.chest.foundAt * 100).toFixed(1) + "%)");
+		}
+		
 		$("#upgrade").prop('disabled', false);
 		if (game.player.inventory.gold < game.slots.lines.max){
 			$("#upgrade").prop('disabled', true);

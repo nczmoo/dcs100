@@ -32,6 +32,12 @@
     background-color: #93121f;
 }
 
+.important{
+    background-color: #d6c0af;
+    border-radius: 15px;
+
+}
+
 .menu:disabled, [class=secondary]{
     color: #c4c4c4;
 }

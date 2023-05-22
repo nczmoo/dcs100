@@ -8,6 +8,7 @@ class UIRefresh {
     potionsHidden = true;
     storeRevealed = false;
     go (){ //05/18/23 not refactoring this....just don't feel like it
+		$("#invested").html("(" + game.slots.invested + " spent)");
 		if (!game.music.muted && $("#musicConfig").attr('src', 'img/music-off.png')){
 			$("#musicConfig").attr('src', 'img/music-on.png');
 		} else if (game.music.muted && $("#musicConfig").attr('src', 'img/music-on.png')){

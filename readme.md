@@ -113,10 +113,12 @@ TODO
     x Slot buttons off center 
     x change chestCent to steps fom last chest and only show if a player has a key
     x paying <x>x instead of lines
+    x    in sound off icon make it grey like the way music off is
+    x change the add reel to amount invested instead 
+
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
     pop up when entering dungeon and sltos fro the first time
-    change the add reel to pullNum instead
     
     
     
@@ -130,7 +132,7 @@ TODO
        
 
     ART 
-        in sound off icon make it grey like the way music off is
+    
 
     
 QUESTIONS

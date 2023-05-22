@@ -39,7 +39,6 @@ class DungeonCrawl {
 			game.sound.play('step');
 			game.dungeon.steps ++;
 			game.dungeon.stepsForward ++;
-			game.slots.reels.add();
 		}  
 		if (game.dungeon.back()){
 

@@ -8,12 +8,16 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<title>Dungeon Crawler Slots</title>
 	<link rel="stylesheet" href="css.css">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 
 </head>
 <body id="body" class="ps-3 pe-3">
+
 	<div class="row">
 		<div class="col text-center">
 			<img id='soundConfig' src="img/sound-on.png" class="verb">
+		</div>		<div class="col text-center">
+			<img id='musicConfig' src="img/music-on.png" class="verb">
 		</div>
 	</div>
 	<div class="row">
@@ -139,9 +143,10 @@
 		</div><div id="log" class="text-center dungeon"></div>
 
 	</div><div id="store" class="window d-none">
-		<div class="slotBG p-5">
-			<div id="reelsCaption" class="text-center mb-3"></div>
-			<div id="pullNum" class="text-center mb-3"></div>
+		<div class="slotBG ps-5 pe-5 pb-5 pt-3">
+			<div id="pullNum" class="text-center mt-3 mb-1 fs-4">&nbsp;</div>
+
+			<div id="reelsCaption" class="text-center mb-1"></div>
 			<div class="row">
 				<div id='reel-0' class='col text-center'>
 
@@ -192,6 +197,7 @@
 	<script src='js/Mob.js'></script> 
 	<script src='js/MobModifiers.js'></script> 
 	<script src='js/MobTypes.js'></script> 
+	<script src='js/Music.js'></script>
 	<script src='js/Player.js'></script> 
 	<script src='js/PlayerStats.js'></script> 
 	<script src='js/PlayerInventory.js'></script> 

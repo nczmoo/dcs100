@@ -1,5 +1,5 @@
 class PlayerCombat {
-    chanceToPoison = 2; //10
+    chanceToPoison = 5; //10
     died = 0;
     hitting = true; //hitting doesn't seem to reset at the end of a fight 
 
@@ -9,6 +9,7 @@ class PlayerCombat {
 			game.drink('heal');
 			return;
 		}
+		game.music.play('die');
 		game.sound.play('player-die');
 		this.died ++;
 		let msg = "You <span class='fw-bold text-danger'>died</span> " 

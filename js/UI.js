@@ -52,7 +52,7 @@ class UI{
 	}
 
 	addToStoreLog(msg){
-		this.print.reelCaptions += msg;
+		this.print.reelCaptions += msg.replace('-store', '-slot');
 		this.print.storeLogs.push('<div>' + msg + "</div>");
 	}
 

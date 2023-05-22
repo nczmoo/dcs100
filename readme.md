@@ -99,23 +99,27 @@ TODO
     x gold intake is markedly slower and progress is stagnant partly 
         because of that. (add a gold modifier to individual change the 
         amount of gold each type gives out)
+    x change store to slots
+    x add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
+    x crawl button needs to be better
+    x favicon
+    x dont spawn monsters when entering until step 4
+    x move pullNum above reelcaption and make the font size bigger
+    x all other monsters
+    x die    
+    x test all new sound
 
     checkboxes look weird
-    
-    SOUND
-        all other monsters
 
-    MUSIC
-        die    
 
-    SOUND       
+    SOUND            
         maybe voices when I go in and out (going dungeon crawling!)        
+    
+    MUSIC
+       
 
     ART 
-        add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
-        favicon
-        crawl button needs to be better
-        change store to slots
+        
     
 QUESTIONS
     What can you get from the slots?
@@ -137,7 +141,7 @@ QUESTIONS
 
     Should pay lines be exponential? I had 4 pay lines active but only 1 line won. Kinda invalidates having more than one pay line.
         No. It's fine as is.
-
+    Why do players have to click "To Slots" instead of just going straight to slots when they've exited?
 
 
 DESIGN

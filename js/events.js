@@ -1,6 +1,10 @@
 $(document).on('click', '', function(e){
 
 })
+
+$(document).on('mousemove', '', function(e){	
+})
+
 $(".slot-buttons:not([disabled])").hover(function(e){	
 	if ($("#" + e.target.id).attr('src') == "img/slots-" + e.target.id.split('-')[1] + ".png"){		
 		$("#" + e.target.id).attr('src', "img/slots-" + e.target.id.split('-')[1] + "-hover.png");
@@ -54,7 +58,13 @@ $(document).on('click', '.menu', function(e){
 	ui.refresh();
 })
 
+$(document).on('click', '#menu-dungeon', function(e){
+
+	game.music.play('outside');
+});
+
 $(document).on('click', '#menu-store', function(e){
+	game.music.play('store');
 	ui.print.addToReels();
 });
 

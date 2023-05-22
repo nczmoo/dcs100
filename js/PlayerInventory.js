@@ -1,5 +1,5 @@
 class PlayerInventory {
-    gold = 20;    
+    gold = 0;    
 	keys = 0;
 	potionList = ['heal', 'portal', 'repair'];
     potions = {};

@@ -109,10 +109,20 @@ TODO
     x die    
     x test all new sound
     x remove _ from mob names in captions
-
+    x Sound config doesn't work on mobile 
+    x Slot buttons off center 
+    x change chestCent to steps fom last chest and only show if a player has a key
+    x paying <x>x instead of lines
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
- 
+    pop up when entering dungeon and sltos fro the first time
+    change the add reel to pullNum instead
+    
+    
+    
+    
+
+
     SOUND            
         maybe voices when I go in and out (going dungeon crawling!)        
     
@@ -120,7 +130,8 @@ TODO
        
 
     ART 
-        
+        in sound off icon make it grey like the way music off is
+
     
 QUESTIONS
     What can you get from the slots?
@@ -185,6 +196,8 @@ MAYBE
     what if the tunnel was dark when you're heading in and light when you're headded out?
     create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
     hits aren't ENTIRELY absorbed by armor (maybe some still bleeds through);
+    add a zombie at the point where you died that has the gold that you dropped
+
 
 MOTHER'S DAY PLAYTEST    
     UI too cluttered on my phone    

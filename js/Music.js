@@ -24,7 +24,6 @@ class Music {
     }
 
     play(eventName){        
-        console.log(eventName);
         if (this.trackStarted == eventName){
             return;
         }
@@ -52,7 +51,6 @@ class Music {
         this.songPlaying = new Audio(filename);
         this.songPlaying.volume = this.volume;
         this.songPlaying.muted = this.muted;
-        console.log(filename.split('-')[0])
         this.songPlaying.loop = true;
         if (filename.split('-')[0].includes('die')){
             this.songPlaying.loop = false;

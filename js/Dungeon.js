@@ -39,7 +39,7 @@ class Dungeon {
     exit(){
 		ui.event.exit();
 		this.crawling = false;
-		this.forward = true;
+		this.forward = true;		
 		this.steps = 0;
 		this.chest.generate(this.steps);
 		this.firstTime = false;

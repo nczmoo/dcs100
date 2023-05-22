@@ -63,6 +63,7 @@ class Game{
 	}
 
 	soundConfig(){
+		console.log('hello?');
 		this.config.sound = !this.config.sound;
 		ui.refresh();
 	}

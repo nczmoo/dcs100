@@ -52,9 +52,9 @@ class UIEvent {
 	}
 
 	step(){
-		let going = 'enter';
+		let going = 'exit';
 		if (game.dungeon.forward){
-			going = 'exit';
+			going = 'enter';
 		}
 		$("#game-box").attr('src', 'img/d-' + going + "-" + this.dStep + '.png');
 		if (game.dungeon.forward){

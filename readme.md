@@ -119,6 +119,7 @@ TODO
     x BUG? Key hint isn't giving the correct info
     x  change heart icon to green when you're poisoned
     x  Change exit to "Go Back"
+    x what if the tunnel was dark when you're heading in and light when you're headded out?
     
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
@@ -134,7 +135,7 @@ TODO
 
     AFTER REFACTOR
         ? create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
-        what if the tunnel was dark when you're heading in and light when you're headded out?
+        
 
 GOOD IDEAS FROM REDDIT
     

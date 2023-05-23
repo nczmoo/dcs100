@@ -1,9 +1,6 @@
 class SlotReels {
-	addToReels = {
-        'repair': 100,
-        'maxHealth-2': 150,
-        'maxHealth-3': 200,
-    }
+	addToReels = ['repair', 'maxHealth-2', 'maxHealth-3' ];
+    addToReelsPointer = 0;
     captions = {
         repair: 'repair potion',
         maxArmor: " max armor ",
@@ -21,24 +18,27 @@ class SlotReels {
 		this.generate();
 	}
 
-    add(invested){
-
-		
-		for (let name in this.addToReels){
-			let stepReq = this.addToReels[name];
-			if (invested >= stepReq && !this.symbols.includes(name)){
+    add(){
+        if (this.addToReelsPointer > this.addToReels.length - 1){
+            return;
+        }
+		let name = this.addToReels[this.addToReelsPointer];
+		//for (let name in this.addToReels){
+			//let stepReq = this.addToReels[name];
+			//if (invested >= stepReq && !this.symbols.includes(name)){
                 this.symbols.push(name);
                 this.length = this.symbols.length;
 				this.generate();
-                let msg = "Because you've spent " + invested + " gold, " + this.captions[name] + " was added to your reel: " 
+                let msg = "You upgraded and " + this.captions[name] + " was added to your reel: " 
                 + "<img src='img/reel-" + name + ".png' height='24' width='24' class='me-3'>  ";
                 ui.print.reelCaptions += msg;
                 ui.print.storeLogs.push("<div class='mt-3 mb-3 ps-3 important'>" + msg + "</div>");
                 ui.print.storeLog();
                 ui.addToReels(name);
-			}
-		}
+			//}
+		//}
         ui.animation.positions = this.positions.slice();
+        this.addToReelsPointer ++;
 	}
 
     fetch (reelID, pos){

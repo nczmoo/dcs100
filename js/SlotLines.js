@@ -47,6 +47,7 @@ class SlotLines {
 		if (game.player.inventory.gold < this.max * 10){
 			return;
 		}
+		game.slots.reels.add();
 		game.sound.play('slot-upgrade');
 		game.player.inventory.gold -= this.max * 10;
 		$(".changeLines-" + this.max).removeClass('d-none');

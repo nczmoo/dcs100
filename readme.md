@@ -121,12 +121,12 @@ TODO
     x  Change exit to "Go Back"
     x what if the tunnel was dark when you're heading in and light when you're headded out?
     x create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+    x     increase effect of poison
+    x change reel add to upgrade
 
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
 
-    change reel add to upgrade
-    increase effect of poison
 
 
     SOUND            

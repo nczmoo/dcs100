@@ -32,7 +32,7 @@ class UIRefresh {
 			$("#nextChestAt").removeClass('d-none');
 		}
 		if (game.player.inventory.keys > 0 && game.dungeon.steps > 0 && game.dungeon.crawling){
-			$("#nextChestAt").html("(" + ((game.dungeon.steps - game.dungeon.chest.last) / game.dungeon.chest.foundAt * 100).toFixed(1) + "%)");
+			$("#nextChestAt").html("(" + ((game.dungeon.steps - game.dungeon.chest.last) / (game.dungeon.chest.foundAt - game.dungeon.chest.last) * 100).toFixed(1) + "%)");
 		}
 		
 		$("#upgrade").prop('disabled', false);

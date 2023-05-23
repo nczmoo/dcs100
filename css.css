@@ -24,7 +24,7 @@
     color: #9ace47;
 }
 
-#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade, #soundConfig, #musicConfig{
+#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade, #soundConfig, #musicConfig, #story{
     cursor: pointer;
 }
 
@@ -91,6 +91,26 @@
 .straight{
     background-color: #c8b2a2; /* edd7c7; */
 }
+
+#story{
+    padding: 30px;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    background-color: #9b9fa6;
+    color: #414141;
+}
+
+#tutorial {
+    font-family: 'MedievalSharp';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #bcae39;
+    background-color: #9a7451;
+}
+
+
 .win{
     background-color: #fc9fa4;
 }

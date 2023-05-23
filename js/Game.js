@@ -7,7 +7,7 @@ class Game{
 	music = new Music(this.config.musicVolume);
     slots = new Slots();
 	sound = new Sound();
-	
+
 	constructor(){
 		//this.music.play('outside');
 	}
@@ -66,6 +66,23 @@ class Game{
 		console.log('hello?');
 		this.config.sound = !this.config.sound;
 		ui.refresh();
+	}
+
+	story(){
+		
+		if (ui.introDelay != null && Date.now() - ui.introDelay < 250){
+			return;
+		}
+		ui.introDelay = Date.now();
+		if (ui.intro){
+			ui.animation.introStoryArrPointer++;
+			return;
+		}
+				
+		if (ui.introFading){
+			ui.introFading = false;
+		}
+		$("#story").addClass('d-none');
 	}
 
 }

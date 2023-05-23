@@ -115,16 +115,13 @@ TODO
     x paying <x>x instead of lines
     x    in sound off icon make it grey like the way music off is
     x change the add reel to amount invested instead 
-
+    x pop up when entering dungeon and sltos fro the first time
+    x BUG? Key hint isn't giving the correct info
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
-    pop up when entering dungeon and sltos fro the first time
-    
-    
-    
     
 
-
+    
     SOUND            
         maybe voices when I go in and out (going dungeon crawling!)        
     

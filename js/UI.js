@@ -1,8 +1,11 @@
 class UI{		
 	animation = new UIAnimation();
 	animatingInterval = setInterval(this.animation.loop.go, 50);
+	dungeonFirst = true;
 	event = new UIEvent();
 	exiting = 0;	
+	intro = true;
+	introFading = false;
 	monsters = [];
 	opened = {
 		gold: false,
@@ -12,7 +15,9 @@ class UI{
 	playerHitAt = null;
 	print = new UIPrint();
 	pulledAt = null;
+	slotsFirst = true;
 	uirefresh = new UIRefresh();
+	tutorial = null;
 	window = 'dungeon';
 	wins = null;
 
@@ -89,5 +94,10 @@ class UI{
 		this.uirefresh.go();
 	}
 
-	
+	showTutorial(which){
+		this.tutorial = which;
+		$("#tutorial").removeClass('d-none');
+		$("#tutorial").html(game[this.tutorial].tutorial);
+
+	}
 }

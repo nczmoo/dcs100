@@ -40,8 +40,12 @@ $(document).on('click', '.auto', function(e){
 });
 
 $(document).on('click', '.crawl', function(e){
+	if (ui.dungeonFirst){
+		ui.showTutorial('dungeon');
+		ui.dungeonFirst = false;
+		return;
+	}
 	game.dungeon.crawl.change();
-
 	ui.refresh();
 });
 
@@ -64,12 +68,30 @@ $(document).on('click', '#menu-dungeon', function(e){
 });
 
 $(document).on('click', '#menu-store', function(e){
+	if (ui.slotsFirst){
+		ui.showTutorial('slots');
+		ui.slotsFirst = false;
+	}
 	game.music.play('store');
 	ui.print.addToReels();
 });
 
 $(document).on('click', '#pull', function(e){
 	game.slots.pull();
+});
+
+$(document).on('click', '#story', function(e){
+	game.story();
+});
+
+$(document).on('click', '#tutorial', function(e){
+	$("#tutorial").addClass('d-none');
+	if (ui.tutorial == 'dungeon'){
+		game.dungeon.crawl.change();		
+	}
+
+	ui.tutorial = null;
+	ui.refresh();
 });
 
 $(document).on('click', '#upgrade', function(e){

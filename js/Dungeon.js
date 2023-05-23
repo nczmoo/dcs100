@@ -9,6 +9,7 @@ class Dungeon {
     spawnRate = 4;
     steps = 0;  
     stepsForward = 0;
+	tutorial = "<div class='mb-3'>Get gold!</div><div> But if you die before exiting or drinking a portal potion, you get nothing.</div>";
 
     constructor(){
 		this.chest.generate(this.steps);

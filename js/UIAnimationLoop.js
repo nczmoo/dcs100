@@ -1,5 +1,12 @@
 class UIAnimationLoop {
     go(){
+		if (ui.intro){
+			ui.animation.showIntro();
+			return;
+		}
+		if (ui.introFading){
+			ui.animation.fadeIntro();
+		}
 		if (ui.playerHitAt != null ){
 			$("body").css('background-color', ui.animation.hitBG[ui.playerHitAt]);
 			ui.playerHitAt ++;

@@ -4,6 +4,7 @@ class Slots {
 	pullNum = 1;
 	pulling = false;
 	reels = new SlotReels();
+	tutorial = "Play slots to upgrade your stats and get stuff. Upgrade to gamble more!";
 	wins = new SlotWins();
 
 	pull(){

@@ -1,6 +1,10 @@
 $(document).on('click', '', function(e){
 
 })
+
+$(document).on('mousemove', '', function(e){	
+})
+
 $(".slot-buttons:not([disabled])").hover(function(e){	
 	if ($("#" + e.target.id).attr('src') == "img/slots-" + e.target.id.split('-')[1] + ".png"){		
 		$("#" + e.target.id).attr('src', "img/slots-" + e.target.id.split('-')[1] + "-hover.png");
@@ -36,8 +40,12 @@ $(document).on('click', '.auto', function(e){
 });
 
 $(document).on('click', '.crawl', function(e){
+	if (ui.dungeonFirst){
+		ui.showTutorial('dungeon');
+		ui.dungeonFirst = false;
+		return;
+	}
 	game.dungeon.crawl.change();
-
 	ui.refresh();
 });
 
@@ -54,12 +62,36 @@ $(document).on('click', '.menu', function(e){
 	ui.refresh();
 })
 
+$(document).on('click', '#menu-dungeon', function(e){
+
+	game.music.play('outside');
+});
+
 $(document).on('click', '#menu-store', function(e){
+	if (ui.slotsFirst){
+		ui.showTutorial('slots');
+		ui.slotsFirst = false;
+	}
+	game.music.play('store');
 	ui.print.addToReels();
 });
 
 $(document).on('click', '#pull', function(e){
 	game.slots.pull();
+});
+
+$(document).on('click', '#story', function(e){
+	game.story();
+});
+
+$(document).on('click', '#tutorial', function(e){
+	$("#tutorial").addClass('d-none');
+	if (ui.tutorial == 'dungeon'){
+		game.dungeon.crawl.change();		
+	}
+
+	ui.tutorial = null;
+	ui.refresh();
 });
 
 $(document).on('click', '#upgrade', function(e){

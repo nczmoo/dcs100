@@ -7,6 +7,7 @@ class Config {
     };
     sound = true;
     soundVolume = .35;
+    musicVolume = .25;
     constructor(){       
 
     }

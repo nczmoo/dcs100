@@ -1,8 +1,10 @@
 class Slots {
+	invested = 0;
 	lines = new SlotLines();
 	pullNum = 1;
 	pulling = false;
 	reels = new SlotReels();
+	tutorial = "Play slots to upgrade your stats and get stuff. Upgrade to gamble more!";
 	wins = new SlotWins();
 
 	pull(){
@@ -13,6 +15,8 @@ class Slots {
 		}
 		game.sound.play('slot-pull');
 		ui.pulledAt = Date.now();
+		this.invested += this.lines.value;
+		this.reels.add(this.invested);
 
 		game.player.inventory.gold -= this.lines.value;
 		ui.delta('gold', -this.lines.value);		
@@ -37,7 +41,7 @@ class Slots {
 			this.reels.positions[reelID] = rand;
 		}
 		this.wins.fetch();
-		$("#pullNum").html(this.pullNum.toLocaleString());
+		$("#pullNum").html("#" + this.pullNum.toLocaleString());
 		this.pullNum++;
 	}
 

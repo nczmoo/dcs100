@@ -1,8 +1,8 @@
 class SlotReels {
 	addToReels = {
-        'repair': 50,
-        'maxHealth-2': 75,
-        'maxHealth-3': 100,
+        'repair': 100,
+        'maxHealth-2': 150,
+        'maxHealth-3': 200,
     }
     captions = {
         repair: 'repair potion',
@@ -21,19 +21,22 @@ class SlotReels {
 		this.generate();
 	}
 
-    add(){
-		if (game.dungeon.steps < game.dungeon.lastDive ){
-			return;
-		}
+    add(invested){
+
+		
 		for (let name in this.addToReels){
 			let stepReq = this.addToReels[name];
+			if (invested >= stepReq && !this.symbols.includes(name)){
+                console.log(name, invested, stepReq)
 
-			if (game.dungeon.steps >= stepReq && !this.symbols.includes(name)){
-				this.symbols.push(name);
+                this.symbols.push(name);
                 this.length = this.symbols.length;
 				this.generate();
-                ui.addToLogs("Because you reached step #" + game.dungeon.steps + ", " + this.captions[name] + " was added to your reel: " 
-                    + "<img src='img/reel-" + name + ".png' height='24' width='24'>")
+                let msg = "Because you've spent " + invested + " gold, " + this.captions[name] + " was added to your reel: " 
+                + "<img src='img/reel-" + name + ".png' height='24' width='24' class='me-3'>  ";
+                ui.print.reelCaptions += msg;
+                ui.print.storeLogs.push("<div class='mt-3 mb-3 ps-3 important'>" + msg + "</div>");
+                ui.print.storeLog();
                 ui.addToReels(name);
 			}
 		}

@@ -99,23 +99,46 @@ TODO
     x gold intake is markedly slower and progress is stagnant partly 
         because of that. (add a gold modifier to individual change the 
         amount of gold each type gives out)
-
-    checkboxes look weird
+    x change store to slots
+    x add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
+    x crawl button needs to be better
+    x favicon
+    x dont spawn monsters when entering until step 4
+    x move pullNum above reelcaption and make the font size bigger
+    x all other monsters
+    x die    
+    x test all new sound
+    x remove _ from mob names in captions
+    x Sound config doesn't work on mobile 
+    x Slot buttons off center 
+    x change chestCent to steps fom last chest and only show if a player has a key
+    x paying <x>x instead of lines
+    x    in sound off icon make it grey like the way music off is
+    x change the add reel to amount invested instead 
+    x pop up when entering dungeon and sltos fro the first time
+    x BUG? Key hint isn't giving the correct info
+    x  change heart icon to green when you're poisoned
+    x  Change exit to "Go Back"
     
-    SOUND
-        all other monsters
+    checkboxes look weird
+    BUG? sound inconsistently playing on mobile?
+    
 
+    SOUND            
+    
     MUSIC
-        die    
-
-    SOUND       
-        maybe voices when I go in and out (going dungeon crawling!)        
+       
 
     ART 
-        add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
-        favicon
-        crawl button needs to be better
-        change store to slots
+
+
+    AFTER REFACTOR
+        ? create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+        what if the tunnel was dark when you're heading in and light when you're headded out?
+
+GOOD IDEAS FROM REDDIT
+    
+
     
 QUESTIONS
     What can you get from the slots?
@@ -137,7 +160,7 @@ QUESTIONS
 
     Should pay lines be exponential? I had 4 pay lines active but only 1 line won. Kinda invalidates having more than one pay line.
         No. It's fine as is.
-
+    Why do players have to click "To Slots" instead of just going straight to slots when they've exited?
 
 
 DESIGN
@@ -159,6 +182,8 @@ MAYBE
     x incentivize the player to dive deeper by doubling their gold yield for going deeper than last time
     x create a min for how many steps they can go before spawning a mob
     x replace menu buttons with signs
+    x change potions to inventory   
+    x maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
     bank
         why would you need to bank gold?
     be able to sell potions        
@@ -166,9 +191,9 @@ MAYBE
     ! change background briefly to red when you get hit  (this wasn't very good)
     change death text
     the number of portals given by a portal chest should be determined by how often you die
-    change potions to inventory   
+    
     What if dying with gold increased your stats? (it seems like im not dying like i used to so not really an issue)
-    change heart icon to green when you're poisoned
+    
     what if the slot machine was a tavern and you could recruit people to come with you?
     maybe portal should only go into effect if you'r not fighting
     maybe put icons in the dungeon logs to more easily categorize the context 
@@ -176,10 +201,14 @@ MAYBE
         had just opened a chest 
     Increased percent chance to hit potion
     Invincibility potion
-    maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
-    what if the tunnel was dark when you're heading in and light when you're headded out?
-    create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+    maybe voices when I go in and out (going dungeon crawling!)        
+    a game save so players can leave the game and start where they were
+
     hits aren't ENTIRELY absorbed by armor (maybe some still bleeds through);
+
+    
+    add a zombie at the point where you died that has the gold that you dropped
+
 
 MOTHER'S DAY PLAYTEST    
     UI too cluttered on my phone    

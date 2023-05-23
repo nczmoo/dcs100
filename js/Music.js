@@ -11,8 +11,7 @@ class Music {
     trackStarted = null;
     volume = null;
 
-    constructor(volume){
-        
+    constructor(volume){        
         this.volume = volume;
     }
 
@@ -28,7 +27,6 @@ class Music {
             return;
         }
         this.trackStarted = eventName;
-
         if (Object.keys(this.multi).includes(eventName)){
             this.playMulti(eventName);
             return;

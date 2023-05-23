@@ -7,7 +7,14 @@ class Game{
 	music = new Music(this.config.musicVolume);
     slots = new Slots();
 	sound = new Sound();
-
+	lore = ["You finally made it to one of the greatest dungeons in the land.",
+	"You trekked through the desert and jungle.",
+	"Sailed across three seas to get here.",
+	"All of the other dungeons are filled with adventurers seeking their fortune, but this dungeon is all yours!",
+	"They say even the rats have gold.",
+	"You're going to gamble it all away anyways, but who cares?",
+	"Life's a gamble and you're trying to win every jackpot you can before you go bust."];
+	
 	constructor(){
 		//this.music.play('outside');
 	}
@@ -75,7 +82,7 @@ class Game{
 		}
 		ui.introDelay = Date.now();
 		if (ui.intro){
-			ui.animation.introStoryArrPointer++;
+			ui.animation.intro.introStoryArrPointer++;
 			return;
 		}
 				

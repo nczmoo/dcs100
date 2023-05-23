@@ -1,7 +1,7 @@
 class UIAnimationLoop {
     go(){
 		if (ui.intro){
-			ui.animation.showIntro();
+			ui.animation.intro.show();
 			return;
 		}
 		if (ui.introFading){

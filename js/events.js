@@ -2,33 +2,9 @@ $(document).on('click', '', function(e){
 
 })
 
-$(document).on('mousemove', '', function(e){	
-})
-
-$(".slot-buttons:not([disabled])").hover(function(e){	
-	if ($("#" + e.target.id).attr('src') == "img/slots-" + e.target.id.split('-')[1] + ".png"){		
-		$("#" + e.target.id).attr('src', "img/slots-" + e.target.id.split('-')[1] + "-hover.png");
-	}
-},  function (e){
-	if ($("#" + e.target.id).attr('src') == "img/slots-" + e.target.id.split('-')[1] + "-hover.png"){
-		$("#" + e.target.id).attr('src', "img/slots-" + e.target.id.split('-')[1] + ".png");
-	}
-});
-
 $(".slot-buttons:not([disabled])").click(function(e){	
 	$("#" + e.target.id).attr('src', "img/slots-" + e.target.id.split('-')[1] + "-click.png");
 	setTimeout(function(){ $("#" + e.target.id).attr('src', "img/slots-" + e.target.id.split('-')[1] + ".png"); }, 250)
-});
-
-$("#game-box").hover(function(e){	
-	if (!game.dungeon.crawling && $("#game-box").attr('src') == 'img/d-close.png'){
-		
-		$("#game-box").attr('src', 'img/d-open.png');
-	}
-},  function (){
-	if ($("#game-box").attr('src') == 'img/d-open.png'){
-		$("#game-box").attr('src', 'img/d-close.png');
-	}
 });
 
 $(document).on('click', '#autopull', function(e){	

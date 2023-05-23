@@ -126,7 +126,7 @@ TODO
 
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
-
+    add uarr and duarr for the direction you're going on steps
 
 
     SOUND            

@@ -117,18 +117,26 @@ TODO
     x change the add reel to amount invested instead 
     x pop up when entering dungeon and sltos fro the first time
     x BUG? Key hint isn't giving the correct info
+    x  change heart icon to green when you're poisoned
+    x  Change exit to "Go Back"
+    
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
     
 
-    
     SOUND            
-        maybe voices when I go in and out (going dungeon crawling!)        
     
     MUSIC
        
 
     ART 
+
+
+    AFTER REFACTOR
+        ? create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+        what if the tunnel was dark when you're heading in and light when you're headded out?
+
+GOOD IDEAS FROM REDDIT
     
 
     
@@ -174,6 +182,8 @@ MAYBE
     x incentivize the player to dive deeper by doubling their gold yield for going deeper than last time
     x create a min for how many steps they can go before spawning a mob
     x replace menu buttons with signs
+    x change potions to inventory   
+    x maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
     bank
         why would you need to bank gold?
     be able to sell potions        
@@ -181,9 +191,9 @@ MAYBE
     ! change background briefly to red when you get hit  (this wasn't very good)
     change death text
     the number of portals given by a portal chest should be determined by how often you die
-    change potions to inventory   
+    
     What if dying with gold increased your stats? (it seems like im not dying like i used to so not really an issue)
-    change heart icon to green when you're poisoned
+    
     what if the slot machine was a tavern and you could recruit people to come with you?
     maybe portal should only go into effect if you'r not fighting
     maybe put icons in the dungeon logs to more easily categorize the context 
@@ -191,10 +201,12 @@ MAYBE
         had just opened a chest 
     Increased percent chance to hit potion
     Invincibility potion
-    maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
-    what if the tunnel was dark when you're heading in and light when you're headded out?
-    create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+    maybe voices when I go in and out (going dungeon crawling!)        
+    a game save so players can leave the game and start where they were
+
     hits aren't ENTIRELY absorbed by armor (maybe some still bleeds through);
+
+    
     add a zombie at the point where you died that has the gold that you dropped
 
 

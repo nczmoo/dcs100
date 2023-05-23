@@ -159,6 +159,7 @@ class UIRefresh {
 		$("#armorBar").css('width', width);
 		$("#healthBar").removeClass('poisoned');
 		if (game.player.stats.poisonCounter > 0){
+			$("#healthIcon").attr('src', 'img/icon-health-poisoned.png');
 			$("#healthBar").addClass('poisoned');
 		}
 	}

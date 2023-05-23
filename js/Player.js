@@ -20,10 +20,5 @@ class Player {
 		}
 
 	}
-
-
-
-    
-
     
 }

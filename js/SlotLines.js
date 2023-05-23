@@ -51,7 +51,9 @@ class SlotLines {
 		game.player.inventory.gold -= this.max * 10;
 		$(".changeLines-" + this.max).removeClass('d-none');
 		this.max *= 10;
-		
+		if ($("#invested").hasClass('d-none')){
+			$("#invested").removeClass('d-none')
+		}
 		$("#upgrade").attr('src', 'img/slots-upgrade-' + (this.max * 10) + ".png")
 		if (this.max >= 1000){
 			$("#upgrade").addClass('d-none');

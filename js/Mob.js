@@ -21,7 +21,7 @@ class Mob {
 		}
 		ui.event.mobDies(this.entity.name);
 		ui.addToLogs("The <span class='fw-bold'> " 
-			+ this.entity.name + " died</span> and you looted " + loot 
+			+ ui.formatName(this.entity.name) + " died</span> and you looted " + loot 
 			+ " gold from it. (<span class='text-success='>+" + loot 
 			+ " 	<img src='img/icon-gold.png'></span>) ", 'mob');		
 		game.player.inventory.getGold(loot);		
@@ -49,6 +49,7 @@ class Mob {
 		let initDmg = dmg;
 		if (dmg < 0){
 			dmg = 0;
+			game.sound.play('player-miss');
 		}
 		if (dmg > 0 ){
 			game.sound.play('player-hit');
@@ -62,12 +63,16 @@ class Mob {
 			+ " damage. (<span class='text-danger'>-" + armorDmg + "</span>)";
 		let healthCaption = " Your health was hit for " + dmg 
 			+ " damage. (<span class='text-danger'>-" + dmg +  "</span>)";
-		let status = this.entity.name + " missed!";
+		let status = ui.formatName(this.entity.name) + " missed!";
+		
 		if (initDmg > 0){
 			ui.event.mobHits(this.entity.name);
-			status = "The " + this.entity.name 
+			status = "The " + ui.formatName(this.entity.name) 
 			+ " hit you for " + initDmg 
 			+ " damage." ;
+		} else {
+			ui.event.mobMiss(this.entity.name);
+			game.sound.play('player-miss');
 		}
         let poisonMsg = game.player.combat.getPoisoned(dmg, this.entity.name);
 		if (armorDmg > 0){
@@ -98,7 +103,7 @@ class Mob {
 		this.entity.health = this.entity.max;
 		this.entity.name = name;
 		ui.event.mobSpawns(this.entity.name);
-		ui.addToLogs("<span class='fw-bold'>A " + this.entity.name 
+		ui.addToLogs("<span class='fw-bold'>A " + ui.formatName(this.entity.name)
 			+ "(a:" + this.entity.attack + " / hp: " + this.entity.max 
 			+ ") spawned</span> in front of you.", 'mob')
 	}

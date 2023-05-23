@@ -4,10 +4,16 @@ class Sound {
         'player-miss': 8, 
         'rat-hit': 2,
         'rat_king-hit': 2,
+        'skeleton-hit': 2,
         'slot-fail': 1,
         'snake-hit': 2,
         'snake_queen-hit': 2,
         'spider-hit': 2,
+        'ghost-hit': 2,
+        'demon-hit': 5,
+        'lich-hit': 2,
+        'orc-hit': 2,
+        'orc_lord-hit': 3,
         step: 8,
     }
     silentMobs = ['ghost', 'skeleton', 'orc', 'orc_lord', 'lich', 'demon'];
@@ -15,7 +21,7 @@ class Sound {
 
     play(eventName){
         let parse = eventName.split('-')[0];        
-        if (!game.config.sound || this.silentMobs.includes(parse)){
+        if (!game.config.sound){
             return;
         }
         if (Object.keys(this.multi).includes(eventName)){

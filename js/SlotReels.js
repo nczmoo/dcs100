@@ -27,8 +27,6 @@ class SlotReels {
 		for (let name in this.addToReels){
 			let stepReq = this.addToReels[name];
 			if (invested >= stepReq && !this.symbols.includes(name)){
-                console.log(name, invested, stepReq)
-
                 this.symbols.push(name);
                 this.length = this.symbols.length;
 				this.generate();

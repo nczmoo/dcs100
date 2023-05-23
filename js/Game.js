@@ -46,6 +46,11 @@ class Game{
 			}
 			ui.addToLogs(msg);
 		} else if (potion == 'portal'){
+			$("body").css('animation-name', 'rotater');
+			$("body").css('animation-duration', '500ms');
+			this.sound.play('portal');
+			
+
 			this.dungeon.checkLastDive();
 			this.dungeon.exit();
 			game.music.play('outside');

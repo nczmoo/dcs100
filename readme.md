@@ -120,10 +120,14 @@ TODO
     x  change heart icon to green when you're poisoned
     x  Change exit to "Go Back"
     x what if the tunnel was dark when you're heading in and light when you're headded out?
-    
+    x create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
-    
+
+    change reel add to upgrade
+    increase effect of poison
+
 
     SOUND            
     
@@ -131,13 +135,9 @@ TODO
        
 
     ART 
-
-
-    AFTER REFACTOR
-        ? create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+        modify slot buttons    
         
 
-GOOD IDEAS FROM REDDIT
     
 
     
@@ -204,12 +204,10 @@ MAYBE
     Invincibility potion
     maybe voices when I go in and out (going dungeon crawling!)        
     a game save so players can leave the game and start where they were
-
     hits aren't ENTIRELY absorbed by armor (maybe some still bleeds through);
-
-    
     add a zombie at the point where you died that has the gold that you dropped
-
+    maybe players can heal when they're not actively engaged in combat or poisoned?
+    maybe let players skip reel rolling animation
 
 MOTHER'S DAY PLAYTEST    
     UI too cluttered on my phone    
@@ -220,6 +218,10 @@ MOTHER'S DAY PLAYTEST
     x Does anything else get reset? I think this was because it was passing the object by reference and getting downgraded to level 1. Hopefully, pass by value resolves this.
     x I reached about twenty on all my stats and the game seems pointless 
 
+
+FINAL PLAYTEST
+    when the three symbols are added, it definitely decreases the win rate significantly. Maybe tie it to upgrades?
+    why did I see so many orcs and only one skeleton?
 
 POTENTIAL ADDITIONS
     const monsters = { //FROM CHATGPT

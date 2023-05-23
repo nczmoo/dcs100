@@ -28,6 +28,7 @@
     cursor: pointer;
 }
 
+
 #healthBar:not(.poisoned){
     background-color: #93121f;
 }
@@ -128,3 +129,9 @@
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+@keyframes rotater {
+    0% { transform:rotate(0) scale(1) }
+    100% { transform:rotate(360deg) scale(2) }
+    /*100% { transform:rotate(720deg) scale(1) }*/
+    }

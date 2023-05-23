@@ -52,7 +52,11 @@ class UIEvent {
 	}
 
 	step(){
-		$("#game-box").attr('src', 'img/d-' + this.dStep + '.png');
+		let going = 'enter';
+		if (game.dungeon.forward){
+			going = 'exit';
+		}
+		$("#game-box").attr('src', 'img/d-' + going + "-" + this.dStep + '.png');
 		if (game.dungeon.forward){
 			this.dStep++;
 			

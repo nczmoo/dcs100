@@ -25,6 +25,9 @@ class UIEvent {
 		//$("body").css('background-color', ui.uirefresh.playerHitBG);
 		
 	}
+	mobMiss(name){
+		$("#game-box").attr('src', 'img/d-' + name + "-miss.png" )
+	}
 
 	mobSpawns(name){
 		$("#game-box").attr('src', 'img/d-' + name + '.png');
@@ -49,7 +52,11 @@ class UIEvent {
 	}
 
 	step(){
-		$("#game-box").attr('src', 'img/d-' + this.dStep + '.png');
+		let going = 'exit';
+		if (game.dungeon.forward){
+			going = 'enter';
+		}
+		$("#game-box").attr('src', 'img/d-' + going + "-" + this.dStep + '.png');
 		if (game.dungeon.forward){
 			this.dStep++;
 			

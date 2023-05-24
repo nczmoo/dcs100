@@ -1,5 +1,5 @@
 class PlayerCombat {
-    chanceToPoison = 2; //10
+    chanceToPoison = 5; 
     died = 0;
     hitting = true; //hitting doesn't seem to reset at the end of a fight 
 
@@ -9,11 +9,12 @@ class PlayerCombat {
 			game.drink('heal');
 			return;
 		}
+		game.music.play('die');
 		game.sound.play('player-die');
 		this.died ++;
 		let msg = "You <span class='fw-bold text-danger'>died</span> " 
 		+ game.dungeon.steps 
-		+ " steps from the entrance, lost all your gold (" + this.gold 
+		+ " steps from the entrance, lost all your gold (" + game.player.inventory.gold 
 		+ "), but, somehow, you were resurrected back at the entrance.";
 		if (this.died == 1){
 			msg = "You <span class='fw-bold text-danger'>died</span> " 
@@ -90,7 +91,10 @@ class PlayerCombat {
 			ui.event.playerHits(game.mob.entity.name);
 			
 			status = "<span class='fw-bold'>You</span> hit the " 
-			+ game.mob.entity.name + " for " + dmg + " damage!"
+			+ ui.formatName(game.mob.entity.name) + " for " + dmg + " damage!"
+		} else { 
+			ui.event.mobSpawns(game.mob.entity.name);
+
 		}
 		ui.addToLogs(status);
 		if (game.mob.entity.health < 1){

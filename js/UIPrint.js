@@ -2,11 +2,10 @@ class UIPrint {
     deltaIntervals = {};
     deltasArr = {};
     logs = [];	
+	printReels = new UIPrintReels();
     reelsArr = [];
     reelCaptions = ''; // this doesn't appear to being fed from anywhere else???
-
     storeLogs = [];
-	//this should be below 100 lines but I just don't have it in me to trim it down
 	
     constructor(){
 		this.deltasArr.gold = 0;
@@ -48,12 +47,10 @@ class UIPrint {
 			if (n == 0){
 				continue;
 			}
-			let txt = '(';
-		
+			let txt = '(';		
 			if (n == 0){
 				return;
 			}
-
 			if (n < 0){
 				txt += "<span class='deltaMin fs-5 fw-bold'>" + n + "</span>";
 			} else if (n > 0){
@@ -78,34 +75,7 @@ class UIPrint {
 		$("#log").html(txt);
 	}
 
-	printReel(reelID, real){		
-		let positions = game.slots.reels.fetchPositions(reelID, real);
-		let straightClass = '', straightFile = '';
-		if (real){
-			straightClass = 'straight';
-			straightFile = '-straight';
-		}
-		/* keep this for debugging
-		console.log(reelID, positions, game.slots.reels.values, game.slots.reels.fetch(reelID, positions.prev), game.slots.reels.fetch(reelID, positions.pos), game.slots.reels.fetch(reelID, positions.next))
-		*/
-		return "<div id='reel-" + reelID + "-prev' class='reel'>" 
-			+ "<img src='img/reel-"
-			+ game.slots.reels.fetch(reelID, positions.prev)
-			+ ".png'></div><div  id='reel-" + reelID + "-pos' class='reel " + straightClass + "'>" 
-			+ "<img src='img/reel-"
-			+ game.slots.reels.fetch(reelID, positions.pos)
-			+ straightFile +  ".png'></div><div id='reel-" + reelID + "-next' class='reel'>" 
-			+ "<img src='img/reel-"
-			+ game.slots.reels.fetch(reelID, positions.next)
-			+ ".png'></div>"
-	}
 
-	reels(real){
-		for (let reelID = 0; reelID < game.slots.reels.numOfReels; reelID++){
-			let txt = this.printReel(reelID, real);
-			$("#reel-" + reelID).html(txt);
-		} 
-	}
 
 	storeLog(){
 		if (this.storeLogs.length > 0 && $("#storeLogTitle").hasClass('d-none')){
@@ -121,4 +91,8 @@ class UIPrint {
 		this.reelCaptions = '';
 	}
 
+
+	reels(reelID){
+		this.printReels.go(reelID);
+	}
 }

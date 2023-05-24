@@ -6,14 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<title>Dungeon Crawler Slots</title>
+	<link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet'>
+
+	<title>Idle Dungeon Crawler Slots</title>
 	<link rel="stylesheet" href="css.css">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 
 </head>
-<body id="body" class="ps-3 pe-3">
-	<div class="row">
+<body id="body" class="">
+	<div id='story' class="text-center">
+		
+	</div><div id='tutorial' class="text-center d-none pt-5 fs-2">
+
+	</div>
+	<div class="row mb-2">
 		<div class="col text-center">
-			<img id='soundConfig' src="img/sound-on.png" class="verb">
+			<img id='soundConfig' src="img/sound-on.png" class="me-2 verb">
+			<img id='musicConfig' src="img/music-on.png" class="verb">
 		</div>
 	</div>
 	<div class="row">
@@ -105,7 +114,7 @@
 				<span id="nextChestAt"></span>
 			</div><div class="autoSettings">
 				<span id="portalChest" class="d-none">
-					<input type="checkbox" id="auto-key_portal" class="auto"> Open blue chests?
+					<input type="checkbox" id="auto-key_portal" class="auto"> Open portal chests?
 				</span><span id="goldChest" class="d-none">
 					<input type="checkbox" id="auto-key_gold" class="auto"> Open gold chests?
 				</span>
@@ -122,13 +131,14 @@
 		<div class="text-center">
 			<img id='game-box' src="img/d-close.png" class="crawl">
 		</div><div class="text-center">
-			<img id='crawl-button' class='crawl' src="img/crawl.png">
+			<img id='crawl-button' class='crawl' src="img/crawl-enter.png">
 			<div id="death"></div>
 			<div id="monsters"></div>
 		</div><div class="col text-center dungeon fs-5">
+			<span class="direction me-3 fs-4 secondary"></span>
 			<span class='fw-bold'>Steps:</span>
 			<span id="steps"></span>
-			 
+			<span class="direction ms-3 fs-4 secondary"></span>
 		</div><div id='stepCaption' class="col text-center dungeon">
 			<span class='fst-italic secondary dungeon'> 2x gold if you reach <span id="lastDive"></span> steps (<span id="stepCent"></span>%)</span> 
 		</div><div class="col text-center mt-3 dungeon">
@@ -139,9 +149,15 @@
 		</div><div id="log" class="text-center dungeon"></div>
 
 	</div><div id="store" class="window d-none">
-		<div class="slotBG p-5">
-			<div id="reelsCaption" class="text-center mb-3"></div>
-			<div id="pullNum" class="text-center mb-3"></div>
+		<div class="slotBG ps-5 pe-5 pb-5 pt-3">
+			<div class="text-center mt-3 mb-1">
+				<div>
+					<span id="pullNum" class="fs-4">&nbsp;</span>
+				</div><div>
+					<span id="invested" class="d-none">&nbsp;</span> 
+				</div>
+			</div>
+			<div id="reelsCaption" class="text-center mb-1"></div>
 			<div class="row">
 				<div id='reel-0' class='col text-center'>
 
@@ -158,7 +174,7 @@
 						<img id='changeLines-less-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-less-10.png">
 						<img id='changeLines-less-100' class="changeLines changeLines-100 d-none" src="img/slots-lines-less-100.png">
 					</div><div class="col-m">
-						Paying Lines: <span id="lines-value" class="secondary slots"></span>/<span id="lines-max" class="secondary slots"></span>
+						Payout: <span id="lines-value" class="secondary slots"></span>x / <span id="lines-max" class="secondary slots"></span>x
 					</div><div class="col">
 						<img id='changeLines-more-1' class="changeLines changeLines-1 d-none" src="img/slots-lines-more-1.png">
 						<img id='changeLines-more-10' class="changeLines changeLines-10 d-none" src="img/slots-lines-more-10.png">
@@ -168,9 +184,9 @@
 					<img id='upgrade' class='' src="img/slots-upgrade-10.png">
 				</div>
 			</div><div class="mt-3 row">
-				<div class="col-md">					
-					<button id="autopull" class="pull btn float-md-end"><img id="img-autopull"  class='slot-buttons' src='img/slots-autopull.png'></button>
-				</div><div class="col-md text-md-left">
+				<div class="col-md text-center text-md-end">					
+					<button id="autopull" class="pull btn "><img id="img-autopull"  class='slot-buttons' src='img/slots-autopull.png'></button>
+				</div><div class="col-md text-center text-md-start">
 					<button id="pull" class="pull btn"><img id='img-pull'  class='slot-buttons' src='img/slots-pull.png'></button>
 				</div>
 			</div>
@@ -192,6 +208,7 @@
 	<script src='js/Mob.js'></script> 
 	<script src='js/MobModifiers.js'></script> 
 	<script src='js/MobTypes.js'></script> 
+	<script src='js/Music.js'></script>
 	<script src='js/Player.js'></script> 
 	<script src='js/PlayerStats.js'></script> 
 	<script src='js/PlayerInventory.js'></script> 
@@ -200,10 +217,17 @@
 	<script src='js/SlotLines.js'></script> 
 	<script src='js/Slots.js'></script> 
 	<script src='js/SlotWins.js'></script> 
-	<script src='js/UIAnimation.js'></script> 
+	<script src='js/UIAnimation.js'></script>
+	<script src='js/UIAnimationIntro.js'></script> 
+
 	<script src='js/UIAnimationLoop.js'></script> 
 	<script src='js/UIAnimationDead.js'></script> 
+	<script src='js/UIPrintReels.js'></script>
 	<script src='js/UIRefresh.js'></script> 
+	<script src='js/UIRefreshDisplay.js'></script> 
+	<script src='js/UIRefreshImages.js'></script> 
+	<script src='js/UIRefreshFill.js'></script> 
+
 	<script src='js/UI.js'></script>
 	<script src='js/UIEvent.js'></script>
 	<script src='js/UIPrint.js'></script>
@@ -214,6 +238,8 @@
 	<!--
 	<script src='js/ '></script> 
 	-->
+	<script src='js/hover.js'></script> 
+
 	<script src='js/events.js'></script>
 	<script src='js/js.js'></script>
 </body>

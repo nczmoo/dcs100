@@ -1,8 +1,14 @@
 class DungeonCrawl {
+	musicStarted = false;
     change(){
 		if (!game.dungeon.crawling){
 			ui.clearUIBeforeCrawl();
 			game.sound.play('dungeon-enter');
+			let song = 'dungeon';
+			if (game.dungeon.firstTime){
+				song = 'theme';
+			}
+			game.music.play(song);
 			game.dungeon.crawling = true;		
 			return;
 		} 	
@@ -29,11 +35,11 @@ class DungeonCrawl {
 		if (game.player.stats.poisonCounter > 0){
 			game.player.isPoisoned();
 		}
-		if (game.dungeon.forward){
+		if (game.dungeon.forward){			
 			game.sound.play('step');
 			game.dungeon.steps ++;
 			game.dungeon.stepsForward ++;
-			game.slots.reels.add();
+			game.player.inventory.loseLessGold(game.dungeon.steps);
 		}  
 		if (game.dungeon.back()){
 
@@ -46,11 +52,15 @@ class DungeonCrawl {
 		}
 		let spawn = randNum(1, game.dungeon.spawnRate * modifier) == 1 
 			|| (game.dungeon.forward && game.dungeon.stepsForward >= game.dungeon.maxSteps);
+		
+
+
 		if (spawn){
-			game.dungeon.maxSteps++; //remember that steps forward is reset to 0 after game.dungeon
+			//game.dungeon.maxSteps++; //remember that steps forward is reset to 0 after game.dungeon
 			game.dungeon.stepsForward = 0;
-			game.mob.spawn();			
+			game.mob.spawn();
 		}
+		
 
 	}
 }

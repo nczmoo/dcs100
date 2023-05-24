@@ -99,23 +99,55 @@ TODO
     x gold intake is markedly slower and progress is stagnant partly 
         because of that. (add a gold modifier to individual change the 
         amount of gold each type gives out)
-
+    x change store to slots
+    x add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
+    x crawl button needs to be better
+    x favicon
+    x dont spawn monsters when entering until step 4
+    x move pullNum above reelcaption and make the font size bigger
+    x all other monsters
+    x die    
+    x test all new sound
+    x remove _ from mob names in captions
+    x Sound config doesn't work on mobile 
+    x Slot buttons off center 
+    x change chestCent to steps fom last chest and only show if a player has a key
+    x paying <x>x instead of lines
+    x    in sound off icon make it grey like the way music off is
+    x change the add reel to amount invested instead 
+    x pop up when entering dungeon and sltos fro the first time
+    x BUG? Key hint isn't giving the correct info
+    x  change heart icon to green when you're poisoned
+    x  Change exit to "Go Back"
+    x what if the tunnel was dark when you're heading in and light when you're headded out?
+    x create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+    x     increase effect of poison
+    x change reel add to upgrade
+    x add uarr and duarr for the direction you're going on steps
+    x Fix ambiguity regarding gold
+    x Is poison too powerful now? Bump it up to 1:15
+    x Gold loss reduced to 5% every 100 steps in up to 50%.
     checkboxes look weird
+    BUG? sound inconsistently playing on mobile?
+    BUG issue where if you have 11 gold and spin for 10 gold it'll only pay for 1.
     
-    SOUND
-        all other monsters
+    Save point    
+    Monsters too powerful spawning for players to handle
 
+    SOUND            
+    
     MUSIC
-        die    
-
-    SOUND       
-        maybe voices when I go in and out (going dungeon crawling!)        
-
+       
     ART 
-        add slots background for icon so thats not such a weird clash for results (requires a whole new fucking msg in that captions var)
-        favicon
-        crawl button needs to be better
-        change store to slots
+        modify slot buttons    
+        make the light bigger at exit    
+
+    Add a dragon with 10x the stats of the demon
+    
+    ALWAYS HAVE A SAVE GAME AND END STATE BEFORE RELEASE
+    Allow players to auto-pause when they run out of armor
+    
+
     
 QUESTIONS
     What can you get from the slots?
@@ -137,7 +169,7 @@ QUESTIONS
 
     Should pay lines be exponential? I had 4 pay lines active but only 1 line won. Kinda invalidates having more than one pay line.
         No. It's fine as is.
-
+    Why do players have to click "To Slots" instead of just going straight to slots when they've exited?
 
 
 DESIGN
@@ -159,6 +191,8 @@ MAYBE
     x incentivize the player to dive deeper by doubling their gold yield for going deeper than last time
     x create a min for how many steps they can go before spawning a mob
     x replace menu buttons with signs
+    x change potions to inventory   
+    x maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
     bank
         why would you need to bank gold?
     be able to sell potions        
@@ -166,9 +200,9 @@ MAYBE
     ! change background briefly to red when you get hit  (this wasn't very good)
     change death text
     the number of portals given by a portal chest should be determined by how often you die
-    change potions to inventory   
+    
     What if dying with gold increased your stats? (it seems like im not dying like i used to so not really an issue)
-    change heart icon to green when you're poisoned
+    
     what if the slot machine was a tavern and you could recruit people to come with you?
     maybe portal should only go into effect if you'r not fighting
     maybe put icons in the dungeon logs to more easily categorize the context 
@@ -176,10 +210,12 @@ MAYBE
         had just opened a chest 
     Increased percent chance to hit potion
     Invincibility potion
-    maybe adding more stuff to your reel shouldn't be based off of how far they go the dungeon
-    what if the tunnel was dark when you're heading in and light when you're headded out?
-    create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
+    maybe voices when I go in and out (going dungeon crawling!)        
+    a game save so players can leave the game and start where they were
     hits aren't ENTIRELY absorbed by armor (maybe some still bleeds through);
+    add a zombie at the point where you died that has the gold that you dropped
+    maybe players can heal when they're not actively engaged in combat or poisoned?
+    maybe let players skip reel rolling animation
 
 MOTHER'S DAY PLAYTEST    
     UI too cluttered on my phone    
@@ -190,6 +226,10 @@ MOTHER'S DAY PLAYTEST
     x Does anything else get reset? I think this was because it was passing the object by reference and getting downgraded to level 1. Hopefully, pass by value resolves this.
     x I reached about twenty on all my stats and the game seems pointless 
 
+
+FINAL PLAYTEST
+    when the three symbols are added, it definitely decreases the win rate significantly. Maybe tie it to upgrades?
+    why did I see so many orcs and only one skeleton?
 
 POTENTIAL ADDITIONS
     const monsters = { //FROM CHATGPT

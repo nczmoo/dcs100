@@ -1,9 +1,11 @@
 class DungeonChest {
     chestEveryMax = 20;
 	chestEveryMin = 10;
+	last = 0;
 	value = null;
 	foundAt = null;
     generate(steps){
+		this.last = steps;
 		this.foundAt = steps + randNum(this.chestEveryMin, this.chestEveryMax);
 		let rand  = randNum(1, 4);
 		if (rand == 1){

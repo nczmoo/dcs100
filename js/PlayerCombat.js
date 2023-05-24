@@ -12,16 +12,18 @@ class PlayerCombat {
 		game.music.play('die');
 		game.sound.play('player-die');
 		this.died ++;
+		
 		let msg = "You <span class='fw-bold text-danger'>died</span> " 
-		+ game.dungeon.steps 
-		+ " steps from the entrance, lost all your gold (" + game.player.inventory.gold 
-		+ "), but, somehow, you were resurrected back at the entrance.";
-		if (this.died == 1){
+			+ game.dungeon.steps 
+			+ " steps from the entrance, but, somehow, you were resurrected back"
+			+ " at the entrance. (Normally, you lose ALL of your gold, but you "
+			+ "only lost 1/2 this time.)";
+		if (this.died != 1){
 			msg = "You <span class='fw-bold text-danger'>died</span> " 
-				+ game.dungeon.steps 
-				+ " steps from the entrance, but, somehow, you were resurrected back"
-				+ " at the entrance. (Normally, you lose ALL of your gold, but you "
-				+ "only lost 1/2 this time.)";
+			+ game.dungeon.steps 
+			+ " steps from the entrance, lost " + game.player.inventory.loseGold() 
+			+ ", but, somehow, you were resurrected back at the entrance.";
+			
 		}
 		$("#death").html(msg);
 		ui.event.die();
@@ -31,7 +33,7 @@ class PlayerCombat {
 			game.player.inventory.gold = Math.round(game.player.inventory.gold * .5);
 			return;
 		}
-		game.player.inventory.resetGold();
+		//game.player.inventory.resetGold();
 	}
 
     getPoisoned(dmg, name){

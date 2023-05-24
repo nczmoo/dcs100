@@ -126,15 +126,12 @@ TODO
     x add uarr and duarr for the direction you're going on steps
     x Fix ambiguity regarding gold
     x Is poison too powerful now? Bump it up to 1:15
-    
+    x Gold loss reduced to 5% every 100 steps in up to 50%.
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
     BUG issue where if you have 11 gold and spin for 10 gold it'll only pay for 1.
-
     
-    Gold loss reduced to 5% every 100 steps in up to 50%.
-    Save point
-    
+    Save point    
     Monsters too powerful spawning for players to handle
 
     SOUND            
@@ -147,6 +144,9 @@ TODO
         make the light bigger at exit    
 
     Add a dragon with 10x the stats of the demon
+    
+    ALWAYS HAVE A SAVE GAME AND END STATE BEFORE RELEASE
+    Allow players to auto-pause when they run out of armor
     
 
     

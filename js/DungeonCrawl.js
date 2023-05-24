@@ -35,10 +35,11 @@ class DungeonCrawl {
 		if (game.player.stats.poisonCounter > 0){
 			game.player.isPoisoned();
 		}
-		if (game.dungeon.forward){
+		if (game.dungeon.forward){			
 			game.sound.play('step');
 			game.dungeon.steps ++;
 			game.dungeon.stepsForward ++;
+			game.player.inventory.loseLessGold(game.dungeon.steps);
 		}  
 		if (game.dungeon.back()){
 
@@ -55,7 +56,7 @@ class DungeonCrawl {
 
 
 		if (spawn){
-			game.dungeon.maxSteps++; //remember that steps forward is reset to 0 after game.dungeon
+			//game.dungeon.maxSteps++; //remember that steps forward is reset to 0 after game.dungeon
 			game.dungeon.stepsForward = 0;
 			game.mob.spawn();
 		}

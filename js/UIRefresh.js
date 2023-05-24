@@ -62,8 +62,12 @@ class UIRefresh {
 			$(".dungeon").addClass('d-none');
 			$("body").css('color', 'black');
 		} else if (game.dungeon.crawling && game.dungeon.forward){
+			console.log('u');
+			$(".direction").html('&uarr;');
 			$("#crawl-button").attr('src', 'img/crawl-exit.png');
 		} else if (game.dungeon.crawling && !game.dungeon.forward){
+			console.log('d');
+			$(".direction").html('&darr;');
 			$("#crawl-button").attr('src', "img/crawl-exiting-" + ui.exiting + ".png");
 			ui.animation.exit();
 		}

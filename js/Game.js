@@ -60,6 +60,8 @@ class Game{
 			game.music.play('outside');
 			ui.addToLogs('You open a portal and exit the dungeon.');
 		}
+		ui.print.deltas();
+
 	}
 
 	looping(){

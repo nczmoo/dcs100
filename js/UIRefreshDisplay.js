@@ -45,5 +45,12 @@ class UIRefreshDisplay {
 			$("#keySection").removeClass('d-none')
 		}
 
+		console.log(game.slots.pulling);
+		
+		if (game.slots.pulling){
+		
+			$("#menu-dungeon").addClass('d-none');
+		}
+
     }
 }

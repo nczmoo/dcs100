@@ -9,7 +9,7 @@ class UIRefresh {
     potionsHidden = true;
 
 
-    go (){ //05/18/23 not refactoring this....just don't feel like it		
+    go (){ //05/18/23 not refactoring this....just don't feel like it
 
 		$("#autoArmorPause").prop('checked', game.config.autoPauseOnArmor);
 		if (!ui.intro && !$("#story").hasClass('d-none')){

@@ -48,6 +48,10 @@ class Game{
 		} else if (potion == 'portal'){
 			$("body").css('animation-name', 'rotater');
 			$("body").css('animation-duration', '500ms');
+			setTimeout(function(){
+				$("body").css('animation-name', '');
+				$("body").css('animation-duration', '');
+			}, 1000);
 			this.sound.play('portal');
 			
 
@@ -75,7 +79,6 @@ class Game{
 	}
 
 	soundConfig(){
-		console.log('hello?');
 		this.config.sound = !this.config.sound;
 		ui.refresh();
 	}

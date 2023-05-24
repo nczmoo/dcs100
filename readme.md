@@ -123,10 +123,11 @@ TODO
     x create a wah wah portal sound for when you drink a portal and maybe a shimmering effect on the ui
     x     increase effect of poison
     x change reel add to upgrade
+    x add uarr and duarr for the direction you're going on steps
 
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
-    add uarr and duarr for the direction you're going on steps
+    
 
 
     SOUND            
@@ -136,7 +137,7 @@ TODO
 
     ART 
         modify slot buttons    
-        
+        make the light bigger at exit    
 
     
 

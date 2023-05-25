@@ -21,7 +21,6 @@ class UIRefreshDisplay {
 		if (!game.dungeon.forward){
 			$("#stepCaption").addClass('d-none');
 		}
-		//console.log(this.storeRevealed);
 		if (game.player.inventory.gold > 0 && $("#menu").hasClass('d-none')){
 			//this.storeRevealed = true;
 			$("#menu").removeClass('d-none');
@@ -30,7 +29,6 @@ class UIRefreshDisplay {
 			$("#maxArmorSection").removeClass('d-none');
 		}
         $(".menu").addClass('d-none');
-		//console.log(game.dungeon.crawling, this.opposites[ui.window])	
 
 		if (!game.dungeon.crawling ){		
 			$("#menu-" + this.opposites[ui.window]).removeClass('d-none');
@@ -45,7 +43,6 @@ class UIRefreshDisplay {
 			$("#keySection").removeClass('d-none')
 		}
 
-		console.log(game.slots.pulling);
 		
 		if (game.slots.pulling){
 		

@@ -84,7 +84,7 @@ class Mob {
         status += poisonMsg;
 		ui.addToLogs(status, 'mob');
 		if (playerDied){
-			game.player.combat.die();
+			game.player.combat.die(this.entity.name);
 		}
 	}
 

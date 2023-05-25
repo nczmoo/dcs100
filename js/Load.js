@@ -9,6 +9,7 @@ class Load {
         Load.loading('game', saveObj.game, []);
         Load.loading('ui', saveObj.ui, []);
         game.savedAt = Date.now();
+        ui.window = 'dungeon';
         return true;
     }
 

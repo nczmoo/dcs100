@@ -3,25 +3,32 @@ class PlayerCombat {
     died = 0;
     hitting = true; //hitting doesn't seem to reset at the end of a fight 
 
-    die(){
+    die(cause){
 		if (game.config.auto.heal && game.player.inventory.potions.heal > 0){
 			ui.addToLogs("Just as you're about to fall over, you chug a health potion.");
 			game.drink('heal');
 			return;
 		}
+		let deathCaption = cause + " ";
+		if (cause != 'poison'){
+			deathCaption = 'a ' + ui.formatName(cause) + ' ';
+		}
+		if (game.dungeon.forward && (game.dungeon.steps < 20 || game.dungeon.steps < game.dungeon.lastDive * .5) && game.mob.spawning.includes(cause) ){
+			game.mob.spawning.splice(game.mob.spawning.indexOf(cause), 1)
+		}
 		game.music.play('die');
 		game.sound.play('player-die');
 		this.died ++;
 		
-		let msg = "You <span class='fw-bold text-danger'>died</span> " 
+		let msg = "You <span class='fw-bold text-danger'>died</span> from " + deathCaption 
 			+ game.dungeon.steps 
 			+ " steps from the entrance, but, somehow, you were resurrected back"
 			+ " at the entrance. (Normally, you lose ALL of your gold, but you "
 			+ "only lost 1/2 this time.)";
 		if (this.died != 1){
-			msg = "You <span class='fw-bold text-danger'>died</span> " 
+			msg = "You <span class='fw-bold text-danger'>died</span> from " + deathCaption 
 			+ game.dungeon.steps 
-			+ " steps from the entrance, lost " + game.player.inventory.loseGold() 
+			+ " steps from the entrance , lost " + game.player.inventory.loseGold() 
 			+ ", but, somehow, you were resurrected back at the entrance.";
 			
 		}
@@ -60,9 +67,7 @@ class PlayerCombat {
 	}
 
     getsHitInArmor(dmg){
-		if (game.player.stats.armor < 1){
-			return dmg;
-		}
+	
 		if (dmg > 0){
 			ui.animation.hit('armorProgressBar');
 		}
@@ -80,6 +85,7 @@ class PlayerCombat {
 			&& game.player.inventory.potions.repair > 0){
 			game.drink('repair');
 		} else if (game.player.stats.armor < 1 && game.config.autoPauseOnArmor){
+			game.config.autoPauseOnArmor = false;
 			game.paused = true;
 		}
 		ui.delta('armor', -armorDmg);

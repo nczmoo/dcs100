@@ -14,7 +14,7 @@ class Player {
 		ui.addToLogs("You took 1 dmg from being poisoned. (<span class='text-danger'>-1 hp</span>)")
 		this.stats.health --;
 		if (this.stats.health < 1){
-			this.combat.die();
+			this.combat.die('poison');
 		}
 
 	}

@@ -131,11 +131,11 @@ TODO
     x Allow players to auto-pause when they run out of armor
     x Save point    
     x Monsters too powerful spawning for players to handle
+    x     BUG issue where if you have 11 gold and spin for 10 gold it'll only pay for 1.
 
 
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
-    BUG issue where if you have 11 gold and spin for 10 gold it'll only pay for 1.
     Allow players to just auto turn around when they run out of armor    
     
     SOUND            

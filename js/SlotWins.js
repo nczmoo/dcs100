@@ -44,7 +44,6 @@ class SlotWins {
 		if(wins.length < 1){
 			return;
 		}			
-		console.log(game.slots.lines.value);
 		let positions = game.slots.reels.fetchPositions(0, true);
 		for (let winID of wins){			
 			let what = game.slots.reels.fetch(0, positions[this.list[winID][0]]);		

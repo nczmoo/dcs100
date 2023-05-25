@@ -38,8 +38,8 @@ class SlotLines {
             this.value = this.max;
         }
 
-        if (this.value > this.gold){
-            this.value = this.gold;
+        if (this.value > game.player.inventory.gold){
+            this.value = game.player.inventory.gold;
         }
     }
 

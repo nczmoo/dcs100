@@ -22,12 +22,12 @@ class Slots {
 		ui.print.deltas();
 		ui.refresh();
 		if (game.player.inventory.gold > 0 && game.player.inventory.gold < this.lines.value){
-			this.lines.value = game.player.inventory.gold;
+			//this.lines.value = game.player.inventory.gold;
 		}
 		if (game.player.inventory.gold < 1){
 			this.pulling = false;
 			game.player.inventory.gold = 0;
-			this.lines.value = 1;
+			//this.lines.value = 1;
 		}
 		for (let reelID in this.reels.positions){
 			let rand = null;

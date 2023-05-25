@@ -27,7 +27,8 @@ class SlotWins {
 				wins.push(Number(winID));
 			}			
 		}
-		this.process(wins);		
+		this.process(wins);	
+		game.slots.lines.check();	
 		ui.animation.animateWins(wins);
 	}
 
@@ -40,10 +41,10 @@ class SlotWins {
 
     process(wins){
 		let winsPaid = 0;
-		game.slots.lines.check();
 		if(wins.length < 1){
 			return;
-		}					
+		}			
+		console.log(game.slots.lines.value);
 		let positions = game.slots.reels.fetchPositions(0, true);
 		for (let winID of wins){			
 			let what = game.slots.reels.fetch(0, positions[this.list[winID][0]]);		

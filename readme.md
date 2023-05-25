@@ -127,13 +127,17 @@ TODO
     x Fix ambiguity regarding gold
     x Is poison too powerful now? Bump it up to 1:15
     x Gold loss reduced to 5% every 100 steps in up to 50%.
+    x ALWAYS HAVE A SAVE GAME AND END STATE BEFORE RELEASE
+    x Allow players to auto-pause when they run out of armor
+    x Save point    
+    x Monsters too powerful spawning for players to handle
+
+
     checkboxes look weird
     BUG? sound inconsistently playing on mobile?
     BUG issue where if you have 11 gold and spin for 10 gold it'll only pay for 1.
+    Allow players to just auto turn around when they run out of armor    
     
-    Save point    
-    Monsters too powerful spawning for players to handle
-
     SOUND            
     
     MUSIC
@@ -144,8 +148,7 @@ TODO
 
     Add a dragon with 10x the stats of the demon
     
-    ALWAYS HAVE A SAVE GAME AND END STATE BEFORE RELEASE
-    Allow players to auto-pause when they run out of armor
+    
     
 
     

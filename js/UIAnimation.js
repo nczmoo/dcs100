@@ -2,6 +2,9 @@ class UIAnimation {
 	dead = new UIAnimationDead();
     happening = false;
 	hitBG = [null,  '#5B3733', '#573C39', '#534140', '#4E4646', '#4A4B4D'];
+	intro = new UIAnimationIntro();
+	introFinished = null;
+
 	loop = new UIAnimationLoop();
     positions = game.slots.reels.positions.slice();
     timeToRoll = 1000;
@@ -50,6 +53,18 @@ class UIAnimation {
 		}
 	}
 
+
+	fadeIntro(){
+		
+		let opacity = $("#story").css('opacity');
+		let delta = .01;
+		$("#story").css('opacity', opacity - delta);
+		if (opacity == 0){
+			ui.introFading = false;
+		}
+
+	}
+
 	flashSlots(){
 		this.flashSlot++;
 		let target = 4;
@@ -83,6 +98,6 @@ class UIAnimation {
 		}		
 		ui.print.reels(false);
 	}
-
+	
 
 }

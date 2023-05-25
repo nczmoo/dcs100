@@ -1,6 +1,8 @@
 class PlayerInventory {
+	losing = 1;	
     gold = 0;    
 	keys = 0;
+	minLosing = .5;
 	potionList = ['heal', 'portal', 'repair'];
     potions = {};
 
@@ -23,6 +25,41 @@ class PlayerInventory {
         this.gold += delta;		
         game.slots.lines.check();
     }
+
+	loseGold(){
+		
+		let loss = Math.round(this.gold * this.losing);
+		let caption = ' all of your gold (';
+		if (this.losing != 1 && loss == this.gold && this.gold > 1){
+			loss = this.gold - 1;
+		}
+		if (loss != this.gold){
+			caption = ' some of your gold ('
+		}
+		this.gold -= loss;
+		caption += "<span class='text-danger'>-" + loss + " gold</span>) ";
+		return caption;
+		
+	}
+
+	loseLessGold(steps){
+		if (this.losing <= this.minLosing){
+			return;
+		}
+		let degree = Math.floor(steps / 100);
+		let delta = .1;
+		let newLosing = 1 - (delta * degree);
+		if (newLosing >= this.losing){
+			return;
+		}		
+		this.losing -= delta;
+		ui.addToLogs("Because you reached " + steps 
+			+ " steps into the dungeon, you will now only lose " 
+			+ (this.losing * 100) + "% of your gold when you die in the future!");
+		if (this.losing < this.minLosing){
+			this.losing = this.minLosing;
+		}
+	}
 
     resetGold(){
         this.gold = 0;

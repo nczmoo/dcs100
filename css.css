@@ -24,12 +24,19 @@
     color: #9ace47;
 }
 
-#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade, #soundConfig{
+#crawl-button, #game-box:hover, .menu:hover, .changeLines, #upgrade, #soundConfig, #musicConfig, #save, #story{
     cursor: pointer;
 }
 
+
 #healthBar:not(.poisoned){
     background-color: #93121f;
+}
+
+.important{
+    background-color: #d6c0af;
+    border-radius: 15px;
+
 }
 
 .menu:disabled, [class=secondary]{
@@ -45,6 +52,17 @@
     border-radius: 100px;
     color: #bdbdbd;
     margin: 5px;
+}
+
+#pausedPopUp {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;   
+
+  background-color: black;
+  color: white;
+  opacity: .5;
 }
 
 .player{
@@ -78,6 +96,8 @@
     color: #616161;
 }
 
+
+
 .slotBG{
     border-radius: 30px;
     background-color: #d9d7d5;
@@ -85,6 +105,26 @@
 .straight{
     background-color: #c8b2a2; /* edd7c7; */
 }
+
+#story{
+    padding: 30px;
+    position: absolute;
+    width:100%;
+    height: 100%;
+    background-color: #9b9fa6;
+    color: #414141;
+}
+
+#tutorial {
+    font-family: 'MedievalSharp';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #bcae39;
+    background-color: #9a7451;
+}
+
+
 .win{
     background-color: #fc9fa4;
 }
@@ -102,3 +142,9 @@
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+@keyframes rotater {
+    0% { transform:rotate(0) scale(1) }
+    100% { transform:rotate(360deg) scale(2) }
+    /*100% { transform:rotate(720deg) scale(1) }*/
+    }

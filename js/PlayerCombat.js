@@ -1,26 +1,36 @@
 class PlayerCombat {
-    chanceToPoison = 2; //10
+    chanceToPoison = 15; 
     died = 0;
-    hitting = true; //hitting doesn't seem to reset at the end of a fight 
+    hitting = false; //hitting doesn't seem to reset at the end of a fight 
 
-    die(){
+    die(cause){
 		if (game.config.auto.heal && game.player.inventory.potions.heal > 0){
 			ui.addToLogs("Just as you're about to fall over, you chug a health potion.");
 			game.drink('heal');
 			return;
 		}
+		let deathCaption = cause + " ";
+		if (cause != 'poison'){
+			deathCaption = 'a ' + ui.formatName(cause) + ' ';
+		}
+		if (game.dungeon.forward && (game.dungeon.steps < 20 || game.dungeon.steps < game.dungeon.lastDive * .5) && game.mob.spawning.includes(cause) ){
+			game.mob.spawning.splice(game.mob.spawning.indexOf(cause), 1)
+		}
+		game.music.play('die');
 		game.sound.play('player-die');
 		this.died ++;
-		let msg = "You <span class='fw-bold text-danger'>died</span> " 
-		+ game.dungeon.steps 
-		+ " steps from the entrance, lost all your gold (" + this.gold 
-		+ "), but, somehow, you were resurrected back at the entrance.";
-		if (this.died == 1){
-			msg = "You <span class='fw-bold text-danger'>died</span> " 
-				+ game.dungeon.steps 
-				+ " steps from the entrance, but, somehow, you were resurrected back"
-				+ " at the entrance. (Normally, you lose ALL of your gold, but you "
-				+ "only lost 1/2 this time.)";
+		
+		let msg = "You <span class='fw-bold text-danger'>died</span> from " + deathCaption 
+			+ game.dungeon.steps 
+			+ " steps from the entrance, but, somehow, you were resurrected back"
+			+ " at the entrance. (Normally, you lose ALL of your gold, but you "
+			+ "only lost 1/2 this time.)";
+		if (this.died != 1){
+			msg = "You <span class='fw-bold text-danger'>died</span> from " + deathCaption 
+			+ game.dungeon.steps 
+			+ " steps from the entrance , lost " + game.player.inventory.loseGold() 
+			+ ", but, somehow, you were resurrected back at the entrance.";
+			
 		}
 		$("#death").html(msg);
 		ui.event.die();
@@ -30,7 +40,7 @@ class PlayerCombat {
 			game.player.inventory.gold = Math.round(game.player.inventory.gold * .5);
 			return;
 		}
-		game.player.inventory.resetGold();
+		//game.player.inventory.resetGold();
 	}
 
     getPoisoned(dmg, name){
@@ -57,6 +67,7 @@ class PlayerCombat {
 	}
 
     getsHitInArmor(dmg){
+	
 		if (dmg > 0){
 			ui.animation.hit('armorProgressBar');
 		}
@@ -73,6 +84,9 @@ class PlayerCombat {
 		if (game.player.stats.armor < 1 && game.config.auto.repair 
 			&& game.player.inventory.potions.repair > 0){
 			game.drink('repair');
+		} else if (game.player.stats.armor < 1 && game.config.autoPauseOnArmor){
+			game.config.autoPauseOnArmor = false;
+			game.paused = true;
 		}
 		ui.delta('armor', -armorDmg);
         return armorDmg;
@@ -90,7 +104,10 @@ class PlayerCombat {
 			ui.event.playerHits(game.mob.entity.name);
 			
 			status = "<span class='fw-bold'>You</span> hit the " 
-			+ game.mob.entity.name + " for " + dmg + " damage!"
+			+ ui.formatName(game.mob.entity.name) + " for " + dmg + " damage!"
+		} else { 
+			ui.event.mobSpawns(game.mob.entity.name);
+
 		}
 		ui.addToLogs(status);
 		if (game.mob.entity.health < 1){
